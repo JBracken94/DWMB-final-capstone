@@ -63,8 +63,10 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  background-color: grey;
 }
 label {
   margin-right: 0.5rem;
 }
+
 </style>

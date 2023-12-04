@@ -47,6 +47,9 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: "/beer-list"
   }
 ];
 
