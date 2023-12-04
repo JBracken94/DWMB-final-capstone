@@ -10,6 +10,14 @@
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
+        <label for="selectRole">Account Type</label>
+        <select name="selectRole" id="selectRole" required v-model="user.role">Account Type
+          <option value="" disabled selected>Select An Option</option>
+          <option value="lover">Beer Lover</option>
+          <option value="brewer">Brewer</option>
+        </select>
+      </div>
+      <div class="form-input-group">
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
@@ -33,7 +41,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        role: '',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
