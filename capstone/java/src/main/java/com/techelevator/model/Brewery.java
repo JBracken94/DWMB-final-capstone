@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Brewery {
@@ -10,8 +11,8 @@ public class Brewery {
     private String city;
     private String state;
     private int zipcode;
-    private Date dateEst;
-    private int phoneNumber;
+    private LocalDateTime dateEst;
+    private String phoneNumber;
     private String aboutUs;
     private String website;
     private String logoImage;
@@ -24,7 +25,7 @@ public class Brewery {
     }
 
     public Brewery(int breweryId, String streetAddress, String city, String state,
-                   int zipcode, Date dateEst, int phoneNumber, String aboutUs,
+                   int zipcode, LocalDateTime dateEst, String phoneNumber, String aboutUs,
                    String website, String logoImage, int founderId) {
         this.breweryId = breweryId;
         this.streetAddress = streetAddress;
@@ -82,19 +83,19 @@ public class Brewery {
         this.zipcode = zipcode;
     }
 
-    public Date getDateEst() {
+    public LocalDateTime getDateEst() {
         return dateEst;
     }
 
-    public void setDateEst(Date dateEst) {
+    public void setDateEst(LocalDateTime dateEst) {
         this.dateEst = dateEst;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class BeerReview {
@@ -9,7 +10,7 @@ public class BeerReview {
     private int reviewerId;
     private int beerRating;
     private String beerReview;
-    private Date datePosted;
+    private LocalDateTime datePosted;
 
 
 
@@ -17,7 +18,7 @@ public class BeerReview {
     public BeerReview() {
     }
 
-    public BeerReview(int reviewId, int beerId, int reviewerId, int beerRating, String beerReview, Date datePosted) {
+    public BeerReview(int reviewId, int beerId, int reviewerId, int beerRating, String beerReview, LocalDateTime datePosted) {
         this.beerReviewId = reviewId;
         this.beerId = beerId;
         this.reviewerId = reviewerId;
@@ -69,11 +70,11 @@ public class BeerReview {
         this.beerReview = beerReview;
     }
 
-    public Date getDatePosted() {
+    public LocalDateTime getDatePosted() {
         return datePosted;
     }
 
-    public void setDatePosted(Date datePosted) {
+    public void setDatePosted(LocalDateTime datePosted) {
         this.datePosted = datePosted;
     }
 
