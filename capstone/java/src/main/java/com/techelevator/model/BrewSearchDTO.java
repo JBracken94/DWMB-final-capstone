@@ -3,10 +3,10 @@ package com.techelevator.model;
 public class BrewSearchDTO {
     private String city = null;
     private String state = null;
-    private Integer zipCode = null;
-    public BrewSearchDTO(String city, String state, int zipCode) {
+    private String zipcode = null;
+    public BrewSearchDTO(String city, String state, String zipcode) {
         this.city = city;
         this.state = state;
-        this.zipCode = zipCode;
+        this.zipcode = zipcode;
     }
 }
