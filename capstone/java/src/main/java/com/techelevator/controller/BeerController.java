@@ -41,6 +41,7 @@ public class BeerController {
     @PostMapping("/beers")
     public Beer createBeer(Beer beer, Principal principal) {
         Beer newBeer = beerService.createBeer(beer, principal);
+        return newBeer;
     }
 
     @PreAuthorize("hasRole('ROLE_BREWER')")
