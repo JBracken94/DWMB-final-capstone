@@ -10,7 +10,7 @@ public class Brewery {
     private String streetAddress;
     private String city;
     private String state;
-    private int zipcode;
+    private String zipcode;
     private LocalDateTime dateEst;
     private String phoneNumber;
     private String aboutUs;
@@ -25,7 +25,7 @@ public class Brewery {
     }
 
     public Brewery(int breweryId, String streetAddress, String city, String state,
-                   int zipcode, LocalDateTime dateEst, String phoneNumber, String aboutUs,
+                   String zipcode, LocalDateTime dateEst, String phoneNumber, String aboutUs,
                    String website, String logoImage, int founderId) {
         this.breweryId = breweryId;
         this.streetAddress = streetAddress;
@@ -75,11 +75,11 @@ public class Brewery {
         this.state = state;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
