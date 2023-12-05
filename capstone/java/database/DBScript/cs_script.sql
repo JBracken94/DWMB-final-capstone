@@ -19,6 +19,7 @@ CREATE TABLE brewery
     street_address VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
     state VARCHAR(2) NOT NULL,
+    zip_code INT NOT NULL,
     date_est INT NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
     about_us VARCHAR (1000) NOT NULL,
