@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.Beer;
+import com.techelevator.service.BeerService;
 import com.techelevator.service.BeerServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,7 +15,7 @@ import java.util.List;
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class BeerController {
-    private BeerServiceImpl beerService;
+    private BeerService beerService;
 
     public BeerController(BeerServiceImpl beerService) { // constructor
         this.beerService = beerService;
@@ -44,7 +45,7 @@ public class BeerController {
         return newBeer;
     }
 
-    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers/mybeers")
     public Beer addSavedBeer(@RequestBody int beerId, Principal principal) {
@@ -57,6 +58,12 @@ public class BeerController {
     public Beer updateBeer(@RequestBody Beer beer, Principal principal) {
         Beer updatedBeer = beerService.updateBeer(beer, principal);
         return updatedBeer;
+    }
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/mybeers/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteSavedBeer(@PathVariable("id") int beerId, Principal principal) {
+        beerService.deleteSavedBeer(beerId, principal);
     }
 
     @PreAuthorize("hasRole('ROLE_BREWER')") //authorize but check founderId in SQL

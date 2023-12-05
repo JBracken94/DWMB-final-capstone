@@ -1,9 +1,11 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.BreweryReview;
+import com.techelevator.service.BreweryReviewService;
 import com.techelevator.service.BreweryReviewServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -16,7 +18,7 @@ import java.util.List;
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class BreweryReviewController {
-    private BreweryReviewServiceImpl breweryReviewService;
+    private BreweryReviewService breweryReviewService;
 
     @GetMapping("/breweries/reviews/{id}")
     public BreweryReview breweryReviewByID(@PathVariable("id") int breweryReviewId) {

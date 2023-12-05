@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.model.Beer;
 import com.techelevator.model.BeerReview;
+import com.techelevator.service.BeerReviewService;
 import com.techelevator.service.BeerReviewServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,7 +19,7 @@ import java.util.List;
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class BeerReviewController {
-    private BeerReviewServiceImpl reviewService;
+    private BeerReviewService reviewService;
     public BeerReviewController(BeerReviewServiceImpl reviewServiceImpl) {
         this.reviewService = reviewServiceImpl;
     }

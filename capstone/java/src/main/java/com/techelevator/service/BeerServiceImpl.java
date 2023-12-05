@@ -8,6 +8,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Service
+@Component
 public class BeerServiceImpl implements BeerService{
 
     @Override
