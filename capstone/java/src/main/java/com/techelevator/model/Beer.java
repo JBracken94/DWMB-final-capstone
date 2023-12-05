@@ -9,7 +9,7 @@ public class Beer {
     private String beerName;
     private int breweryId;
     private String beerType;
-    private int abv;
+    private double abv;
     private String labelImage;
     private String description;
 
@@ -19,7 +19,7 @@ public class Beer {
     public Beer() {
     }
 
-    public Beer(int beerId, String beerName, int breweryId, String beerType, int abv, String labelImage, String description) {
+    public Beer(int beerId, String beerName, int breweryId, String beerType, double abv, String labelImage, String description) {
         this.beerId = beerId;
         this.beerName = beerName;
         this.breweryId = breweryId;
@@ -64,11 +64,11 @@ public class Beer {
         this.beerType = beerType;
     }
 
-    public int getAbv() {
+    public double getAbv() {
         return abv;
     }
 
-    public void setAbv(int abv) {
+    public void setAbv(double abv) {
         this.abv = abv;
     }
 
