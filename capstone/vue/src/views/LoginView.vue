@@ -63,10 +63,21 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
-  background-color: grey;
+  background-color: rgb(27, 4, 4);
 }
 label {
   margin-right: 0.5rem;
 }
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(121, 7, 7);
+  color:gold
+}
+
+  
 
 </style>
