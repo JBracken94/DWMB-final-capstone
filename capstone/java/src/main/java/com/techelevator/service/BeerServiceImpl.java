@@ -31,7 +31,12 @@ public class BeerServiceImpl implements BeerService{
     }
 
     @Override
-    public Beer updateBeer(int beerId) {
+    public Beer createBeer(Beer beer, Principal principal) {
+        return null;
+    }
+
+    @Override
+    public Beer updateBeer(Beer beer, Principal principal) {
         return null;
     }
 

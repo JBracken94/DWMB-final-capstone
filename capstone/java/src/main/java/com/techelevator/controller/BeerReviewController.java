@@ -31,8 +31,8 @@ public class BeerReviewController {
         List<BeerReview> myBeerReviews = reviewService.getMyBeerReviews(principal);
         return myBeerReviews;
     }
-
     @PostMapping("beers/reviews")
+    @ResponseStatus(HttpStatus.CREATED)
     public BeerReview addBeerReview(BeerReview beerReview) {
         BeerReview result = beerReview;
         return result;

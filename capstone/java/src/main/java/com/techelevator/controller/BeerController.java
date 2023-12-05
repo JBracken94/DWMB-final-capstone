@@ -39,10 +39,25 @@ public class BeerController {
     @PreAuthorize("hasRole('ROLE_BREWER')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers")
+    public Beer createBeer(Beer beer, Principal principal) {
+        Beer newBeer = beerService.createBeer(beer, principal);
+    }
+
+    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/beers")
     public Beer addSavedBeer(@RequestBody int beerId, Principal principal) {
         Beer added = beerService.addBeerToSaved(beerId, principal);
         return added;
     }
+    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @PutMapping("/beers/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Beer updateBeer(@RequestBody Beer beer, Principal principal) {
+        Beer updatedBeer = beerService.updateBeer(beer, principal);
+        return updatedBeer;
+    }
+
     @PreAuthorize("hasRole('ROLE_BREWER')") //authorize but check founderId in SQL
     @DeleteMapping("/beers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -12,8 +12,9 @@ public interface BeerService {
     public List<Beer> getBeersByBreweryId(int breweryId);
     public List<Beer> getSavedBeers(Principal principal);
     public Beer addBeerToSaved(int beerId, Principal principal);
-    public Beer updateBeer(int beerId);
-    public void deleteSavedBeer(int beerdId, Principal principal);
+    public Beer createBeer(Beer beer, Principal principal);
+    public Beer updateBeer(Beer beer, Principal principal);
+    public void deleteSavedBeer(int beerId, Principal principal);
     public void deleteBeer(int beerId);
 
 }
