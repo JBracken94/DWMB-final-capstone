@@ -46,7 +46,7 @@ public class BeerController {
 
     @PreAuthorize("hasRole('ROLE_BREWER')")
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/beers")
+    @PostMapping("/beers/mybeers")
     public Beer addSavedBeer(@RequestBody int beerId, Principal principal) {
         Beer added = beerService.addBeerToSaved(beerId, principal);
         return added;
