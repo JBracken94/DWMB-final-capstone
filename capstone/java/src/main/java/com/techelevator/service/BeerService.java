@@ -8,9 +8,9 @@ import java.security.Principal;
 import java.util.List;
 
 public interface BeerService {
-    public Beer getBeerById(int beerId) throws InterruptedException;
-    public List<Beer> getBeersByBreweryId(int breweryId) throws InterruptedException;
-    public List<Beer> getSavedBeers(Principal principal) throws InterruptedException;
+    public Beer getBeerById(int beerId);
+    public List<Beer> getBeersByBreweryId(int breweryId);
+    public List<Beer> getSavedBeers(Principal principal);
     public Beer addBeerToSaved(int beerId, Principal principal);
     public Beer updateBeer(int beerId);
     public void deleteSavedBeer(int beerdId, Principal principal);

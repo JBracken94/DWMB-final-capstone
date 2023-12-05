@@ -8,12 +8,12 @@ import java.util.List;
 public class BreweryReviewServiceImpl implements BreweryReviewService {
 
     @Override
-    public BreweryReview getBreweryReviewById(int brewReviewId) throws InterruptedException {
+    public BreweryReview getBreweryReviewById(int brewReviewId) {
         return null;
     }
 
     @Override
-    public List<BreweryReview> getReviewsByUserId(int reviewerId) throws InterruptedException {
+    public List<BreweryReview> getMyReviews(Principal principal) {
         return null;
     }
 

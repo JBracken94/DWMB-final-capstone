@@ -6,8 +6,9 @@ import java.security.Principal;
 import java.util.List;
 
 public interface BeerReviewService {
-    public BeerReview getBeerReviewById(int beerReviewId) throws InterruptedException;
+    public BeerReview getBeerReviewById(int beerReviewId);
 
-    public List<BeerReview> getMyBeerReviews(Principal principal) throws InterruptedException;
+    public List<BeerReview> getMyBeerReviews(Principal principal);
     public BeerReview createBeerReview(BeerReview newBeerReview);
+    public void deleteBeerReview(int beerId);
 }

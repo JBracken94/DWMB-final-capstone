@@ -10,22 +10,22 @@ import java.util.List;
 @Service
 public class BreweryServiceImpl implements BreweryService{
     @Override
-    public Brewery getBreweryById(int breweryId) throws InterruptedException {
+    public Brewery getBreweryById(int breweryId) {
         return null;
     }
 
     @Override
-    public List<Brewery> getAllBreweries() throws InterruptedException {
+    public List<Brewery> getAllBreweries() {
         return null;
     }
 
     @Override
-    public List<Brewery> searchBreweries(BrewSearchDTO searchTerms) throws InterruptedException {
+    public List<Brewery> searchBreweries(BrewSearchDTO searchTerms) {
         return null;
     }
 
     @Override
-    public List<Brewery> getSavedBreweries(Principal principal) throws InterruptedException {
+    public List<Brewery> getSavedBreweries(Principal principal) {
         return null;
     }
 

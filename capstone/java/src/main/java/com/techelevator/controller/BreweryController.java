@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.model.BrewSearchDTO;
 import com.techelevator.model.Brewery;
 import com.techelevator.service.BreweryServiceImpl;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,46 +19,42 @@ import java.util.List;
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class BreweryController {
-    private BreweryServiceImpl breweryServiceImpl;
-    private Brewery breweryTest = new Brewery(1, "166 butt lane", "derry", "PA", 15627,
-                                    Date.from(Instant.now()), 10162, "hey it's us the brewery that you love wow",
-                            "www.wwwwww.www", "imagepath", 3);
+    private BreweryServiceImpl breweryService;
 
-    public BreweryController(BreweryServiceImpl breweryServiceImpl) {
-        this.breweryServiceImpl = breweryServiceImpl;
+    public BreweryController(BreweryServiceImpl breweryService) {
+        this.breweryService = breweryService;
     }
 
     @GetMapping("/brewery/{id}") //TODO viewBrewery
     public Brewery viewBreweryByID(@PathVariable("id") int breweryId) { // return brewery matching brewery_id
-        return breweryTest;
+        Brewery brewery = breweryService.getBreweryById(breweryId);
+        return brewery;
     }
 
     @GetMapping("/breweries")
     public List<Brewery> viewBreweries() {
-        List<Brewery> test = new ArrayList<>();
-        test.add(breweryTest);
-        return test;
+        List<Brewery> allBreweries = breweryService.getAllBreweries();
+        return allBreweries;
     }
 
     @GetMapping("/breweries/search") //TODO brewerySearch
-    public List<Brewery> breweryListSearch() { // receive searchDTO with name, city, state
+    public List<Brewery> breweryListSearch(BrewSearchDTO searchTerms) { // receive searchDTO with name, city, state
         // return breweries by search (name, city, state)
         // pass SearchDTO to service to call SQL search
-        List<Brewery> test = new ArrayList<>();
-        test.add(breweryTest);
-        return test;
+        List<Brewery> filteredBreweries = breweryService.searchBreweries(searchTerms);
+        return filteredBreweries;
     }
 
     @GetMapping("/mybreweries") //TODO savedBreweries
     public List<Brewery> viewMySavedBreweries(Principal principal) { //return saved brewery list based on principal
-        List<Brewery> test = new ArrayList<>();
-        test.add(breweryTest);
-        return test;
+        List<Brewery> savedBreweries = breweryService.getSavedBreweries(principal);
+        return savedBreweries;
     }
 
     @PreAuthorize("hasRole('ROLE_BREWER')")
     @PostMapping("/breweries")
-    public Brewery addBrewery(Brewery breweryTest) {
-        return breweryTest;
+    public Brewery addBrewery(Brewery breweryTest, Principal principal) {
+        Brewery createdBrewery = breweryService.createBrewery(breweryTest, principal);
+        return createdBrewery;
     }
 }

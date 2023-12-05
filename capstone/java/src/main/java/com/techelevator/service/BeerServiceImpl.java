@@ -11,17 +11,17 @@ import java.util.List;
 public class BeerServiceImpl implements BeerService{
 
     @Override
-    public Beer getBeerById(int beerId) throws InterruptedException {
+    public Beer getBeerById(int beerId) {
         return null;
     }
 
     @Override
-    public List<Beer> getBeersByBreweryId(int breweryId) throws InterruptedException {
+    public List<Beer> getBeersByBreweryId(int breweryId) {
         return null;
     }
 
     @Override
-    public List<Beer> getSavedBeers(Principal principal) throws InterruptedException {
+    public List<Beer> getSavedBeers(Principal principal) {
         return null;
     }
 
