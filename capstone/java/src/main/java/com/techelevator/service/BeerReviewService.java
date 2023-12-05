@@ -10,5 +10,6 @@ public interface BeerReviewService {
 
     public List<BeerReview> getMyBeerReviews(Principal principal);
     public BeerReview createBeerReview(BeerReview newBeerReview);
-    public void deleteBeerReview(int beerId);
+    public BeerReview updateBeerReview(BeerReview updatedBeerReview);
+    public void deleteBeerReview(int beerReviewId);
 }

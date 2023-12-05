@@ -35,9 +35,16 @@ public class BeerReviewController {
     @PostMapping("beers/reviews")
     @ResponseStatus(HttpStatus.CREATED)
     public BeerReview addBeerReview(BeerReview beerReview) {
-        BeerReview result = beerReview;
-        return result;
+        BeerReview newBeerReview = reviewService.createBeerReview(beerReview);
+        return newBeerReview;
     }
+    @PutMapping("/beers/reviews/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public BeerReview updateBeerReview(BeerReview beerReview) {
+        BeerReview updatedBeerReview = reviewService.updateBeerReview(beerReview);
+        return updatedBeerReview;
+    }
+
     @DeleteMapping("beers/reviews/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBeerReview(@PathVariable("id") int reviewId) {

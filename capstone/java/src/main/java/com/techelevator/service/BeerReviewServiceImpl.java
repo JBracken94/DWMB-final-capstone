@@ -29,6 +29,11 @@ public class BeerReviewServiceImpl implements BeerReviewService {
     }
 
     @Override
+    public BeerReview updateBeerReview(BeerReview updatedBeerReview) {
+        return null;
+    }
+
+    @Override
     public void deleteBeerReview(int beerId) {
         System.out.println("delete beer");
     }

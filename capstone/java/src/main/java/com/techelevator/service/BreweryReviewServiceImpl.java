@@ -27,7 +27,7 @@ public class BreweryReviewServiceImpl implements BreweryReviewService {
     }
 
     @Override
-    public BreweryReview updateBreweryReview(int brewReviewId, BreweryReview updatedBrewReview, Principal principal) {
+    public BreweryReview updateBreweryReview(BreweryReview updatedBrewReview, Principal principal) {
         return null;
     }
 

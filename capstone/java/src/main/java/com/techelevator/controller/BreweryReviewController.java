@@ -33,8 +33,14 @@ public class BreweryReviewController {
     @PostMapping("breweries/reviews")
     @ResponseStatus(HttpStatus.CREATED)
     public BreweryReview addReview(BreweryReview brewReview, Principal principal) {
-        BreweryReview result = breweryReviewService.createBreweryReview(brewReview, principal);
-        return result;
+        BreweryReview newReview = breweryReviewService.createBreweryReview(brewReview, principal);
+        return newReview;
+    }
+    @PutMapping("breweries/reviews/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public BreweryReview updateBreweryReview(BreweryReview breweryReview, Principal principal){
+        BreweryReview updatedReview = breweryReviewService.updateBreweryReview(breweryReview, principal);
+        return  updatedReview
     }
     @DeleteMapping("breweries/review/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
