@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.model.Beer;
 import com.techelevator.service.BeerServiceImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class BeerController {
         // return beer POJO
         return testBeer;
     }
-    @GetMapping("/beerlists/{id}") //TODO viewBeersByBrewery
+    @GetMapping("/brewery/beers/{id}") //TODO viewBeersByBrewery
     public List<Beer> viewBeersByBrewery (@PathVariable("id") int breweryId) { // return beer list by brewery
         // return
         List<Beer> test = new ArrayList<>();
@@ -43,10 +44,18 @@ public class BeerController {
         return test;
     }
     @PreAuthorize("hasRole('ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers")
     public Beer addBeer(@RequestBody Beer beer) {
         beer.setAbv(45);
         return beer;
+    }
+    @PreAuthorize("hasRole('ROLE_BREWER')") //authorize but check founderId in SQL
+    @DeleteMapping("/beers/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public int deleteBeer(@PathVariable("id") int beerID) {
+        System.out.println("delete beer after checking brewer against founder");
+        return 0;
     }
 
 }
