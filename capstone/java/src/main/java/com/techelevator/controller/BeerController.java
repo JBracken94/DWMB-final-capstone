@@ -46,7 +46,7 @@ public class BeerController {
     @PreAuthorize("hasRole('ROLE_BREWER')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers")
-    public Beer addBeer(@RequestBody Beer beer) {
+    public Beer addSavedBeer(@RequestBody Beer beer) {
         beer.setAbv(45);
         return beer;
     }
