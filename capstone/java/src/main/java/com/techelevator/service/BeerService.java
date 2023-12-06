@@ -15,6 +15,6 @@ public interface BeerService {
     public Beer createBeer(Beer beer, Principal principal);
     public Beer updateBeer(Beer beer, Principal principal);
     public void deleteSavedBeer(int beerId, Principal principal);
-    public void deleteBeer(int beerId);
+    public void deleteBeer(int beerId, Principal principal);
 
 }
