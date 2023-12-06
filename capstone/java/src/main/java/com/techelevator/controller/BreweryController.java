@@ -49,20 +49,20 @@ public class BreweryController {
         List<Brewery> savedBreweries = breweryService.getSavedBreweries(principal);
         return savedBreweries;
     }
-    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
     @PutMapping("/breweries/")
     public Brewery updateBrewery(Brewery updatedBrewery, Principal principal) {
         Brewery newBrewery = breweryService.updateBrewery(updatedBrewery, principal);
         return newBrewery;
     }
 
-    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
     @PostMapping("/breweries")
     public Brewery addBrewery(Brewery breweryTest, Principal principal) {
         Brewery createdBrewery = breweryService.createBrewery(breweryTest, principal);
         return createdBrewery;
     }
-    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
     @PostMapping("/breweries/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBrewery(@PathVariable("id") int breweryId, Principal principal) {

@@ -41,7 +41,6 @@ public class BeerController {
         List<Beer> myBeers = beerService.getSavedBeers(principal);
         return myBeers;
     }
-    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers/mybeers")
     public Beer addSavedBeer(@RequestBody int beerId, Principal principal) { // 201 on success, 500 if no beer exists or duplicate entry
