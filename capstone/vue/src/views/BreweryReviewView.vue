@@ -9,8 +9,7 @@
 </template>
 
 <script>
-import { getBreweryReviews } from '../services/BreweryReviewService'; //fix later
-
+import BreweryReviewService from '../services/BreweryReviewService';
 export default {
   data() {
     return {
@@ -23,8 +22,8 @@ export default {
   methods: {
     async loadBreweryReviews() {
       try {
-        const response = await getBreweryReviews();
-        this.breweryReviews = response.data;
+        const response = await BreweryReviewService.getMyBreweryReviews();
+                this.breweryReviews = response.data;
       } catch (error) {
         console.error(error);
       }

@@ -1,5 +1,12 @@
 <template>
-    <h2></h2>
+  <div>
+    <h1>Breweries</h1>
+    <ul>
+      <li v-for="brewery in breweries" :key="brewery.id">
+        {{ brewery.name }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -8,24 +15,16 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      breweries: [] 
+      breweries: [],
     };
   },
-  mounted() {
-    this.getBreweries();
-  },
-  methods: {
-    async getBreweries() {
-      try {
-        const response = await axios.get('/api/breweries'); 
-        this.breweries = response.data;
-      } catch (error) {
-        console.error(error);
-      }
+  async created() {
+    try {
+      const response = await axios.get('http://localhost:8080/breweries');
+      this.breweries = response.data;
+    } catch (error) {
+      console.error(error);
     }
-  }
+  },
 };
 </script>
-
-<style>
-</style>
