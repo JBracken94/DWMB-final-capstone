@@ -76,33 +76,43 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public Beer addBeerToSaved(int beerId, Principal principal) {
+    public Beer addBeerToSaved(int beerId, Principal principal) { //TODO:: PREVENT DOUBLE ENTRIES
         Beer beerToSave = null;
-        String beerSql = "SELECT beer_id, beer_name, brewery_id, beer_type, abv, label_image, description " +
-                "FROM beer WHERE beer_id = ?;";
         String savedBeerSql = "INSERT INTO favorite_beer (user_id, beer_id) " +
-                    "VALUES (?,?);";
+                "VALUES (?,?) RETURNING fav_beer_id;";
         try {
             User user = jdbcUserDao.getUserByUsername(principal.getName());
-            SqlRowSet beerResult = jdbcTemplate.queryForRowSet(beerSql, beerId);
-            if (beerResult.next()) {
-                beerToSave = mapRowToBeer(beerResult);
-                int favBeerResult = jdbcTemplate.update(savedBeerSql, user.getId(), beerToSave.getBeerId());
-                if (favBeerResult != 1) {
-                    throw new DaoException("Failed to add beer to favorites.");
-                }
+            int favBeerEntryId = jdbcTemplate.queryForObject(savedBeerSql, int.class, user.getId(), beerId);
+            if (favBeerEntryId != 0) {
+                return getBeerById(beerId);
+            } else {
+                throw new DaoException("There was an issue adding your beer. Please try again.");
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data Integrity Violation", e);
         }
-        return beerToSave;
     }
 
     @Override
-    public Beer createBeer(Beer beer, Principal principal) {
-        return null;
+    public Beer createBeer(Beer beer, Principal principal) { // TODO:: add validation so only the founder can add beer
+        /*
+        INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Slurp Juice', 3, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...')
+         */
+        String sql = "INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description) " +
+                "VALUES (?,?,?,?,?,?) RETURNING beer_id;";
+        try {
+            int newBeerId = jdbcTemplate.queryForObject(sql, int.class, beer.getBeerName(), beer.getBreweryId(), beer.getBeerType(),
+                    beer.getAbv(), beer.getLabelImage(), beer.getDescription());
+
+            return getBeerById(newBeerId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation", e);
+        }
     }
 
     @Override

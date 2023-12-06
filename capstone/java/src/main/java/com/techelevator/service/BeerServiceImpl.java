@@ -60,8 +60,8 @@ public class BeerServiceImpl implements BeerService{
     @Override
     public Beer createBeer(Beer beer, Principal principal) {
         try {
-            return null;
-
+            Beer createdBeer = beerDao.createBeer(beer, principal);
+            return createdBeer;
         } catch (DaoException e) {
             throw new ServiceException("An error has occurred: " + e.getMessage());
         }

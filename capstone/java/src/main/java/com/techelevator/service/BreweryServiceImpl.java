@@ -1,5 +1,6 @@
 package com.techelevator.service;
 
+import com.techelevator.dao.BreweryDao;
 import com.techelevator.model.BrewSearchDTO;
 import com.techelevator.model.Brewery;
 import org.springframework.stereotype.Component;
@@ -11,9 +12,14 @@ import java.util.List;
 @Service
 @Component
 public class BreweryServiceImpl implements BreweryService{
+    private BreweryDao breweryDao;
+    public BreweryServiceImpl (BreweryDao breweryDao) {
+        this.breweryDao = breweryDao;
+    }
     @Override
     public Brewery getBreweryById(int breweryId) {
-        return null;
+        Brewery brewery = breweryDao.getBreweryById(breweryId);
+        return brewery;
     }
 
     @Override

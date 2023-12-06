@@ -40,7 +40,7 @@ public class BeerController {
     @PreAuthorize("hasRole('ROLE_BREWER')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers")
-    public Beer createBeer(Beer beer, Principal principal) {
+    public Beer createBeer(@RequestBody Beer beer, Principal principal) {
         Beer newBeer = beerService.createBeer(beer, principal);
         return newBeer;
     }
