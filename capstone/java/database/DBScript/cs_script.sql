@@ -114,9 +114,9 @@ TO final_capstone_appuser;
 -- starting users
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
-INSERT INTO users (username,password_hash,role) VALUES ('brewertest', '$2a$10$rbU.wF/L6JIVX6C.opN78eDrcDh525uOzn2v7AP70Q/nnz2Qcby/e', 'ROLE_BREWER');
-INSERT INTO users  (username,password_hash,role) VALUES('lovertest','$2a$10$kQtB2r.rMiB.G6XBJxflGepgERn9rjFQUfZ7KW0hC.e7FbR.rw9iq','ROLE_LOVER');
-INSERT INTO users  (username,password_hash,role) VALUES('brewtoo','$2a$10$tZE.X5Kn/Iqmz91X1AD/qeIAkZxDVmpdfTOKidMNPpwmXRVr.1pDi','ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brewertest', '$2a$10$rbU.wF/L6JIVX6C.opN78eDrcDh525uOzn2v7AP70Q/nnz2Qcby/e', 'ROLE_BREWER'); --pass
+INSERT INTO users  (username,password_hash,role) VALUES('lovertest','$2a$10$kQtB2r.rMiB.G6XBJxflGepgERn9rjFQUfZ7KW0hC.e7FbR.rw9iq','ROLE_LOVER'); -- pass
+INSERT INTO users  (username,password_hash,role) VALUES('brewtoo','$2a$10$tZE.X5Kn/Iqmz91X1AD/qeIAkZxDVmpdfTOKidMNPpwmXRVr.1pDi','ROLE_BREWER'); -- pass
 
 --starting breweries
 INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
