@@ -1,4 +1,4 @@
-!<template>
+<template>
   <div id="beer-list" >
     
   </div>
@@ -17,3 +17,14 @@ export default {
 <style>
 
 </style>
+
+
+
+
+
+
+
+
+
+
+
