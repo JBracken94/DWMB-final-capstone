@@ -62,47 +62,58 @@ const routes = [
   },
   {
     path: "/beer-list",
+    name: "BeerList",
     component: BreweryList
   },
   {
     path: '/beer-details/:id',
+    name: 'BeerDetails',
     component: BeerDetails
   },
   {
     path: '/brewery-list',
+    name: 'BreweryList',
     component: BreweryList
   },
   {
 
     path: '/beers/reviews',
+    name: 'BeerReview',
     component: BeerReviewView
   },
   {
     path: '/beers/myreviews',
+    name: 'MyBeerReviews',
     component: MyBeerReviewsView
   },
   {
     path: '/beers/reviews/add',
+    name: 'AddBeerReview',
     component: AddBeerReviewView
   },
   {
     path: '/beers/reviews/update/:id',
+    name: 'UpdateBeer',
     component: UpdateBeerReviewView
   },
   {
     path: '/breweries/reviews',
+    name: 'BreweryView',
     component: BreweryReviewView
   },
   {
     path: '/breweries/myreviews',
+    name: 'MyBreweryReview',
     component: MyBreweryReviewsView
   },
   {
     path: '/breweries/reviews/add',
+    name: 'AddBreweryReview',
     component: AddBreweryReviewView
   },
   {
     path: '/breweries/reviews/update/:id',
+    name: 'UpdateBreweryReview',
     component: UpdateBreweryReviewView
 
   }
