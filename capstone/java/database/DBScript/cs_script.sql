@@ -15,7 +15,7 @@ CREATE TABLE users
 CREATE TABLE brewery 
 (
     brewery_id SERIAL,
-    brewery_name VARCHAR(50) NOT NULL,
+    brewery_name VARCHAR(50) NOT NULL UNIQUE,
     street_address VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
     state VARCHAR(2) NOT NULL,
@@ -34,10 +34,10 @@ CREATE TABLE brewery
 CREATE TABLE beer 
 (
     beer_id SERIAL,
-    beer_name VARCHAR(100) NOT NULL,
+    beer_name VARCHAR(100) NOT NULL UNIQUE,
     brewery_id INT NOT NULL,
     beer_type VARCHAR(50) NOT NULL,
-    abv DECIMAL(2, 1) NOT NULL,
+    abv DECIMAL(3, 1) NOT NULL,
     label_image VARCHAR(1000),
     description VARCHAR(200),
 
@@ -111,9 +111,42 @@ GRANT USAGE, SELECT
 ON ALL SEQUENCES IN SCHEMA public
 TO final_capstone_appuser;
 
-
+-- starting users
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('brewertest', '$2a$10$rbU.wF/L6JIVX6C.opN78eDrcDh525uOzn2v7AP70Q/nnz2Qcby/e', 'ROLE_BREWER');
+INSERT INTO users  (username,password_hash,role) VALUES('lovertest','$2a$10$kQtB2r.rMiB.G6XBJxflGepgERn9rjFQUfZ7KW0hC.e7FbR.rw9iq','ROLE_LOVER');
+INSERT INTO users  (username,password_hash,role) VALUES('brewtoo','$2a$10$tZE.X5Kn/Iqmz91X1AD/qeIAkZxDVmpdfTOKidMNPpwmXRVr.1pDi','ROLE_BREWER');
 
+--starting breweries
+INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
+VALUES ('Brew Bois', '123 Address Street', 'Pittsburgh', 'PA', 90210, NOW(), '(724) 555-5555',
+		'We are a brewery founded for testing purposes', 'brewboislogo.png', 'www.brewboisPA.com', 3);
+INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
+VALUES ('That Other Brewery', '82 Repo Place', 'Columbus', 'OH', 15555, NOW(), '(555) 555-5555',
+	   'You should see the other guy...', 'otherlogo.jph', 'www.otherguys.com', 5);
+INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
+VALUES ('Sargetown Brew Works', '7 Puppy Road', 'Derry', 'PA', 15627, NOW(), '(777) 777-5555',
+	   'Bark bark, yum yum!', 'picofdog.jpg','www.pugdrunk.com', 2);
+
+
+--starting beers
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Junk in the Trunk', 1, 'Hazy IPA', 6.5, 'imagegoesher.png', 'This''ll junk your trunk!');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Beer for Drinking', 2, 'Amber Ale', 4.6, 'bfdlabel.jpg', 'You can drink it!');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Slurp Juice', 3, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
+
+--starting saved beer list
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,4); -- admin
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,2);
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,1); -- lovertest
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,2);
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,3);
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,4);
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (3,1); --brewertest
 
 COMMIT TRANSACTION;
