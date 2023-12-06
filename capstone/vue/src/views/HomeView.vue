@@ -11,6 +11,7 @@
 
 <script>
 import BeerList from '../components/BeerList.vue';
+
 export default {
     components: {
       BeerList

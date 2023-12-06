@@ -6,6 +6,18 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import BeerReviewView from '../views/BeerReviewView.vue';
+import MyBeerReviewsView from '../views/MyBeerReviewsView.vue';
+import AddBeerReviewView from '../views/AddBeerReviewView.vue';
+import UpdateBeerReviewView from '../views/UpdateBeerReviewView.vue';
+import BreweryReviewView from '../views/BreweryReviewView.vue';
+import MyBreweryReviewsView from '../views/MyBreweryReviewsView.vue';
+import AddBreweryReviewView from '../views/AddBreweryReviewView.vue';
+import UpdateBreweryReviewView from '../views/UpdateBreweryReviewView.vue';
+import BeerList from '../components/BeerList.vue';
+import BeerDetails from '../components/BeerDetails.vue';
+import BreweryList from '../components/BreweryList.vue';
+
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -49,8 +61,52 @@ const routes = [
     }
   },
   {
-    path: "/beer-list"
+    path: "/beer-list",
+    component: BreweryList
+  },
+  {
+    path: '/beer-details/:id',
+    component: BeerDetails
+  },
+  {
+    path: '/brewery-list',
+    component: BreweryList
+  },
+  {
+
+    path: '/beers/reviews',
+    component: BeerReviewView
+  },
+  {
+    path: '/beers/myreviews',
+    component: MyBeerReviewsView
+  },
+  {
+    path: '/beers/reviews/add',
+    component: AddBeerReviewView
+  },
+  {
+    path: '/beers/reviews/update/:id',
+    component: UpdateBeerReviewView
+  },
+  {
+    path: '/breweries/reviews',
+    component: BreweryReviewView
+  },
+  {
+    path: '/breweries/myreviews',
+    component: MyBreweryReviewsView
+  },
+  {
+    path: '/breweries/reviews/add',
+    component: AddBreweryReviewView
+  },
+  {
+    path: '/breweries/reviews/update/:id',
+    component: UpdateBreweryReviewView
+
   }
+
 ];
 
 // Create the router
@@ -75,3 +131,15 @@ router.beforeEach((to) => {
 });
 
 export default router;
+
+router.beforeEach((to) => {
+
+  const store = useStore();
+
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+
+  if (requiresAuth && store.state.token === '') {
+    return {name: "login"};
+  }
+});
+
