@@ -1,6 +1,6 @@
 package com.techelevator.model;
 
-public class FavoriteBreweries {
+public class FavoriteBrewery {
 
     // Instance Variables/Properties
     private int favBreweryId;
@@ -10,10 +10,10 @@ public class FavoriteBreweries {
 
 
     // Constructors
-    public FavoriteBreweries() {
+    public FavoriteBrewery() {
     }
 
-    public FavoriteBreweries(int favBreweryId, int breweryId, int userId) {
+    public FavoriteBrewery(int favBreweryId, int breweryId, int userId) {
         this.favBreweryId = favBreweryId;
         this.breweryId = breweryId;
         this.userId = userId;
