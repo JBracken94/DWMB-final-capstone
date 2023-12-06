@@ -1,15 +1,26 @@
-!<template>
-  <div>
-    <h2 class="beer-name">{{ beer.name }}</h2>
-    <h3 class="beer-type">{{ beer.type }}</h3>
-    <h4 class="beer-abv">{{ beer.abv}}</h4>
-    <h5 class="beer-description">{{ beer.description }}</h5>
+<template>
+  <div class="beer-details-container">
+    <h2>{{ beer.beerName }}</h2>
+    <p>Brewery:ID {{ beer.breweryId  }}</p>
+    <p>BeerType {{ beer.beerType }}</p>
+    <p>Abv {{ beer.abv }}</p>
+    <img :src="beer.labelImage" alt="beer label image">
+    <p>Description {{ beer.description }}</p>
+
+
    
   </div>
 </template>
 
 <script>
 export default {
+    props: {
+      beer: {
+        type: Object,
+        required: true
+        
+      }
+    }
 
 }
 </script>
