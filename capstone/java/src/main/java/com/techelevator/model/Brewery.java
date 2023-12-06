@@ -7,6 +7,7 @@ public class Brewery {
 
     // Instance Variables/Properties
     private int breweryId;
+    private String breweryName;
     private String streetAddress;
     private String city;
     private String state;
@@ -24,10 +25,11 @@ public class Brewery {
     public Brewery() {
     }
 
-    public Brewery(int breweryId, String streetAddress, String city, String state,
+    public Brewery(int breweryId, String breweryName, String streetAddress, String city, String state,
                    String zipcode, LocalDateTime dateEst, String phoneNumber, String aboutUs,
                    String website, String logoImage, int founderId) {
         this.breweryId = breweryId;
+        this.breweryName = breweryName;
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
@@ -49,6 +51,14 @@ public class Brewery {
 
     public void setBreweryId(int breweryId) {
         this.breweryId = breweryId;
+    }
+
+    public String getBreweryName() {
+        return breweryName;
+    }
+
+    public void setBreweryName(String breweryName) {
+        this.breweryName = breweryName;
     }
 
     public String getStreetAddress() {
@@ -138,6 +148,7 @@ public class Brewery {
     public String toString() {
         return "Brewery{" +
                 "breweryId=" + breweryId +
+                ", breweryName=" + breweryName +
                 ", streetAddress='" + streetAddress +
                 ", city='" + city +
                 ", state='" + state +
