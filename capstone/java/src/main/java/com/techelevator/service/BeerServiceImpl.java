@@ -1,5 +1,6 @@
 package com.techelevator.service;
 
+import com.techelevator.dao.BeerDao;
 import com.techelevator.model.Beer;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,12 @@ import java.util.List;
 @Service
 @Component
 public class BeerServiceImpl implements BeerService{
+    private BeerDao beerDao;
 
     @Override
     public Beer getBeerById(int beerId) {
-        return null;
+        Beer beer = beerDao.getBeerById(beerId);
+        return beer;
     }
 
     @Override

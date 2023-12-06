@@ -40,7 +40,7 @@ public class BreweryReviewController {
     @ResponseStatus(HttpStatus.OK)
     public BreweryReview updateBreweryReview(BreweryReview breweryReview, Principal principal){
         BreweryReview updatedReview = breweryReviewService.updateBreweryReview(breweryReview, principal);
-        return  updatedReview
+        return  updatedReview;
     }
     @DeleteMapping("breweries/review/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
