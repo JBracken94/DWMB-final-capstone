@@ -34,33 +34,27 @@ public class BeerController {
     @GetMapping("/brewery/beers/{id}") //TODO viewBeersByBrewery
     public List<Beer> viewBeersByBrewery (@PathVariable("id") int breweryId) { // 200 on success, 204 if empty
         List<Beer> beers = beerService.getBeersByBreweryId(breweryId);
-        if (beers.size() == 0) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No beers found for this brewery.");
-        }
         return beers;
     }
     @GetMapping("/mybeers") //TODO savedBeers
     public List<Beer> viewMySavedBeers(Principal principal) { //200 and list on success, 204 if list empty
         List<Beer> myBeers = beerService.getSavedBeers(principal);
-        if (myBeers.size() == 0) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
-        }
         return myBeers;
     }
-    @PreAuthorize("hasRole('ROLE_BREWER')")
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/beers")
-    public Beer createBeer(@RequestBody Beer beer, Principal principal) { // 201 on success, 500 if duplicate or failed
-        Beer newBeer = beerService.createBeer(beer, principal);
-        return newBeer;
-    }
-
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers/mybeers")
     public Beer addSavedBeer(@RequestBody int beerId, Principal principal) { // 201 on success, 500 if no beer exists
         Beer added = beerService.addBeerToSaved(beerId, principal);
         return added;
+    }
+
+    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/beers")
+    public Beer createBeer(@RequestBody Beer beer, Principal principal) { // 201 on success, 500 if duplicate or failed
+        Beer newBeer = beerService.createBeer(beer, principal);
+        return newBeer;
     }
     @PreAuthorize("hasRole('ROLE_BREWER')")
     @PutMapping("/beers/{id}")
