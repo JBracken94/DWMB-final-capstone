@@ -46,9 +46,9 @@ export default {
       ],
       showBeerList:false,
     };
-  }
+  },
      methods: {
-      toogleBeerList() {
+      toggleBeerList() {
         this.showBeerList = !this.showBeerList;
       }
   }
