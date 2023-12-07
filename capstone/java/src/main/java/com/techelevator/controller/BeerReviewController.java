@@ -23,6 +23,10 @@ public class BeerReviewController {
     public BeerReviewController(BeerReviewServiceImpl reviewServiceImpl) {
         this.reviewService = reviewServiceImpl;
     }
+    @GetMapping("/beers/reviews")
+    public List<BeerReview> getAllBeerReviews() {
+        return reviewService.getAllBeerReviews();
+    }
     @GetMapping("/beers/reviews/{id}")
     public BeerReview beerReviewByID(@PathVariable("id") int reviewId) {
         return reviewService.getBeerReviewById(reviewId);
@@ -34,21 +38,21 @@ public class BeerReviewController {
     }
     @PostMapping("beers/reviews")
     @ResponseStatus(HttpStatus.CREATED)
-    public BeerReview addBeerReview(BeerReview beerReview) {
-        BeerReview newBeerReview = reviewService.createBeerReview(beerReview);
+    public BeerReview addBeerReview(BeerReview beerReview, Principal principal) {
+        BeerReview newBeerReview = reviewService.createBeerReview(beerReview, principal);
         return newBeerReview;
     }
     @PutMapping("/beers/reviews/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BeerReview updateBeerReview(BeerReview beerReview) {
-        BeerReview updatedBeerReview = reviewService.updateBeerReview(beerReview);
+    public BeerReview updateBeerReview(BeerReview beerReview, Principal principal) {
+        BeerReview updatedBeerReview = reviewService.updateBeerReview(beerReview, principal);
         return updatedBeerReview;
     }
 
     @DeleteMapping("beers/reviews/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBeerReview(@PathVariable("id") int reviewId) {
-        reviewService.deleteBeerReview(reviewId);
+    public void deleteBeerReview(@PathVariable("id") int reviewId, Principal principal) {
+        reviewService.deleteBeerReview(reviewId, principal);
     }
 
 }

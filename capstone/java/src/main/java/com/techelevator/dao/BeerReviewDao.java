@@ -6,6 +6,7 @@ import java.security.Principal;
 import java.util.List;
 
 public interface BeerReviewDao {
+    List<BeerReview> getAllBeerReviews();
     BeerReview getBeerReviewById (int breweryReviewId);
     List<BeerReview> getMyBeerReviews(Principal principal);
     BeerReview createBeerReview(BeerReview newBeerReview);

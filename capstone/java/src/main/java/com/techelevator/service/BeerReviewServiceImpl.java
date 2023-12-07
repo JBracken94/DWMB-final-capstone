@@ -1,5 +1,6 @@
 package com.techelevator.service;
 
+import com.techelevator.dao.BeerReviewDao;
 import com.techelevator.model.BeerReview;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -10,31 +11,41 @@ import java.util.List;
 @Service
 @Component
 public class BeerReviewServiceImpl implements BeerReviewService {
+    private BeerReviewDao beerReviewDao;
+    public BeerReviewServiceImpl(BeerReviewDao beerReviewDao) {
+        this.beerReviewDao = beerReviewDao;
+    }
+    @Override
+    public List<BeerReview> getAllBeerReviews() {
+        beerReviewDao.getAllBeerReviews();
+        return null;
+    }
+
     @Override
     public BeerReview getBeerReviewById(int beerReviewId) {
-        System.out.println("dao.getreviewbyreviewid");
+        beerReviewDao.getBeerReviewById(beerReviewId);
         return null;
     }
 
     @Override
     public List<BeerReview> getMyBeerReviews(Principal principal) {
-        System.out.println("reviewsbyuserId");
+        beerReviewDao.getMyBeerReviews(principal);
         return null;
     }
 
     @Override
-    public BeerReview createBeerReview(BeerReview newBeerReview) {
-        System.out.println("create new review");
+    public BeerReview createBeerReview(BeerReview newBeerReview, Principal principal) {
+        beerReviewDao.createBeerReview(newBeerReview);
         return null;
     }
 
     @Override
-    public BeerReview updateBeerReview(BeerReview updatedBeerReview) {
+    public BeerReview updateBeerReview(BeerReview updatedBeerReview, Principal principal) {
         return null;
     }
 
     @Override
-    public void deleteBeerReview(int beerId) {
+    public void deleteBeerReview(int beerId, Principal principal) {
         System.out.println("delete beer");
     }
 }
