@@ -20,7 +20,7 @@ export default {
   },
   async created() {
     try {
-      const response = await axios.get('http://localhost:8080/breweries');
+      const response = await axios.get('http://localhost:9000/breweries');
       this.breweries = response.data;
     } catch (error) {
       console.error(error);
