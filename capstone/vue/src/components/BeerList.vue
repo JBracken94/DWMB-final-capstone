@@ -1,6 +1,6 @@
 <template>
   <div class="beer-list-container">
-    <router-link
+    <!-- <router-link
       v-for="beer in allBeers"
       :key="beer.beerId"
       :to="{ name: 'beer-details', params: { id: beer.beerId } }"
@@ -12,17 +12,22 @@
         <p>Abv {{ beer.abv }}</p>
         <img :src="beer.labelImage" alt="beer label image" />
         <p>Description {{ beer.description }}</p>
+        <BeerCard v-for="beer in beerList" :key="beer.id" :beer="beer" />
       </div>
-    </router-link>
+    </router-link> -->
+    <BeerCard v-for="beer in allBeers" v-bind:key="beer.beerId" v-bind:beer="beer"/>
   </div>
 </template>
 
 <script>
 import BeerDetails from "./BeerDetails.vue";
+import BeerCard from "./BeerCard.vue";
+import BeerService from '../services/BeerService';
 
 export default {
   components: {
     BeerDetails,
+    BeerCard,
   },
   data() {
     return {
@@ -48,6 +53,20 @@ export default {
       ],
     };
   },
+  methods: {
+    getBeers() {
+      BeerService.getBeers()
+      .then(response => {
+          this.allBeers = response.data;
+      })
+      .catch(error =>{
+          console.error(error);
+      });
+    },
+  },
+  created (){
+    this.getBeers();
+  }
 };
 </script>
 
