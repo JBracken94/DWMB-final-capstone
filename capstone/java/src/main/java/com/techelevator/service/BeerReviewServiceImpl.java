@@ -17,8 +17,8 @@ public class BeerReviewServiceImpl implements BeerReviewService {
     }
     @Override
     public List<BeerReview> getAllBeerReviews() {
-        beerReviewDao.getAllBeerReviews();
-        return null;
+        List<BeerReview> beers = beerReviewDao.getAllBeerReviews();
+        return beers;
     }
 
     @Override
