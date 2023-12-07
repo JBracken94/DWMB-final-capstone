@@ -26,6 +26,22 @@ public class JdbcBeerDao implements BeerDao {
         this.jdbcUserDao = jdbcUserDao;
     }
 
+    // TODO :: GET ALL BEERS
+    public List<Beer> getBeers() {
+        List<Beer> allBeers = new ArrayList<>();
+        String sql = "SELECT beer_id, beer_name, brewery_id, beer_type, abv, label_image, description FROM beer;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                Beer beer = mapRowToBeer(results);
+                allBeers.add(beer);
+            }
+            return allBeers;
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.", e);
+        }
+    }
+
     @Override
     public Beer getBeerById(int beerId) {
         Beer beer = null;
