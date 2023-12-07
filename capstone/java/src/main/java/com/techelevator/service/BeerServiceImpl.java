@@ -70,8 +70,8 @@ public class BeerServiceImpl implements BeerService{
     @Override
     public Beer updateBeer(Beer beer, Principal principal) {
         try {
-            return null;
-
+            Beer updatedBeer = beerDao.updateBeer(beer, principal);
+            return updatedBeer;
         } catch (DaoException e) {
             throw new ServiceException("An error has occurred: " + e.getMessage());
         }
@@ -87,9 +87,9 @@ public class BeerServiceImpl implements BeerService{
     }
 
     @Override
-    public void deleteBeer(int beerId) {
+    public void deleteBeer(int beerId, Principal principal) {
         try {
-            beerDao.deleteBeer(beerId);
+            beerDao.deleteBeer(beerId, principal);
         } catch (DaoException e) {
             throw new ServiceException("An error has occurred: " + e.getMessage());
         }

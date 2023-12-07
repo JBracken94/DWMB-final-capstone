@@ -76,17 +76,24 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public Beer addBeerToSaved(int beerId, Principal principal) { //TODO:: PREVENT DOUBLE ENTRIES - DIV exception
+    public Beer addBeerToSaved(int beerId, Principal principal) {
+        User user = jdbcUserDao.getUserByUsername(principal.getName());
         Beer beerToSave = null;
+
         String savedBeerSql = "INSERT INTO favorite_beer (user_id, beer_id) " +
                 "VALUES (?,?) RETURNING fav_beer_id;";
         try {
-            User user = jdbcUserDao.getUserByUsername(principal.getName());
-            int favBeerEntryId = jdbcTemplate.queryForObject(savedBeerSql, int.class, user.getId(), beerId);
-            if (favBeerEntryId != 0) {
-                return getBeerById(beerId);
+
+            if (checkUniqueSavedEntry(beerId, principal)) {
+                int favBeerEntryId = jdbcTemplate.queryForObject(savedBeerSql, int.class, user.getId(), beerId);
+                if (favBeerEntryId != 0) {
+                    return getBeerById(beerId);
+                } else {
+                    throw new DaoException("There was an issue adding your beer. Please try again.");
+                }
+
             } else {
-                throw new DaoException("There was an issue adding your beer. Please try again.");
+                throw new DaoException("This beer is already on your saved list.");
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -96,8 +103,7 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public Beer createBeer(Beer beer, Principal principal) { // TODO:: add validation so only the founder can add beer
-        // TODO consider getBreweryByFounder for brewery_id
+    public Beer createBeer(Beer beer, Principal principal) {
         String sql = "INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description) " +
                 "VALUES (?,?,?,?,?,?) RETURNING beer_id;";
         try {
@@ -113,13 +119,30 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public Beer updateBeer(Beer beer, Principal principal) { // TODO validate beer belongs to brewer before update :: implement
-
-        return null;
+    public Beer updateBeer(Beer beer, Principal principal) {
+        User user = jdbcUserDao.getUserByUsername(principal.getName());
+        String userValidSql = "SELECT founder_id FROM brewery WHERE brewery_id = ?;";
+        String sql = "UPDATE beer " +
+                "SET beer_name = ?, beer_type = ?, abv = ?, label_image = ?, description = ? " +
+                "WHERE beer_id = ?";
+        try {
+            int founderId = jdbcTemplate.queryForObject(userValidSql, int.class, beer.getBreweryId());
+            if (user.getId() == founderId) {
+                int rowsAffected = jdbcTemplate.update(sql, beer.getBeerName(), beer.getBeerType(), beer.getAbv(),
+                        beer.getLabelImage(), beer.getDescription(), beer.getBeerId());
+                return getBeerById(beer.getBeerId());
+            } else {
+                throw new DaoException("You do not have required permissions to update this beer. Please contact the brewery founder.");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.");
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation");
+        }
     }
 
     @Override
-    public void deleteSavedBeer(int beerId, Principal principal) { // TODO validate beer belongs to brewer
+    public void deleteSavedBeer(int beerId, Principal principal) {
         User user = jdbcUserDao.getUserByUsername(principal.getName());
         String sql = "DELETE FROM favorite_beer WHERE beer_id = ? AND user_id = ?;";
         try {
@@ -135,18 +158,40 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public void deleteBeer(int beerId) { //TODO
+    public void deleteBeer(int beerId, Principal principal) {
+        User user = jdbcUserDao.getUserByUsername(principal.getName());
         String favBeerSql = "DELETE FROM favorite_beer WHERE beer_id = ?;"; // deletes from favorite_beer
         String beerSql = "DELETE FROM beer WHERE beer_id = ?;"; // deletes from beer
+        String userValidSql = "SELECT founder_id FROM brewery WHERE brewery_id = ?;";
         try {
-            jdbcTemplate.update(favBeerSql, beerId);
-            jdbcTemplate.update(beerSql, beerId);
+            Beer beerToDelete = getBeerById(beerId);
+            int founderId = jdbcTemplate.queryForObject(userValidSql, int.class, beerToDelete.getBreweryId());
+            if (user.getId() == founderId) {
+                jdbcTemplate.update(favBeerSql, beerId);
+                jdbcTemplate.update(beerSql, beerId);
+            } else {
+                throw new DaoException("You do not have required permissions to delete this beer. Please contact the brewery founder.");
+            }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.");
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data Integrity Violation");
         }
 
+    }
+
+    public boolean checkUniqueSavedEntry(int beerId, Principal principal) {
+        boolean unique = true;
+        String validationSql = "SELECT user_id, beer_id FROM favorite_beer WHERE user_id = ?;";
+        User user = jdbcUserDao.getUserByUsername(principal.getName());
+        SqlRowSet result = jdbcTemplate.queryForRowSet(validationSql, user.getId());
+        while (result.next()) {
+            if (result.getInt("beer_id") == beerId) {
+                unique = false;
+            }
+        }
+
+        return unique;
     }
 
     private Beer mapRowToBeer(SqlRowSet rs) {

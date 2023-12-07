@@ -13,6 +13,6 @@ public interface BeerDao {
     Beer createBeer(Beer beer, Principal principal);
     Beer updateBeer(Beer beer, Principal principal);
     void deleteSavedBeer(int beerId, Principal principal);
-    void deleteBeer(int beerId);
+    void deleteBeer(int beerId, Principal principal);
 
 }

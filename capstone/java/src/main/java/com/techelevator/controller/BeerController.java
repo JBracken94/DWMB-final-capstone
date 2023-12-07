@@ -41,40 +41,39 @@ public class BeerController {
         List<Beer> myBeers = beerService.getSavedBeers(principal);
         return myBeers;
     }
-    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers/mybeers")
-    public Beer addSavedBeer(@RequestBody int beerId, Principal principal) { // 201 on success, 500 if no beer exists
+    public Beer addSavedBeer(@RequestBody int beerId, Principal principal) { // 201 on success, 500 if no beer exists or duplicate entry
         Beer added = beerService.addBeerToSaved(beerId, principal);
         return added;
     }
 
-    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/beers")
     public Beer createBeer(@RequestBody Beer beer, Principal principal) { // 201 on success, 500 if duplicate or failed
         Beer newBeer = beerService.createBeer(beer, principal);
         return newBeer;
     }
-    @PreAuthorize("hasRole('ROLE_BREWER')")
+    @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
     @PutMapping("/beers/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Beer updateBeer(@RequestBody Beer beer, Principal principal) {
         Beer updatedBeer = beerService.updateBeer(beer, principal);
         return updatedBeer;
     }
-    @PreAuthorize("isAuthenticated()") // 500 on failed delete, 204 on success
-    @DeleteMapping("/mybeers/{id}")
+
+    @DeleteMapping("/mybeers/{id}")// 500 on failed delete, 204 on success
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSavedBeer(@PathVariable("id") int beerId, Principal principal) {
         beerService.deleteSavedBeer(beerId, principal);
     }
 
-    @PreAuthorize("hasRole('ROLE_BREWER')") //authorize but check founderId in SQL
+    @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')") //authorize but check founderId in SQL
     @DeleteMapping("/beers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBeer(@PathVariable("id") int beerID) {
-        beerService.deleteBeer(beerID);
+    public void deleteBeer(@PathVariable("id") int beerID, Principal principal) {
+        beerService.deleteBeer(beerID, principal);
     }
 
 }

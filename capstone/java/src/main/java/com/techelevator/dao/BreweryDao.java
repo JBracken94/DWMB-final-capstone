@@ -12,6 +12,6 @@ public interface BreweryDao {
     List<Brewery> searchBreweries(BrewSearchDTO searchTerms);
     List<Brewery> getSavedBreweries(Principal principal);
     Brewery createBrewery(Brewery newBrewery, Principal principal);
-    Brewery updateBrewery(Brewery updatedBrewery, Principal principal);
+    Brewery updateBreweryInfo(Brewery updatedBrewery, Principal principal);
     void deleteBrewery(int breweryId, Principal principal);
 }
