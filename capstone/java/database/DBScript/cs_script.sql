@@ -50,9 +50,9 @@ CREATE TABLE beer_review
     beer_review_id SERIAL,
     beer_id INT NOT NULL,
     reviewer_id INT NOT NULL,
-    beer_rating DECIMAL(2,2) NOT NULL,
+    beer_rating DECIMAL(2,1) NOT NULL,
     beer_review VARCHAR(500) NOT NULL,
-    date_posted DATE NOT NULL,
+    date_posted timestamp with time zone NOT NULL,
 
     CONSTRAINT PK_beer_review PRIMARY KEY (beer_review_id),
     CONSTRAINT FK_beer_review_beer FOREIGN KEY (beer_id) REFERENCES beer(beer_id),
@@ -64,9 +64,9 @@ CREATE TABLE brewery_review
     brewery_review_id SERIAL,
     brewery_id INT NOT NULL,
     reviewer_id INT NOT NULL,
-    brewery_rating DECIMAL(2,2) NOT NULL,
+    brewery_rating DECIMAL(2,1) NOT NULL,
     brewery_review VARCHAR(500) NOT NULL,
-    date_posted DATE NOT NULL,
+    date_posted timestamp with time zone NOT NULL,
 
     CONSTRAINT PK_brewery_review_id PRIMARY KEY (brewery_review_id),
     CONSTRAINT FK_brewery_review_brewery FOREIGN KEY (brewery_id) REFERENCES brewery(brewery_id),
