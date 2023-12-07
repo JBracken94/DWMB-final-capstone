@@ -5,19 +5,24 @@
     <img
       src="https://glacier-design.com/wp-content/uploads/2022/10/Can-you-hydrate-yourself-with-beer-1536x1024.jpg"
     />
-    <button @click="toggleBeerList">Toggle Beer List</button>
+    <button @click="toggleBeerList">Show Beer List</button>
     <beer-list v-if="showBeerList" :beers="allBeers" />
+    
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
 import { getMySavedBeers } from "../services/BeerService";import BeerList from "../components/BeerList.vue";
+import BeerCard from '../components/BeerCard.vue';
+
 
 export default {
   components: {
     BeerList,
+    BeerCard,
   },
+
   setup() {
     const showBeerList = ref(false);
     const allBeers = ref([]);
