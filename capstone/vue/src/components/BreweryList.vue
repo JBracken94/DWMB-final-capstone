@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   data() {
@@ -18,13 +17,5 @@ export default {
       breweries: [],
     };
   },
-  async created() {
-    try {
-      const response = await axios.get('http://localhost:9000/breweries');
-      this.breweries = response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  },
-};
+}
 </script>

@@ -16,17 +16,11 @@ export default {
     };
   },
   methods: {
-    addBeerReview() {
-      ReviewService.addBeerReview(this.review)
-        .then(response => {
-        })
-        .catch(error => {
-        });
-    }
+  
   },
-  mounted() {
-  }
-};
+}
+
+
 </script>
 
 <style scoped>
