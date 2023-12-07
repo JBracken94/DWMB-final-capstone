@@ -38,13 +38,13 @@ public class BeerReviewController {
     }
     @PostMapping("beers/reviews")
     @ResponseStatus(HttpStatus.CREATED)
-    public BeerReview addBeerReview(BeerReview beerReview, Principal principal) {
+    public BeerReview createBeerReview(@RequestBody BeerReview beerReview, Principal principal) {
         BeerReview newBeerReview = reviewService.createBeerReview(beerReview, principal);
         return newBeerReview;
     }
     @PutMapping("/beers/reviews/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BeerReview updateBeerReview(BeerReview beerReview, Principal principal) {
+    public BeerReview updateBeerReview(@RequestBody BeerReview beerReview, Principal principal) {
         BeerReview updatedBeerReview = reviewService.updateBeerReview(beerReview, principal);
         return updatedBeerReview;
     }

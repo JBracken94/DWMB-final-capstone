@@ -23,20 +23,20 @@ public class BeerReviewServiceImpl implements BeerReviewService {
 
     @Override
     public BeerReview getBeerReviewById(int beerReviewId) {
-        beerReviewDao.getBeerReviewById(beerReviewId);
-        return null;
+        BeerReview beerReview = beerReviewDao.getBeerReviewById(beerReviewId);
+        return beerReview;
     }
 
     @Override
     public List<BeerReview> getMyBeerReviews(Principal principal) {
-        beerReviewDao.getMyBeerReviews(principal);
-        return null;
+        List<BeerReview> beerReviews = beerReviewDao.getMyBeerReviews(principal);
+        return beerReviews;
     }
 
     @Override
     public BeerReview createBeerReview(BeerReview newBeerReview, Principal principal) {
-        beerReviewDao.createBeerReview(newBeerReview);
-        return null;
+        BeerReview beerReview = beerReviewDao.createBeerReview(newBeerReview, principal);
+        return beerReview;
     }
 
     @Override
