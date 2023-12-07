@@ -1,3 +1,10 @@
+import axios from 'axios';
+
+const http = axios.create({
+  baseURL: "http://localhost:9000"
+});
+
+
 export const getMySavedBeers = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
