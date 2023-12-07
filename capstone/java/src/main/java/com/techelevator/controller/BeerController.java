@@ -21,6 +21,15 @@ public class BeerController {
     public BeerController(BeerServiceImpl beerService) { // constructor
         this.beerService = beerService;
     }
+    // TODO :: GET ALL BEERS (FILTER IN JS)
+    @GetMapping("/beers")
+    public List<Beer> getBeers() {
+        List<Beer> beers = beerService.getBeers();
+        if (beers.size() == 0) {
+            throw new ResponseStatusException(HttpStatus.OK, "No beers found.");
+        }
+        return beers;
+    }
 
     @GetMapping("/beers/{id}") //TODO viewBeer
     public Beer viewBeerByID(@PathVariable("id") int beerId) { // 200 on success, 404 if no beer exists

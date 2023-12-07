@@ -18,6 +18,16 @@ public class BeerServiceImpl implements BeerService{
         this.beerDao = beerDao;
     }
 
+
+    // TODO :: GET ALL BEERS
+    public List<Beer> getBeers() {
+        try {
+            List<Beer> beers = beerDao.getBeers();
+            return beers;
+        } catch (DaoException e) {
+            throw new ServiceException("An error has occurred: " + e.getMessage());
+        }
+    }
     @Override
     public Beer getBeerById(int beerId) {
         try {
