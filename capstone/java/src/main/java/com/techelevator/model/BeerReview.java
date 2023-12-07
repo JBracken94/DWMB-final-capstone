@@ -8,7 +8,7 @@ public class BeerReview {
     private int beerReviewId;
     private int beerId;
     private int reviewerId;
-    private int beerRating;
+    private double beerRating;
     private String beerReview;
     private LocalDateTime datePosted;
 
@@ -18,7 +18,7 @@ public class BeerReview {
     public BeerReview() {
     }
 
-    public BeerReview(int reviewId, int beerId, int reviewerId, int beerRating, String beerReview, LocalDateTime datePosted) {
+    public BeerReview(int reviewId, int beerId, int reviewerId, double beerRating, String beerReview, LocalDateTime datePosted) {
         this.beerReviewId = reviewId;
         this.beerId = beerId;
         this.reviewerId = reviewerId;
@@ -54,7 +54,7 @@ public class BeerReview {
         this.reviewerId = reviewerId;
     }
 
-    public int getBeerRating() {
+    public double getBeerRating() {
         return beerRating;
     }
 

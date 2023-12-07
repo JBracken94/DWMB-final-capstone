@@ -9,7 +9,7 @@ public class BreweryReview {
     private int breweryReviewId;
     private int breweryId;
     private int reviewerId;
-    private int breweryRating;
+    private double breweryRating;
     private String breweryReview;
     private LocalDateTime datePosted;
 
@@ -19,7 +19,7 @@ public class BreweryReview {
     public BreweryReview() {
     }
 
-    public BreweryReview(int reviewId, int breweryId, int reviewerId, int breweryRating, String breweryReview, LocalDateTime datePosted) {
+    public BreweryReview(int reviewId, int breweryId, int reviewerId, double breweryRating, String breweryReview, LocalDateTime datePosted) {
         this.breweryReviewId = reviewId;
         this.breweryId = breweryId;
         this.reviewerId = reviewerId;
@@ -55,7 +55,7 @@ public class BreweryReview {
         this.reviewerId = reviewerId;
     }
 
-    public int getBreweryRating() {
+    public double getBreweryRating() {
         return breweryRating;
     }
 
