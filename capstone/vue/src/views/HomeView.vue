@@ -8,50 +8,43 @@
     <button @click="toggleBeerList">Toggle Beer List</button>
     <beer-list v-if="showBeerList" :beers="allBeers" />
   </div>
-  <div>
-    <BeerList :beer="allBeers" />
-  </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import BeerList from "../components/BeerList.vue";
-
+import { getMySavedBeers } from "../services/BeerService";import BeerList from "../components/BeerList.vue";
 
 export default {
   components: {
     BeerList,
   },
-  getMySavedBeers() {
+  setup() {
+    const showBeerList = ref(false);
+    const allBeers = ref([]);
+
+    const toggleBeerList = () => {
+      showBeerList.value = !showBeerList.value;
+      if (showBeerList.value) {
+        fetchSavedBeers();
+      }
+    };
+    
+
+    const fetchSavedBeers = async () => {
+      try {
+        const beers = await getMySavedBeers();
+        allBeers.value = beers;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     return {
-      allBeers: [
-      {
-             beerId: 3,
-             beerName: "Brew Bois Lager",
-             breweryId: 2,
-             beerType: "Lager",
-              abv: 5.2,
-             labelImage: "bbl.jpg",
-             description: "Best beer in town!",
-           },
-           {
-             beerId: 4,
-             beerName: "Slurp Juice",
-             breweryId: 3,
-             beerType: "Sour",
-             abv: 9.9,
-             labelImage: "sj.jpg",
-             description: "1 Victory Royale...",
-           },
-      ],
-      showBeerList:false,
+      showBeerList,
+      allBeers,
+      toggleBeerList,
     };
   },
-     methods: {
-      toggleBeerList() {
-        this.showBeerList = !this.showBeerList;
-      }
-  }
 };
 </script>
 

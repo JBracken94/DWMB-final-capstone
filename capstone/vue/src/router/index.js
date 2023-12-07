@@ -67,8 +67,8 @@ const routes = [
   },
   {
     path: '/beer-details/:id',
-    name: 'BeerDetails',
-    component: BeerDetails
+    name: 'beer-details',
+    component: BeerDetails,
   },
   {
     path: '/brewery-list',

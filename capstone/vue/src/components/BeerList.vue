@@ -1,12 +1,11 @@
-
 <template>
   <div class="beer-list-container">
     <router-link
       v-for="beer in allBeers"
-      :key="beer.id"
-      :to="{ name: 'beer-details', params: { id: beer.id } }"
+      :key="beer.beerId"
+      :to="{ name: 'beer-details', params: { id: beer.beerId } }"
     >
-      <div v-for="beer in allBeers" :key="beer.id" class="beer-item">
+      <div class="beer-item">
         <h3>{{ beer.beerName }}</h3>
         <p>Brewery:ID {{ beer.breweryId }}</p>
         <p>BeerType {{ beer.beerType }}</p>
@@ -15,7 +14,6 @@
         <p>Description {{ beer.description }}</p>
       </div>
     </router-link>
-    <beer-details v-for="beer in getBeers" :key="beer.id" />
   </div>
 </template>
 
@@ -29,32 +27,27 @@ export default {
   data() {
     return {
       allBeers: [
-           {
-             beerId: 3,
-             beerName: "Brew Bois Lager",
-             breweryId: 2,
-             beerType: "Lager",
-              abv: 5.2,
-             labelImage: "bbl.jpg",
-             description: "Best beer in town!",
-           },
-           {
+        {
+          beerId: 3,
+          beerName: "Brew Bois Lager",
+          breweryId: 2,
+          beerType: "Lager",
+          abv: 5.2,
+          labelImage: "path/to/labelImage",
+          description: "Beer description",
+        },
+        {
              beerId: 4,
              beerName: "Slurp Juice",
              breweryId: 3,
              beerType: "Sour",
              abv: 9.9,
-             labelImage: "sj.jpg",
+             labelImage: "path/to/labelImage",
              description: "1 Victory Royale...",
            },
-        ],
-     };
+      ],
+    };
   },
-  computed: {
-    getBeers() {
-      return this.allBeers;
-    }
-  }
 };
 </script>
 
