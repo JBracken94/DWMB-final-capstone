@@ -1,5 +1,5 @@
 <template>
-  
+  <h1>Brewery Card Search</h1>
 </template>
 
 <script>
