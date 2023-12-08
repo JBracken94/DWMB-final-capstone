@@ -1,29 +1,25 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:9000"
-}); 
-
 export default {
 
   getBrewery(breweryId) {
-    return http.get(`/brewery/${breweryId}`);
+    return axios.get(`/brewery/${breweryId}`);
   },
 
   getBreweries() {
-    return http.get('/breweries');
+    return axios.get('/breweries');
   },
 
   searchBreweries(searchTerms) {
-    return http.get('/breweries/search', { params: searchTerms });
+    return axios.get('/breweries/search', { params: searchTerms });
   },
 
   getMySavedBreweries() {
-    return http.get('/mybreweries');
+    return axios.get('/mybreweries');
   },
 
   addBrewery(brewery) {
-    return http.post('/breweries', brewery);
+    return axios.post('/breweries', brewery);
   },
 
 }

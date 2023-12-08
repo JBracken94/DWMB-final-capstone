@@ -1,24 +1,20 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:9000"
-});
-
 export default {
 
   getReviewById(reviewId) { 
-    return http.get(`/breweries/reviews/${reviewId}`);
+    return axios.get(`/breweries/reviews/${reviewId}`);
   },
 
   getMyBreweryReviews() {
-    return http.get('/breweries/myreviews');
+    return axios.get('/breweries/myreviews');
   },
 
   addReview(review) {
-    return http.post('/breweries/reviews', review);
+    return axios.post('/breweries/reviews', review);
   },
 
   deleteReview(reviewId) {
-    return http.delete(`/breweries/review/${reviewId}`);
+    return axios.delete(`/breweries/review/${reviewId}`);
   }
 }

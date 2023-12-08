@@ -1,19 +1,18 @@
 <template>
   <div class="beer-list-container">
-    <BeerCard v-for="beer in allBeers" v-bind:key="beer.beerId" v-bind:beer="beer"/>
+    <beer-card v-for="beer in beers" v-bind:key="beer.beerId" v-bind:beer="beer"/>
   </div>
 </template>
 
 <script>
-import BeerDetails from "./BeerDetails.vue";
 import BeerCard from "./BeerCard.vue";
 import BeerService from '../services/BeerService';
 
 export default {
   components: {
-    BeerDetails,
     BeerCard,
   },
+  props: ['beers'],
   data() {
     return {
       allBeers: [],

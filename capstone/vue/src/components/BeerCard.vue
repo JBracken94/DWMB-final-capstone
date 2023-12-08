@@ -11,9 +11,7 @@
 
 
 export default {
-    props: [
-        'beer'
-    ],
+    props: ['beer'],
 };
 </script>
 <style scoped>

@@ -1,38 +1,34 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:9000"
-});
-
 export default {
   getBeers() {
-    return http.get('/beers');
+    return axios.get('/beers');
   },
   getBeerById(beerId) {
-    return http.get(`/beers/${beerId}`);
+    return axios.get(`/beers/${beerId}`);
   },
 
   getBeersByBrewery(breweryId) {
-    return http.get(`/brewery/beers/${breweryId}`);
+    return axios.get(`/brewery/beers/${breweryId}`);
   },
 
   addSavedBeer(beerId) {
-    return http.post('/beers/mybeers', beerId);
+    return axios.post('/beers/mybeers', beerId);
   },
 
   createBeer(beer) {
-    return http.post('/beers', beer);
+    return axios.post('/beers', beer);
   },
 
   updateBeer(beer) {
-    return http.put(`/beers/${beer.id}`, beer);
+    return axios.put(`/beers/${beer.id}`, beer);
   },
 
   deleteSavedBeer(beerId) {
-    return http.delete(`/mybeers/${beerId}`);
+    return axios.delete(`/mybeers/${beerId}`);
   },
 
   deleteBeer(beerId) {
-    return http.delete(`/beers/${beerId}`);
+    return axios.delete(`/beers/${beerId}`);
   }
 };
