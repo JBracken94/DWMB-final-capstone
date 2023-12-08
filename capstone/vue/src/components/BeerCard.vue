@@ -1,48 +1,88 @@
 <template>
-    <div class="beer-card">
-        <img src="src\assests\images\placeholderBeer.jpg" />
-        <h2>{{ beer.beerName }}</h2>
-        <p>{{ beer.beerType }}</p>
-        <p>{{ beer.abv }}% ABV</p>
-        <!-- BUTTON TO ADD/REMOVE FROM SAVED if savedBeers.contains(beer.beerId)-->
+    <div class="beer-card card">
+      <img class="card-img-top" src="@/assets/images/placeholderBeer.jpg" alt="Beer Image">
+      <div class="card-body">
+        <h2 class="card-title">{{ beer.beerName }}</h2>
+        <p class="card-text">{{ beer.beerType }}</p>
+        <p class="card-text">{{ beer.abv }}% ABV</p>
+        <button class="btn btn-primary" @click="toggleSaved">{{ isSaved ? 'Remove from Saved' : 'Add to Saved' }}</button>
+        <router-link :to="{ name: 'beer-details', params: { beerId: beer.beerId } }" class="btn btn-secondary">View Details</router-link>
+
+         <!-- BUTTON TO ADD/REMOVE FROM SAVED if savedBeers.contains(beer.beerId)-->
         <!-- CLICKING CARD ROUTES TO BEER DETAILS PAGE -->
-        <router-link :to="{name: 'beer-details', params: {beerId: this.beerId}}"></router-link>
-
+      </div>
     </div>
-</template>
-<script>
-import BeerService from '../services/BeerService';
-
-
-export default {
+  </template>
+  
+  <script>
+  import BeerService from '../services/BeerService';
+  
+  export default {
     props: ['beer'],
-    savedBeers: [],
+    data() {
+      return {
+        isSaved: false
+      };
+    },
+    mounted() {
+
+      // I would need to check if the beer is already saved only when the componenet is mounted
+      this.checkIfSaved();
+    },
     methods: {
-        getSaved() {
-            BeerService.getSavedBeers()
-                .then(response => {
-                this.savedBeers = response.data
-                })
+      checkIfSaved() {
+        
+        // this method will check if the beer is saved
+      
+        // BeerService.isBeerSaved(this.beer.beerId)
+        //   .then(response => {
+        //     this.isSaved = response.data.isSaved;
+        //   })
+        //   .catch(error => {
+        //     console.error("Error checking saved state:", error);
+        //   });
+      },
+      toggleSaved() {
+        if (this.isSaved) {
+          BeerService.removeFromSavedBeers(this.beer.beerId)
+            .then(() => {
+              this.isSaved = false;
+            })
+            .catch(error => {
+              console.error("Error removing from saved beers:", error);
+            });
+        } else {
+          BeerService.addToSavedBeers(this.beer.beerId)
+            .then(() => {
+              this.isSaved = true;
+            })
+            .catch(error => {
+              console.error("Error adding to saved beers:", error);
+            });
         }
+      }
     }
-};
-</script>
-<style scoped>
-img {
-    max-width: 100%;
-    height: auto;
+  };
+  </script>
+  
+  <style scoped>
+  .card {
+    width: 18rem;
+    margin-bottom: 1rem;
+  }
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
     border-radius: 5px;
-}
-h2 {
+  }
+  .card-title {
     margin-top: 10px;
     font-size: 1.2em;
-}
-p {
+  }
+  .card-text {
     margin-top: 5px;
-}
-span {
-    display: block;
+  }
+  .btn {
     margin-top: 10px;
-    font-weight: bold;
-}
-</style>
+  }
+  </style>

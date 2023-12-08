@@ -7,6 +7,13 @@ import axios from 'axios'
 /* sets the base url for server API communication with axios */
 axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
 
+
+
+// Importing Bootstrap CSS and JS
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
+
 /*
  * The authorization header is set for axios when you login but what happens when 
  * you come back or the page is refreshed. When that happens you need to check 

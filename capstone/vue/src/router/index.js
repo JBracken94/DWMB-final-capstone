@@ -11,6 +11,8 @@ import AboutBeerView from '../views/AboutBeerView.vue';
 import AboutBreweryView from '../views/AboutBreweryView.vue';
 import BeerCardSearchView from '../views/BeerCardSearchView.vue';
 import BreweryCardSearch from '../views/BreweryCardSearchView.vue';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 /**
