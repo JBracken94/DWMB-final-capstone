@@ -14,6 +14,10 @@ export default {
     return axios.post('/breweries/reviews', review);
   },
 
+  updateReview(review) {
+    return axios.put(`/breweries/reviews/${review.reviewId}`, review)
+  },
+
   deleteReview(reviewId) {
     return axios.delete(`/breweries/review/${reviewId}`);
   }

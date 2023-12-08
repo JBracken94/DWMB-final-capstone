@@ -36,6 +36,10 @@ public class BreweryServiceImpl implements BreweryService{
     public List<Brewery> getSavedBreweries(Principal principal) {
         return null;
     }
+    public Brewery addBreweryToSaved(int breweryId, Principal principal) {
+        // TODO add brewery to saved
+        return null;
+    }
 
     @Override
     public Brewery createBrewery(Brewery newBrewery, Principal principal) {
@@ -45,6 +49,11 @@ public class BreweryServiceImpl implements BreweryService{
     @Override
     public Brewery updateBrewery(Brewery updatedBrewery, Principal principal) {
         return null;
+    }
+
+    @Override
+    public void deleteSavedBrewery(int breweryId, Principal principal) {
+
     }
 
     @Override

@@ -90,6 +90,11 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
+    public Brewery addBreweryToSaved(int breweryId, Principal principal) { // TODO
+        return null;
+    }
+
+    @Override
     public Brewery createBrewery(Brewery newBrewery, Principal principal) {
         String sql = "INSERT INTO brewery (brewery_name, street_address, city, state, zip_code," +
                 " date_est, phone_number, about_us, website, logo_image, founder_id " +
@@ -130,6 +135,11 @@ public class JdbcBreweryDao implements BreweryDao {
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data Integrity Violation");
         }
+    }
+
+    @Override
+    public void deleteSavedBeer(int breweryId, Principal principal) { // TODO
+
     }
 
     @Override

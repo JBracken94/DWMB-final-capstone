@@ -7,6 +7,7 @@ import com.techelevator.service.BreweryServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.security.Principal;
@@ -30,13 +31,13 @@ public class BreweryController {
         return allBreweries;
     }
 
-    @GetMapping("/brewery/{id}") //TODO viewBrewery
+    @GetMapping("/brewery/{id}")
     public Brewery viewBreweryByID(@PathVariable("id") int breweryId) { // return brewery matching brewery_id
         Brewery brewery = breweryService.getBreweryById(breweryId);
         return brewery;
     }
 
-    @GetMapping("/breweries/search") //TODO brewerySearch
+    @GetMapping("/breweries/search")
     public List<Brewery> breweryListSearch(BrewSearchDTO searchTerms) { // receive searchDTO with name, city, state
         // return breweries by search (name, city, state)
         // pass SearchDTO to service to call SQL search
@@ -44,23 +45,39 @@ public class BreweryController {
         return filteredBreweries;
     }
 
-    @GetMapping("/mybreweries") //TODO savedBreweries
+    @GetMapping("/mybreweries")
     public List<Brewery> viewMySavedBreweries(Principal principal) { //return saved brewery list based on principal
         List<Brewery> savedBreweries = breweryService.getSavedBreweries(principal);
         return savedBreweries;
     }
     @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
-    @PutMapping("/breweries/")
-    public Brewery updateBrewery(Brewery updatedBrewery, Principal principal) {
-        Brewery newBrewery = breweryService.updateBrewery(updatedBrewery, principal);
-        return newBrewery;
+    @PostMapping("/breweries")
+    public Brewery createBrewery(@RequestBody Brewery breweryTest, Principal principal) {
+        Brewery createdBrewery = breweryService.createBrewery(breweryTest, principal);
+        return createdBrewery;
+    }
+
+    @PostMapping("/mybreweries/{id}")
+    public Brewery addSavedBrewery(@PathVariable("id") int breweryId, Principal principal) { // TODO
+        Brewery added = breweryService.addBreweryToSaved(breweryId, principal);
+        return added;
     }
 
     @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
-    @PostMapping("/breweries")
-    public Brewery addBrewery(Brewery breweryTest, Principal principal) {
-        Brewery createdBrewery = breweryService.createBrewery(breweryTest, principal);
-        return createdBrewery;
+    @PutMapping("/breweries/{id}")
+    public Brewery updateBrewery(@PathVariable("id") int breweryId, @RequestBody Brewery updatedBrewery, Principal principal) {
+        if (breweryId == updatedBrewery.getBreweryId()) {
+            Brewery newBrewery = breweryService.updateBrewery(updatedBrewery, principal);
+            return newBrewery;
+
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+    @DeleteMapping("/mybreweries/{id}") // TODO
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteSavedBrewery(@PathVariable("id") int breweryId, Principal principal) {
+        breweryService.deleteSavedBrewery(breweryId, principal);
     }
     @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
     @PostMapping("/breweries/{id}")

@@ -1,5 +1,8 @@
 import axios from 'axios';
 export default {
+  getAllBeerReviews() {
+    return axios.get('/beers/reviews');
+  },
 
   getBeersReviewById(reviewId) {
     return axios.get(`/beers/reviews/${reviewId}`);
@@ -9,8 +12,12 @@ export default {
     return axios.get('/beers/myreviews');
   },
 
-  addBeerReview(review) {
+  createBeerReview(review) {
     return axios.post('/beers/reviews', review);
+  },
+
+  updateBeerReview(review) {
+    return axios.put(`/beers/reviews/${review.reviewId}`)
   },
 
   deleteBeerReview(reviewId) {

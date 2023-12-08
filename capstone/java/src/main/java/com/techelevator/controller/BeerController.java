@@ -53,8 +53,8 @@ public class BeerController {
         return myBeers;
     }
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/beers/mybeers")
-    public Beer addSavedBeer(@RequestBody int beerId, Principal principal) { // 201 on success, 500 if no beer exists or duplicate entry
+    @PostMapping("/mybeers/{id}")
+    public Beer addSavedBeer(@PathVariable("id") int beerId, Principal principal) { // 201 on success, 500 if no beer exists or duplicate entry
         Beer added = beerService.addBeerToSaved(beerId, principal);
         return added;
     }
@@ -69,9 +69,13 @@ public class BeerController {
     @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
     @PutMapping("/beers/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Beer updateBeer(@RequestBody Beer beer, Principal principal) {
-        Beer updatedBeer = beerService.updateBeer(beer, principal);
-        return updatedBeer;
+    public Beer updateBeer(@PathVariable("id") int beerId, @RequestBody Beer beer, Principal principal) {
+        if (beerId == beer.getBeerId()) {
+            Beer updatedBeer = beerService.updateBeer(beer, principal);
+            return updatedBeer;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/mybeers/{id}")// 500 on failed delete, 204 on success

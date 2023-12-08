@@ -7,11 +7,13 @@ import java.security.Principal;
 import java.util.List;
 
 public interface BreweryService {
-    public Brewery getBreweryById(int breweryId);
-    public List<Brewery> getAllBreweries();
-    public List<Brewery> searchBreweries(BrewSearchDTO searchTerms);
-    public List<Brewery> getSavedBreweries(Principal principal);
-    public Brewery createBrewery(Brewery newBrewery, Principal principal);
-    public Brewery updateBrewery(Brewery updatedBrewery, Principal principal);
-    public void deleteBrewery(int breweryId, Principal principal);
+    Brewery getBreweryById(int breweryId);
+    List<Brewery> getAllBreweries();
+    List<Brewery> searchBreweries(BrewSearchDTO searchTerms);
+    List<Brewery> getSavedBreweries(Principal principal);
+    Brewery addBreweryToSaved(int breweryId, Principal principal);
+    Brewery createBrewery(Brewery newBrewery, Principal principal);
+    Brewery updateBrewery(Brewery updatedBrewery, Principal principal);
+    void deleteSavedBrewery(int breweryId, Principal principal);
+    void deleteBrewery(int breweryId, Principal principal);
 }

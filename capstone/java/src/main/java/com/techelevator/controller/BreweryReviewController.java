@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.security.Principal;
@@ -38,9 +39,14 @@ public class BreweryReviewController {
     }
     @PutMapping("breweries/reviews/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BreweryReview updateBreweryReview(BreweryReview breweryReview, Principal principal){
-        BreweryReview updatedReview = breweryReviewService.updateBreweryReview(breweryReview, principal);
-        return  updatedReview;
+    public BreweryReview updateBreweryReview(@PathVariable("id") int brewViewId,@RequestBody BreweryReview breweryReview, Principal principal){
+        if (brewViewId == breweryReview.getReviewId()) {
+            BreweryReview updatedReview = breweryReviewService.updateBreweryReview(breweryReview, principal);
+            return  updatedReview;
+
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
     @DeleteMapping("breweries/review/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
