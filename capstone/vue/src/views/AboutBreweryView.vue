@@ -5,7 +5,7 @@
   <!-- GOOGLE MAP OF BREWERY LOCATION??? -->
   <!-- OPTIONAL :: BUTTON TOGGLE ADD BREWERY REVIEW -->
   <!-- BEER LIST / BEER CARDS -->
-  <google-map id="map"> map </google-map>
+  <google-map > map </google-map>
 </template>
 
 <script>

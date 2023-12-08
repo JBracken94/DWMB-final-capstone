@@ -13,6 +13,7 @@
 
 <script>
 import BeerService from '../services/BeerService'
+import BreweryService from '../services/BreweryService'
 
 export default {
   // GET RANDOM BREWERY/BEER? BOTH
@@ -27,7 +28,12 @@ export default {
     BeerService.getBeers()
       .then(response => {
         this.beers = response.data;
-    })
+      });
+    BreweryService.getBreweries()
+      .then(response => {
+        this.breweries = response.data;
+      });
+      
   }
 }
 
