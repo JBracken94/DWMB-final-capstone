@@ -8,7 +8,6 @@ import axios from 'axios'
 axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
 
 
-
 // Importing Bootstrap CSS and JS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';

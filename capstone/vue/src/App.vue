@@ -7,7 +7,6 @@
       <router-link v-bind:to="{ name: 'breweries' }" v-if="$store.state.token">Breweries &nbsp;|&nbsp;</router-link>
       <router-link v-bind:to="{ name: 'saved' }" v-if="$store.state.token">My APP NAME</router-link>
     </div>
-    <BeerCard :beer="beerData" />
     <router-view />
   </div>
 </template>
@@ -18,16 +17,9 @@ import BeerCard from './components/BeerCard.vue';
 export default {
   data() {
     return {
-      beerData: {
-        beerName: 'Beer Name',
-        beerType: 'Beer Type',
-        abv: 5.0,
-        beerId: 1
-      }
     };
   },
   components: {
-    BeerCard
   }
 };
 </script>
