@@ -67,7 +67,7 @@ const routes = [
     component: AboutBeerView
   },
   {
-    path: "/brewery/:breweryId",
+    path: "/breweries/:breweryId",
     name: "brewery-details",
     component: AboutBreweryView
   },

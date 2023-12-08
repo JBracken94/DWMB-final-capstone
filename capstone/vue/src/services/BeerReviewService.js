@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 export default {
   getAllBeerReviews() {
     return axios.get('/beers/reviews');

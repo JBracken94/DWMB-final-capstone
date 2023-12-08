@@ -5,13 +5,18 @@
   <!-- GOOGLE MAP OF BREWERY LOCATION??? -->
   <!-- OPTIONAL :: BUTTON TOGGLE ADD BREWERY REVIEW -->
   <!-- BEER LIST / BEER CARDS -->
+  <google-map > map </google-map>
 </template>
 
 <script>
+import GoogleMap from '../components/GoogleMap.vue';
 export default {
   // GET CURRENT BREWERY
   // GET BEER LIST FOR BREWERY
 
+  components: {
+    GoogleMap
+  }
 }
 </script>
 
