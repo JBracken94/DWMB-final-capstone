@@ -56,7 +56,7 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
-    public List<Brewery> getAllBreweries() { // TODO if the long searchBreweries is a go, we don't need this
+    public List<Brewery> getAllBreweries() {
         List<Brewery> breweries = new ArrayList<>();
         String sql = "SELECT brewery_id, brewery_name, street_address, city, state, zip_code," +
                 " date_est, phone_number, about_us, website, logo_image, founder_id " +
@@ -90,8 +90,30 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
-    public Brewery addBreweryToSaved(int breweryId, Principal principal) { // TODO
-        return null;
+    public Brewery addBreweryToSaved(int breweryId, Principal principal) {
+        User user = jdbcUserDao.getUserByUsername(principal.getName());
+        Brewery breweryToSave;
+
+        String savedBrewerySql = "INSERT INTO favorite_brewery (user_id, brewery_id) " +
+                "VALUES (?, ?) " +
+                "RETURNING fav_brewery_id;";
+        try {
+            if (checkUniqueSavedEntry(breweryId, principal)) {
+                int favBreweryEntryId = jdbcTemplate.queryForObject(savedBrewerySql, int.class,
+                                                                    user.getId(), breweryId);
+                if (favBreweryEntryId != 0) {
+                    return getBreweryById(breweryId);
+                } else {
+                    throw new DaoException("There was an issue adding your brewery. Please try again.");
+                }
+            } else {
+                throw new DaoException("This brewery is already on your saved list.");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation", e);
+        }
     }
 
     @Override
@@ -138,8 +160,18 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
-    public void deleteSavedBeer(int breweryId, Principal principal) { // TODO
+    public void deleteSavedBrewery(int breweryId, Principal principal) { // TODO
+        User user = jdbcUserDao.getUserByUsername(principal.getName());
+        String sql = "DELETE FROM favorite_brewery where brewery_id = ? AND user_id = ?;";
+        try {
+            Brewery breweryToDelete = getBreweryById(breweryId);
 
+            int rowsAffected = jdbcTemplate.update(sql, breweryId, user.getId());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.");
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation");
+        }
     }
 
     @Override
@@ -166,6 +198,19 @@ public class JdbcBreweryDao implements BreweryDao {
 
 
     // Helper Methods
+    public boolean checkUniqueSavedEntry(int breweryId, Principal principal) {
+        boolean unique = true;
+        String validationSql = "SELECT user_id, brewery_id FROM favorite_brewery WHERE user_id = ?;";
+        User user = jdbcUserDao.getUserByUsername(principal.getName());
+        SqlRowSet result = jdbcTemplate.queryForRowSet(validationSql, user.getId());
+        while (result.next()) {
+            if (result.getInt("brewery_id") == breweryId) {
+                unique = false;
+            }
+        }
+        return unique;
+    }
+
     private Brewery mapRowToBrewery (SqlRowSet rs) {
         Brewery brewery = new Brewery();
         brewery.setBreweryId(rs.getInt("brewery_id"));
