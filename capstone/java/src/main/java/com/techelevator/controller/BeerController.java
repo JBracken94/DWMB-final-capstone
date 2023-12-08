@@ -24,7 +24,6 @@ public class BeerController {
     public BeerController(BeerServiceImpl beerService) { // constructor
         this.beerService = beerService;
     }
-    // TODO :: GET ALL BEERS (FILTER IN JS)
     @GetMapping("/beers")
     public List<Beer> getBeers() {
         List<Beer> beers = beerService.getBeers();

@@ -41,11 +41,12 @@ public class BeerReviewServiceImpl implements BeerReviewService {
 
     @Override
     public BeerReview updateBeerReview(BeerReview updatedBeerReview, Principal principal) {
-        return null;
+        BeerReview updatedReview = beerReviewDao.updateBeerReview(updatedBeerReview, principal);
+        return updatedReview;
     }
 
     @Override
-    public void deleteBeerReview(int beerId, Principal principal) {
-        System.out.println("delete beer");
+    public void deleteBeerReview(int beerReviewId, Principal principal) {
+        beerReviewDao.deleteBeerReview(beerReviewId, principal);
     }
 }

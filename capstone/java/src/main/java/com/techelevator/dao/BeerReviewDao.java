@@ -11,5 +11,5 @@ public interface BeerReviewDao {
     List<BeerReview> getMyBeerReviews(Principal principal);
     BeerReview createBeerReview(BeerReview newBeerReview, Principal principal);
     BeerReview updateBeerReview(BeerReview beerReview, Principal principal);
-    void deleteBeerReview(int beerReviewId);
+    void deleteBeerReview(int beerReviewId, Principal principal);
 }

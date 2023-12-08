@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.ServiceException;
 import com.techelevator.model.BeerReview;
 import com.techelevator.model.User;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -90,15 +91,33 @@ public class JdbcBeerReviewDao implements BeerReviewDao {
     @Override
     public BeerReview updateBeerReview(BeerReview beerReview, Principal principal) { // catch DIV
         String sql = "UPDATE beer_review " +
-                "SET ";
-        return null;
+                "SET beer_rating = ?, beer_review = ?, date_posted = NOW() " +
+                "WHERE beer_review_id = ?;";
+        String validUser = "SELECT reviewer_id FROM beer_review WHERE beer_review_id = ?;";
+        try {
+            User user = jdbcUserDao.getUserByUsername(principal.getName());
+            int reviewerId = jdbcTemplate.queryForObject(validUser, int.class, beerReview.getBeerReviewId());
+            if (user.getId() == reviewerId) {
+                int updatedId = jdbcTemplate.update(sql,  beerReview.getBeerRating(), beerReview.getBeerReview(), beerReview.getBeerReviewId());
+                return getBeerReviewById(updatedId);
+            } else {
+                throw new DaoException("You do not have permission to edit this review.");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.");
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation");
+        }
     }
 
     @Override
-    public void deleteBeerReview(int beerReviewId) { // catch DIV (shouldn't be an issue)
+    public void deleteBeerReview(int beerReviewId, Principal principal) { // catch DIV (shouldn't be an issue)
         String sql = "DELETE FROM beer_review WHERE beer_review_id = ?;";
+        String validUser = "SELECT reviewer_id FROM beer_review WHERE beer_review_id = ?;";
         try {
-            int rowsAffected = jdbcTemplate.update(sql, int.class, beerReviewId);
+            User user = jdbcUserDao.getUserByUsername(principal.getName());
+            int reviewerId = jdbcTemplate.queryForObject(validUser, int.class, beerReviewId);
+            int rowsAffected = jdbcTemplate.update(sql,  beerReviewId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.");
         } catch (DataIntegrityViolationException e) {
