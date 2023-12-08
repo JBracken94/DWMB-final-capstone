@@ -5,6 +5,9 @@ const http = axios.create({
 });
 
 export default {
+  getBeers() {
+    return http.get('/beers');
+  },
   getBeerById(beerId) {
     return http.get(`/beers/${beerId}`);
   },
@@ -31,9 +34,5 @@ export default {
 
   deleteBeer(beerId) {
     return http.delete(`/beers/${beerId}`);
-  },
-
-  getBeers() {
-    return http.get('/beers');
   }
 };

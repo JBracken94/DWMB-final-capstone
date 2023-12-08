@@ -6,17 +6,11 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import BeerReviewView from '../views/BeerReviewView.vue';
-import MyBeerReviewsView from '../views/MyBeerReviewsView.vue';
-import AddBeerReviewView from '../views/AddBeerReviewView.vue';
-import UpdateBeerReviewView from '../views/UpdateBeerReviewView.vue';
-import BreweryReviewView from '../views/BreweryReviewView.vue';
-import MyBreweryReviewsView from '../views/MyBreweryReviewsView.vue';
-import AddBreweryReviewView from '../views/AddBreweryReviewView.vue';
-import UpdateBreweryReviewView from '../views/UpdateBreweryReviewView.vue';
-import BeerList from '../components/BeerList.vue';
-import BeerDetails from '../components/BeerDetails.vue';
-import BreweryList from '../components/BreweryList.vue';
+import MySavedLists from '../views/MySavedListsView.vue';
+import AboutBeerView from '../views/AboutBeerView.vue';
+import AboutBreweryView from '../views/AboutBreweryView.vue';
+import BeerCardSearchView from '../views/BeerCardSearchView.vue';
+import BreweryCardSearch from '../views/BreweryCardSearchView.vue';
 
 
 /**
@@ -61,63 +55,30 @@ const routes = [
     }
   },
   {
-    path: "/beer-list",
-    name: "BeerList",
-    component: BreweryList
+    path: "/saved",
+    name: "saved",
+    component: MySavedLists
   },
   {
-    path: '/beer-details/:id',
-    name: 'beer-details',
-    component: BeerDetails,
+    path: "/beer/:beerId",
+    name: "beer-details",
+    component: AboutBeerView
   },
   {
-    path: '/brewery-list',
-    name: 'BreweryList',
-    component: BreweryList
+    path: "/brewery/:breweryId",
+    name: "brewery-details",
+    component: AboutBreweryView
   },
   {
-
-    path: '/beers/reviews',
-    name: 'BeerReview',
-    component: BeerReviewView
+    path: "/beers",
+    name: "beers",
+    component: BeerCardSearchView
   },
   {
-    path: '/beers/myreviews',
-    name: 'MyBeerReviews',
-    component: MyBeerReviewsView
-  },
-  {
-    path: '/beers/reviews/add',
-    name: 'AddBeerReview',
-    component: AddBeerReviewView
-  },
-  {
-    path: '/beers/reviews/update/:id',
-    name: 'UpdateBeer',
-    component: UpdateBeerReviewView
-  },
-  {
-    path: '/breweries/reviews',
-    name: 'BreweryView',
-    component: BreweryReviewView
-  },
-  {
-    path: '/breweries/myreviews',
-    name: 'MyBreweryReview',
-    component: MyBreweryReviewsView
-  },
-  {
-    path: '/breweries/reviews/add',
-    name: 'AddBreweryReview',
-    component: AddBreweryReviewView
-  },
-  {
-    path: '/breweries/reviews/update/:id',
-    name: 'UpdateBreweryReview',
-    component: UpdateBreweryReviewView
-
+    path: "/breweries",
+    name: "breweries",
+    component: BreweryCardSearch
   }
-
 ];
 
 // Create the router
