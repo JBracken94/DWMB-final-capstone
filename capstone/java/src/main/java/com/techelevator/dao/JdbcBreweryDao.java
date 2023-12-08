@@ -74,64 +74,6 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
-    public List<Brewery> searchBreweries(BrewSearchDTO searchTerms) { // TODO there must be a better way, talk to Myron
-        final String SQL_WHERE_CITY_STATE_ZIPCODE = "WHERE city = ? AND state = ? AND zip_code = ?;";
-        final String SQL_WHERE_CITY_STATE = "WHERE city = ? AND state = ?;";
-        final String SQL_WHERE_CITY_ZIPCODE = "WHERE city = ? AND zip_code = ?;";
-        final String SQL_WHERE_STATE_ZIPCODE = "WHERE state = ? AND zipcode = ?;";
-        final String SQL_WHERE_CITY = "WHERE city = ?;";
-        final String SQL_WHERE_STATE = "WHERE state = ?;";
-        final String SQL_WHERE_ZIPCODE = "WHERE zipcode = ?;";
-
-        List<Brewery> breweries = new ArrayList<>();
-        SqlRowSet results = null;
-
-        String sql = "SELECT brewery_id, brewery_name, street_address, city, state, zip_code," +
-                " date_est, phone_number, about_us, website, logo_image, founder_id " +
-                "FROM brewery ";
-        try {
-            if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty() && searchTerms.getState() != null && !searchTerms.getState().isEmpty() && searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
-                sql += SQL_WHERE_CITY_STATE_ZIPCODE;
-                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity(), searchTerms.getState(), searchTerms.getZipcode());
-
-            } else if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty() && searchTerms.getState() != null && !searchTerms.getState().isEmpty()) {
-                sql += SQL_WHERE_CITY_STATE;
-                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity(), searchTerms.getState());
-
-            } else if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty() && searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
-                sql += SQL_WHERE_CITY_ZIPCODE;
-                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity(), searchTerms.getZipcode());
-
-            } else if (searchTerms.getState() != null && !searchTerms.getState().isEmpty() && searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
-                sql += SQL_WHERE_STATE_ZIPCODE;
-                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getState(), searchTerms.getZipcode());
-
-            } else if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty()) {
-                sql += SQL_WHERE_CITY;
-                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity());
-
-            } else if (searchTerms.getState() != null && !searchTerms.getState().isEmpty()) {
-                sql += SQL_WHERE_STATE;
-                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getState());
-
-            } else if (searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
-                sql += SQL_WHERE_ZIPCODE;
-                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getZipcode());
-            } else {
-                results = jdbcTemplate.queryForRowSet(sql);
-            }
-
-            while (results.next()) {
-                Brewery brewery = mapRowToBrewery(results);
-                breweries.add(brewery);
-            }
-        }catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        }
-        return breweries;
-    }
-
-    @Override
     public List<Brewery> getSavedBreweries(Principal principal) {
         List<Brewery> myBreweries = new ArrayList<>();
         String sql = "SELECT brewery_id FROM favorite_brewery WHERE user_id = ?;";
@@ -233,6 +175,65 @@ public class JdbcBreweryDao implements BreweryDao {
         brewery.setFounderId(rs.getInt("founder_id"));
         return brewery;
     }
+
+    // TODO there must be a better way, talk to Myron
+//    @Override
+//    public List<Brewery> searchBreweries(BrewSearchDTO searchTerms) {
+//        final String SQL_WHERE_CITY_STATE_ZIPCODE = "WHERE city = ? AND state = ? AND zip_code = ?;";
+//        final String SQL_WHERE_CITY_STATE = "WHERE city = ? AND state = ?;";
+//        final String SQL_WHERE_CITY_ZIPCODE = "WHERE city = ? AND zip_code = ?;";
+//        final String SQL_WHERE_STATE_ZIPCODE = "WHERE state = ? AND zipcode = ?;";
+//        final String SQL_WHERE_CITY = "WHERE city = ?;";
+//        final String SQL_WHERE_STATE = "WHERE state = ?;";
+//        final String SQL_WHERE_ZIPCODE = "WHERE zipcode = ?;";
+//
+//        List<Brewery> breweries = new ArrayList<>();
+//        SqlRowSet results = null;
+//
+//        String sql = "SELECT brewery_id, brewery_name, street_address, city, state, zip_code," +
+//                " date_est, phone_number, about_us, website, logo_image, founder_id " +
+//                "FROM brewery ";
+//        try {
+//            if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty() && searchTerms.getState() != null && !searchTerms.getState().isEmpty() && searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
+//                sql += SQL_WHERE_CITY_STATE_ZIPCODE;
+//                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity(), searchTerms.getState(), searchTerms.getZipcode());
+//
+//            } else if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty() && searchTerms.getState() != null && !searchTerms.getState().isEmpty()) {
+//                sql += SQL_WHERE_CITY_STATE;
+//                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity(), searchTerms.getState());
+//
+//            } else if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty() && searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
+//                sql += SQL_WHERE_CITY_ZIPCODE;
+//                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity(), searchTerms.getZipcode());
+//
+//            } else if (searchTerms.getState() != null && !searchTerms.getState().isEmpty() && searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
+//                sql += SQL_WHERE_STATE_ZIPCODE;
+//                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getState(), searchTerms.getZipcode());
+//
+//            } else if (searchTerms.getCity() != null && !searchTerms.getCity().isEmpty()) {
+//                sql += SQL_WHERE_CITY;
+//                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getCity());
+//
+//            } else if (searchTerms.getState() != null && !searchTerms.getState().isEmpty()) {
+//                sql += SQL_WHERE_STATE;
+//                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getState());
+//
+//            } else if (searchTerms.getZipcode() != null && !searchTerms.getZipcode().isEmpty()) {
+//                sql += SQL_WHERE_ZIPCODE;
+//                results = jdbcTemplate.queryForRowSet(sql, searchTerms.getZipcode());
+//            } else {
+//                results = jdbcTemplate.queryForRowSet(sql);
+//            }
+//
+//            while (results.next()) {
+//                Brewery brewery = mapRowToBrewery(results);
+//                breweries.add(brewery);
+//            }
+//        }catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return breweries;
+//    }
 
     // TODO talk to Myron about this, in progress maybe
 //    @Override
