@@ -11,6 +11,7 @@
 <script >
 import { defineComponent } from "vue";
 import { GoogleMap, Marker } from "vue3-google-map";
+import axios from 'axios';
 
 export default defineComponent({
   props: ['address'],
@@ -33,6 +34,13 @@ export default defineComponent({
         'addressstring' + '&key=' + 'key';
 
     }
+  },
+  created() {
+    axios({
+      method: 'GET',
+      url: '/maps/api/geocode/json?address=',
+      baseURL: 'https://maps.googleapis.com'
+    })
   }
 });
 </script>

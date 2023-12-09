@@ -4,6 +4,8 @@
             <img src="../assests/images/IMG-1796.jpg" alt="">
             <h2 class="card-title">{{brewery.breweryName}}</h2>
             <p class="card-test">{{ brewery.website }}</p>
+            <button class="btn btn-primary" >{{ isSaved ? 'Remove from Saved' : 'Add to Saved' }}</button>
+        <router-link :to="{ name: 'brewery-details', params: { breweryId: brewery.breweryId } }" class="btn btn-secondary">View Details</router-link>
 
         </div>
 
@@ -15,6 +17,7 @@ export default {
     props: ['brewery'],
     data() {
         return {
+            isSaved: false,
         }
     }
 }

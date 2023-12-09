@@ -40,7 +40,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery getBreweryById (int breweryId) {
         Brewery brewery = null;
-        brewery.setBreweryId(breweryId);
+//        brewery.setBreweryId(breweryId);
         String sql = "SELECT brewery_id, brewery_name, street_address, city, state, zip_code," +
                      " date_est, phone_number, about_us, website, logo_image, founder_id " +
                 "FROM brewery WHERE brewery_id = ?;";
