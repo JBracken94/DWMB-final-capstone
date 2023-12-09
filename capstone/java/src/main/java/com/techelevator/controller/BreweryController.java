@@ -62,6 +62,7 @@ public class BreweryController {
     public Brewery addSavedBrewery(@PathVariable("id") int breweryId, Principal principal) { // TODO
         Brewery added = breweryService.addBreweryToSaved(breweryId, principal);
         return added;
+
     }
 
     @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")

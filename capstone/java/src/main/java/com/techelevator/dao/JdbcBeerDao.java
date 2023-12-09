@@ -26,7 +26,6 @@ public class JdbcBeerDao implements BeerDao {
         this.jdbcUserDao = jdbcUserDao;
     }
 
-    // TODO :: GET ALL BEERS
     public List<Beer> getBeers() {
         List<Beer> allBeers = new ArrayList<>();
         String sql = "SELECT beer_id, beer_name, brewery_id, beer_type, abv, label_image, description FROM beer;";

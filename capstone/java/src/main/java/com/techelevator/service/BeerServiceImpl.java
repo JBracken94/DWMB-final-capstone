@@ -19,7 +19,6 @@ public class BeerServiceImpl implements BeerService{
     }
 
 
-    // TODO :: GET ALL BEERS
     public List<Beer> getBeers() {
         try {
             List<Beer> beers = beerDao.getBeers();

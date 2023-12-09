@@ -33,7 +33,7 @@ public class BeerController {
         return beers;
     }
 
-    @GetMapping("/beers/{id}") //TODO viewBeer
+    @GetMapping("/beers/{id}")
     public Beer viewBeerByID(@PathVariable("id") int beerId) { // 200 on success, 404 if no beer exists
         // return beer POJO
         Beer beer = beerService.getBeerById(beerId);
@@ -42,12 +42,12 @@ public class BeerController {
         }
         return beer;
     }
-    @GetMapping("/brewery/beers/{id}") //TODO viewBeersByBrewery
+    @GetMapping("/brewery/beers/{id}")
     public List<Beer> viewBeersByBrewery (@PathVariable("id") int breweryId) { // 200 on success, 204 if empty
         List<Beer> beers = beerService.getBeersByBreweryId(breweryId);
         return beers;
     }
-    @GetMapping("/mybeers") //TODO savedBeers
+    @GetMapping("/mybeers")
     public List<Beer> viewMySavedBeers(Principal principal) { //200 and list on success, 204 if list empty
         List<Beer> myBeers = beerService.getSavedBeers(principal);
         return myBeers;
