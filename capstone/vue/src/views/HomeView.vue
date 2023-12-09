@@ -15,17 +15,37 @@
 <script>
 import BeerService from '../services/BeerService'
 import BreweryService from '../services/BreweryService'
-let id = JSON.parse(window.localStorage.getItem('user'));
-let help = id.id;
-console.log(help);
+
+let user = JSON.parse(window.localStorage.getItem('user'));
+let userId = user.id;
+let roles = user.authorities;
+function checkRole(expected) {
+  let allowed = false;
+  roles.forEach(auth => {
+    if (auth.name === expected) {
+      allowed = true;
+    }
+  })
+  return allowed;
+}
+console.log(checkRole('ROLE_ADMIN'));
+
+console
+console.log(roles);
+console.log(user);
+console.log(userId);
 
 export default {
   // GET RANDOM BREWERY/BEER? BOTH
-  // CHECK USER ROLE
+
+  // CURRENTLY LOADS ALL BREWERIES AND BEERS TO HOME VIEW
+  // PROBABLY NOT WHAT WE WANT
+  // PULL ONE RANDOM OF EACH???
   data() {
     return {
       beers: [],
       breweries: [],
+      isBrewer: false,
     }
   },
   created() {
@@ -37,7 +57,7 @@ export default {
       .then(response => {
         this.breweries = response.data;
       });
-      
+      this.isBrewer = checkRole('ROLE_BREWER');
   }
 }
 
