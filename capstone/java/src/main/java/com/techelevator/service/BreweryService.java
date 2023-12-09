@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface BreweryService {
     Brewery getBreweryById(int breweryId);
+    Brewery getRandomBrewery();
     List<Brewery> getAllBreweries();
     List<Brewery> searchBreweries(BrewSearchDTO searchTerms);
     List<Brewery> getSavedBreweries(Principal principal);

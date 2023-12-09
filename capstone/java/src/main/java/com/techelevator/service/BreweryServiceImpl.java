@@ -23,6 +23,12 @@ public class BreweryServiceImpl implements BreweryService{
     }
 
     @Override
+    public Brewery getRandomBrewery() {
+        Brewery brewery = breweryDao.getRandomBrewery();
+        return brewery;
+    }
+
+    @Override
     public List<Brewery> getAllBreweries() {
         return breweryDao.getAllBreweries();
     }

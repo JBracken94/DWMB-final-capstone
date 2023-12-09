@@ -42,6 +42,21 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
+    public Beer getRandomBeer() {
+        Beer beer = null;
+        String sql = "SELECT beer_id, beer_name, brewery_id, beer_type, abv, label_image, description FROM beer ORDER BY RANDOM() LIMIT 1;";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+            if (result.next()) {
+                beer = mapRowToBeer(result);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.", e);
+        }
+        return beer;
+    }
+
+    @Override
     public Beer getBeerById(int beerId) {
         Beer beer = null;
         String sql = "SELECT beer_id, beer_name, brewery_id, beer_type, abv, label_image, description " +
