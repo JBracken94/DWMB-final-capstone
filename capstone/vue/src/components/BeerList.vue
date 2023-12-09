@@ -12,17 +12,16 @@ export default {
   components: {
     BeerCard,
   },
-  props: ['beers'],
   data() {
     return {
-      allBeers: [],
+      beers: [],
     };
   },
   methods: {
     getBeers() {
       BeerService.getBeers()
       .then(response => {
-          this.allBeers = response.data;
+          this.beers = response.data;
       })
       .catch(error =>{
           console.error(error);
@@ -36,8 +35,11 @@ export default {
 </script>
 
 <style>
-/* .beer-list-container {
+.beer-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
 }
 .beer-item {
-} */
+}
 </style>

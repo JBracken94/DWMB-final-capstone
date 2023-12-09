@@ -24,7 +24,7 @@ public class BreweryServiceImpl implements BreweryService{
 
     @Override
     public List<Brewery> getAllBreweries() {
-        return null;
+        return breweryDao.getAllBreweries();
     }
 
     @Override

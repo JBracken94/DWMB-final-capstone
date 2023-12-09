@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <h1>Breweries</h1>
-    <ul>
-      <li v-for="brewery in breweries" :key="brewery.id">
-        {{ brewery.name }}
-      </li>
-    </ul>
+  <div class="brerwer-list-container">
+    <brewery-card v-for="brewery in breweries" v-bind:brewery="brewery" v-bind:key="brewery.breweryId"/>
   </div>
 </template>
 
 <script>
+import BreweryService from '../services/BreweryService';
+import BreweryCard from './BreweryCard.vue';
 
 export default {
+  components: {
+    BreweryCard
+  },
+  props: ['breweries'],
   data() {
     return {
-      breweries: [],
     };
   },
+  created() {
+  }
 }
 </script>

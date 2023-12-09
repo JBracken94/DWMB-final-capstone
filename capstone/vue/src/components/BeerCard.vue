@@ -1,6 +1,6 @@
 <template>
     <div class="beer-card card">
-      <img class="card-img-top" src="@/assets/images/placeholderBeer.jpg" alt="Beer Image">
+      <img class="card-img-top" src="../assests/images/placeholderBeer.jpg" alt="Beer Image">
       <div class="card-body">
         <h2 class="card-title">{{ beer.beerName }}</h2>
         <p class="card-text">{{ beer.beerType }}</p>
@@ -68,12 +68,12 @@
   <style scoped>
   .card {
     width: 18rem;
-    margin-bottom: 1rem;
+    margin: 1rem;
   }
   .card-img-top {
     height: 200px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 12px;
   }
   .card-title {
     margin-top: 10px;
