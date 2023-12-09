@@ -74,6 +74,23 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
+    public Brewery getRandomBrewery() {
+        Brewery brewery = null;
+        String sql = "SELECT brewery_id, brewery_name, street_address, city, state, zip_code, " +
+                "date_est, phone_number, about_us, website, logo_image, founder_id " +
+                "FROM brewery ORDER BY RANDOM() LIMIT 1;";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+            if (result.next()) {
+                brewery = mapRowToBrewery(result);
+            }
+            return brewery;
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.");
+        }
+    }
+
+    @Override
     public List<Brewery> getSavedBreweries(Principal principal) {
         List<Brewery> myBreweries = new ArrayList<>();
         String sql = "SELECT brewery_id FROM favorite_brewery WHERE user_id = ?;";

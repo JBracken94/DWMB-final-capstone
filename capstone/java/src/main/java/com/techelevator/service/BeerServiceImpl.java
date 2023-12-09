@@ -27,6 +27,17 @@ public class BeerServiceImpl implements BeerService{
             throw new ServiceException("An error has occurred: " + e.getMessage());
         }
     }
+
+    @Override
+    public Beer getRandomBeer() {
+        try {
+            Beer beer = beerDao.getRandomBeer();
+            return beer;
+        } catch (DaoException e) {
+            throw new ServiceException("An error has occurred: " + e.getMessage());
+        }
+    }
+
     @Override
     public Beer getBeerById(int beerId) {
         try {

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface BeerDao {
     List<Beer> getBeers();
+    Beer getRandomBeer();
     Beer getBeerById(int beerId);
     List<Beer> getBeersByBreweryId(int breweryId);
     List<Beer> getSavedBeers(Principal principal);

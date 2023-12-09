@@ -27,10 +27,18 @@ public class BeerController {
     @GetMapping("/beers")
     public List<Beer> getBeers() {
         List<Beer> beers = beerService.getBeers();
-        if (beers.size() == 0) {
+        if (beers.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.OK, "No beers found.");
         }
         return beers;
+    }
+    @GetMapping("/beers/random")
+    public Beer getRandomBeer() {
+        Beer beer = beerService.getRandomBeer();
+        if (beer == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No beers found.");
+        }
+        return beer;
     }
 
     @GetMapping("/beers/{id}")

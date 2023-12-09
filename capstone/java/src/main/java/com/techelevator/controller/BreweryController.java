@@ -31,8 +31,13 @@ public class BreweryController {
         List<Brewery> allBreweries = breweryService.getAllBreweries();
         return allBreweries;
     }
+    @GetMapping("/breweries/random")
+    public Brewery getRandomBrewery() {
+        Brewery brewery = breweryService.getRandomBrewery();
+        return brewery;
+    }
 
-    @GetMapping("/brewery/{id}")
+    @GetMapping("/breweries/{id}")
     public Brewery viewBreweryByID(@PathVariable("id") int breweryId) { // return brewery matching brewery_id
         Brewery brewery = breweryService.getBreweryById(breweryId);
         return brewery;
