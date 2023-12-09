@@ -6,7 +6,7 @@
         <p class="card-text">{{ beer.beerType }}</p>
         <p class="card-text">{{ beer.abv }}% ABV</p>
         <button class="btn btn-primary" @click="toggleSaved">{{ isSaved ? 'Remove from Saved' : 'Add to Saved' }}</button>
-        <router-link :to="{ name: 'beer-details', params: { beerId: beer.beerId } }" class="btn btn-secondary">View Details</router-link>
+        <router-link :to="{ name: 'beer-details', params: { id: beer.beerId } }" class="btn btn-secondary">View Details</router-link>
 
          <!-- BUTTON TO ADD/REMOVE FROM SAVED if savedBeers.contains(beer.beerId)-->
         <!-- CLICKING CARD ROUTES TO BEER DETAILS PAGE -->

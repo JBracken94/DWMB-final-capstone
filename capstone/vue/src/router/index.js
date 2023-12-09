@@ -11,6 +11,8 @@ import AboutBeerView from '../views/AboutBeerView.vue';
 import AboutBreweryView from '../views/AboutBreweryView.vue';
 import BeerCardSearchView from '../views/BeerCardSearchView.vue';
 import BreweryCardSearch from '../views/BreweryCardSearchView.vue';
+import BeerDetails from '../components/BeerDetails.vue';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -80,6 +82,11 @@ const routes = [
     path: "/breweries",
     name: "breweries",
     component: BreweryCardSearch
+  },
+  {
+    path: '/beers/:id',
+    name: 'beer-details',
+    component: BeerDetails
   }
 ];
 

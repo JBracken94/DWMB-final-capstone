@@ -5,8 +5,20 @@
 
 <script>
 export default {
-    props: ['brewery']
+    props: ['brewery'],
+    data(){
+        return{
+        beer:{
+            beerName: "",
+            breweryId: this.brewery.breweryId,
+            beerType: "",
+            abv:      "",
+            labelImage: "",
+            description: "",
+        }
+    }
 
+    }
 }
 </script>
 
