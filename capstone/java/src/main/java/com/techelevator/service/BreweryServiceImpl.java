@@ -11,11 +11,13 @@ import java.util.List;
 
 @Service
 @Component
-public class BreweryServiceImpl implements BreweryService{
+public class BreweryServiceImpl implements BreweryService {
     private BreweryDao breweryDao;
-    public BreweryServiceImpl (BreweryDao breweryDao) {
+
+    public BreweryServiceImpl(BreweryDao breweryDao) {
         this.breweryDao = breweryDao;
     }
+
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = breweryDao.getBreweryById(breweryId);
@@ -30,40 +32,47 @@ public class BreweryServiceImpl implements BreweryService{
 
     @Override
     public List<Brewery> getAllBreweries() {
+
         return breweryDao.getAllBreweries();
     }
 
     @Override
     public List<Brewery> searchBreweries(BrewSearchDTO searchTerms) {
+
         return null;
     }
 
     @Override
     public List<Brewery> getSavedBreweries(Principal principal) {
-        return null;
+        List<Brewery> breweries = breweryDao.getSavedBreweries(principal);
+        return breweries;
     }
+
     public Brewery addBreweryToSaved(int breweryId, Principal principal) {
         // TODO add brewery to saved
-        return null;
+        Brewery brewery = breweryDao.addBreweryToSaved(breweryId, principal);
+        return brewery;
     }
 
     @Override
     public Brewery createBrewery(Brewery newBrewery, Principal principal) {
-        return null;
+        Brewery brewery = breweryDao.createBrewery(newBrewery, principal);
+        return brewery;
     }
 
     @Override
     public Brewery updateBrewery(Brewery updatedBrewery, Principal principal) {
-        return null;
+        Brewery brewery = breweryDao.updateBreweryInfo(updatedBrewery, principal);
+        return brewery;
     }
 
     @Override
     public void deleteSavedBrewery(int breweryId, Principal principal) {
-
+        breweryDao.deleteSavedBrewery(breweryId, principal);
     }
 
     @Override
     public void deleteBrewery(int breweryId, Principal principal) {
-
+        breweryDao.deleteBrewery(breweryId, principal);
     }
 }

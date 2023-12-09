@@ -120,8 +120,8 @@ INSERT INTO users  (username,password_hash,role) VALUES('brewtoo','$2a$10$tZE.X5
 
 --starting breweries
 INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
-VALUES ('Brew Bois', '123 Address Street', 'Pittsburgh', 'PA', 90210, NOW(), '(724) 555-5555',
-		'We are a brewery founded for testing purposes', 'brewboislogo.png', 'www.brewboisPA.com', 3);
+VALUES ('Unity Brewing', '3862 US-30', 'Latrobe', 'PA', 15650, NOW(), '(724) 520-4234',
+		'Unity Brewing was something I’ve always wanted to share with the people in my community. I’ve been brewing for 20 years and it only took about about half that time for my hobby to become more of an obsession. Now, when we brew, we’re changing only the subtlest elements of our process. Our Co-Brewer Alan and I have known each other for about the same length of time. He didn’t come into the brewing world until a bit later, but his passion and attention to detail make all the difference. Our beers really are a collective effort and you can taste that. While we offer the traditional styles year round, our menu is constantly changing with new and unique beers.', 'brewboislogo.png', 'www.brewboisPA.com', 3);
 INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
 VALUES ('That Other Brewery', '82 Repo Place', 'Columbus', 'OH', 15555, NOW(), '(555) 555-5555',
 	   'You should see the other guy...', 'otherlogo.jph', 'www.otherguys.com', 5);
@@ -132,13 +132,50 @@ VALUES ('Sargetown Brew Works', '7 Puppy Road', 'Derry', 'PA', 15627, NOW(), '(7
 
 --starting beers
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Junk in the Trunk', 1, 'Hazy IPA', 6.5, 'imagegoesher.png', 'This''ll junk your trunk!');
+VALUES ('Vanilla Bean Blonde', 1, 'Blonde Ale', 5.7, 'vanillabean', 'The undisputed Pub favorite! Unity Blonde Ale meets real Haitian Vanilla to make this ‘nilla cookie of a beer our best seller!  ');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Beer for Drinking', 2, 'Amber Ale', 4.6, 'bfdlabel.jpg', 'You can drink it!');
+VALUES ('Unity Lager', 1, 'American Lager', 5.0, 'unitylager', 'Easy drinking Lager for beer lovers that love beer that tastes like beer!');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+VALUES ('Ridge Runnr', 1, 'Hazy IPA', 7.1, 'ridgerunner', 'Brewed with Oats, Wheat, and dry hopped with Citra, Loral, and Columbus hops.');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Slurp Juice', 3, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
+VALUES ('Oatmeal Stout', 1, 'Oatmeal Stout', 5.7, 'oatmealstout', 'Roasted barley, Oats, Milk Sugar, and Centennial hops. (contains lactose)');
+
+
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Slurp Juice', 2, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
+--
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Slurp Juice', 2, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
+--
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--VALUES ('Slurp Juice', 2, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
+
+--INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--  VALUES ('Junk in the Trunk', 1, 'Hazy IPA', 6.5, 'imagegoesher.png', 'This''ll junk your trunk!');
+--  INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--  VALUES ('Beer for Drinking', 2, 'Amber Ale', 4.6, 'bfdlabel.jpg', 'You can drink it!');
+--  INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--  VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
+--  INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+--  VALUES ('Slurp Juice', 3, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
 
 --starting saved beer list
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,4); -- admin
