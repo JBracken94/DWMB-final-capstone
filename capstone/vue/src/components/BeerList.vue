@@ -12,24 +12,17 @@ export default {
   components: {
     BeerCard,
   },
+  props: ['beers'],
   data() {
+    
     return {
-      beers: [],
+      
     };
   },
   methods: {
-    getBeers() {
-      BeerService.getBeers()
-      .then(response => {
-          this.beers = response.data;
-      })
-      .catch(error =>{
-          console.error(error);
-      });
-    },
+    
   },
   created (){
-    this.getBeers();
   }
 };
 </script>
