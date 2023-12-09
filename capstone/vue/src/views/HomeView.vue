@@ -15,6 +15,9 @@
 <script>
 import BeerService from '../services/BeerService'
 import BreweryService from '../services/BreweryService'
+let id = JSON.parse(window.localStorage.getItem('user'));
+let help = id.id;
+console.log(help);
 
 export default {
   // GET RANDOM BREWERY/BEER? BOTH
