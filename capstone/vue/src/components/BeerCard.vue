@@ -1,6 +1,6 @@
 <template>
     <div class="beer-card card">
-      <img class="card-img-top" src="../assests/images/placeholderBeer.jpg" alt="Beer Image">
+      <img class="card-img-top" src="../assests/images/placeholders/Asset__4-1080x1080.png" alt="Beer Image">
       <div class="card-body">
         <h2 class="card-title">{{ beer.beerName }}</h2>
         <p class="card-text">{{ beer.beerType }}</p>
