@@ -43,14 +43,6 @@ public class BreweryController {
         return brewery;
     }
 
-    @GetMapping("/breweries/search")
-    public List<Brewery> breweryListSearch(BrewSearchDTO searchTerms) { // receive searchDTO with name, city, state
-        // return breweries by search (name, city, state)
-        // pass SearchDTO to service to call SQL search
-        List<Brewery> filteredBreweries = breweryService.searchBreweries(searchTerms);
-        return filteredBreweries;
-    }
-
     @GetMapping("/mybreweries")
     public List<Brewery> viewMySavedBreweries(Principal principal) { //return saved brewery list based on principal
         List<Brewery> savedBreweries = breweryService.getSavedBreweries(principal);
@@ -92,4 +84,13 @@ public class BreweryController {
     public void deleteBrewery(@PathVariable("id") int breweryId, Principal principal) {
         breweryService.deleteBrewery(breweryId, principal);
     }
+
+
+//    @GetMapping("/breweries/search")
+//    public List<Brewery> breweryListSearch(BrewSearchDTO searchTerms) { // receive searchDTO with name, city, state
+//        // return breweries by search (name, city, state)
+//        // pass SearchDTO to service to call SQL search
+//        List<Brewery> filteredBreweries = breweryService.searchBreweries(searchTerms);
+//        return filteredBreweries;
+//    }
 }

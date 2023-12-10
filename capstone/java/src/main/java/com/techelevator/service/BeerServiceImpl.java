@@ -24,7 +24,7 @@ public class BeerServiceImpl implements BeerService{
         this.beerDao = beerDao;
     }
 
-    
+
 
     // Methods
     public List<Beer> getBeers() {
