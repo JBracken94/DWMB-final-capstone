@@ -44,7 +44,9 @@ export default defineComponent({
     return { center };
   },
   methods: {
-    setMap
+    setMap() {
+      
+    }
   },
   created() {
     LocationService.getLocation(`${this.address}` + '&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8')
