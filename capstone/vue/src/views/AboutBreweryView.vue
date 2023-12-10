@@ -4,24 +4,22 @@
     <button > Update my Brewery</button>
     <button> Add Beer</button>
   </div>
-  <brewery-details v-bind:brewery="this.brewery"/>
   
   <!-- Brewery Info Box -->
   <!-- Logo Display, Name, Description -->
   <!-- GOOGLE MAP OF BREWERY LOCATION??? -->
   <!-- OPTIONAL :: BUTTON TOGGLE ADD BREWERY REVIEW -->
   <!-- BEER LIST / BEER CARDS -->
-  <google-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
+  <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
   <beer-list v-bind:beers="beers"/>
 </template>
 
 <script>
 
-import GoogleMap from '../components/GoogleMap.vue';
+import BrewMap from '../components/BrewMap.vue';
 import BeerService from '../services/BeerService';
 import BreweryService from '../services/BreweryService';
 import BeerList from '../components/BeerList.vue';
-import BreweryDetails from '../components/BreweryDetails.vue';
 export default {
   data() {
     return {
@@ -34,9 +32,8 @@ export default {
   // GET BEER LIST FOR BREWERY
 
   components: {
-    GoogleMap,
-    BeerList,
-    BreweryDetails
+    BrewMap,
+    BeerList
   },
   created() {
     BreweryService.getBrewery(this.$route.params.breweryId)

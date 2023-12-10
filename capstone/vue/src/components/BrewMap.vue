@@ -1,9 +1,9 @@
 
 <template>
-  <div v-show="showMap" >
+  <div >
     <h2>Find Us</h2>
     <!-- Add your Google Maps API Key as api-key attribute to demo functionality -->
-    <GoogleMap api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" style="width: 500px; height: 500px" :center="{lat: this.latitude, lng: this.longitude}"
+    <GoogleMap api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" style="width: 500px; height: 500px" :center="{ lat: this.latitude, lng: this.longitude }"
       :zoom="15">
       <Marker :options="{ position: center }" />
       <Marker :options="{ position: {lat: this.latitude, lng: this.longitude} }" />
@@ -28,8 +28,8 @@ export default defineComponent({
   props: ['brew', 'address'],
   data() {
     return {
-      longitude: 39.15272567117034,
-      latitude: -84.46692609260063,
+      longitude: '0',
+      latitude: '0',
       resp: {meatball: 'sauce'},
       showMap: false,
     }
@@ -37,6 +37,7 @@ export default defineComponent({
   components: { GoogleMap, Marker },
   setup() {
     const center = { lat: 39.152243090211236, lng: -84.46729087516896 }; // center on TE cincinatti
+    // const myBrewery = { lat: this.latitude, lng: this.longitude }
 
     // find way to turn address into coordinates
     // const brewery = { lat: 40.44619813736048, lng: -80.07601741434895 };
@@ -44,28 +45,20 @@ export default defineComponent({
     return { center };
   },
   methods: {
-    setMap() {
-      
-    }
   },
   created() {
     LocationService.getLocation(`${this.address}` + '&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8')
     .then(response => {
       if (response.data.results.length > 0) {
-        this.response = response.data;
+        this.resp = response.data;
         this.longitude = response.data.results[0].geometry.location.lng;
         this.latitude = response.data.results[0].geometry.location.lat;
-        this.showMap = true
-      } else {
-        this.showMap = false;
       }
     })
-    .catch(error => {
-      if (error == 400) {
-        this.showMap = false;
-      }
-    })
+
   },
+  computed: {
+  }
 });
 </script>
 
