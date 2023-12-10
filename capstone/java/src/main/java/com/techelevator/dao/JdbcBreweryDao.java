@@ -248,6 +248,7 @@ public class JdbcBreweryDao implements BreweryDao {
         return brewery;
     }
 
+
 //    @Override
 //    public List<Brewery> searchBreweries(BrewSearchDTO searchTerms) {
 //        final String SQL_WHERE_CITY_STATE_ZIPCODE = "WHERE city = ? AND state = ? AND zip_code = ?;";

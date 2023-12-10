@@ -13,12 +13,20 @@ import java.util.List;
 @Service
 @Component
 public class BeerServiceImpl implements BeerService{
+
+    // Instance Variables/Properties
     private BeerDao beerDao;
+
+
+
+    // Constructors
     public BeerServiceImpl(BeerDao beerDao) {
         this.beerDao = beerDao;
     }
 
+    
 
+    // Methods
     public List<Beer> getBeers() {
         try {
             List<Beer> beers = beerDao.getBeers();
