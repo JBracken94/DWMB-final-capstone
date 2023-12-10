@@ -16,10 +16,10 @@
 import BeerService from '../services/BeerService'
 import BreweryService from '../services/BreweryService'
 
-let user = JSON.parse(window.localStorage.getItem('user'));
-let userId = user.id;
-let roles = user.authorities;
-function checkRole(expected) {
+let user = JSON.parse(window.localStorage.getItem('user')); // reads logged in user info from local storage (parse as JSON)
+let userId = user.id; // reads user id
+let roles = user.authorities; // gets authorities or roles array
+function checkRole(expected) { // check user role against passed role value
   let allowed = false;
   roles.forEach(auth => {
     if (auth.name === expected) {

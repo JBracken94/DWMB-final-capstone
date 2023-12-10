@@ -25,7 +25,8 @@ export default {
   data() {
     return {
       brewery: [],
-      beers: []
+      beers: [],
+      isFounder: false,
     }
   },
   // GET CURRENT BREWERY
