@@ -20,6 +20,7 @@ import BrewMap from '../components/BrewMap.vue';
 import BeerService from '../services/BeerService';
 import BreweryService from '../services/BreweryService';
 import BeerList from '../components/BeerList.vue';
+import LocationService from '../services/LocationService';
 export default {
   data() {
     return {
@@ -39,11 +40,19 @@ export default {
     BreweryService.getBrewery(this.$route.params.breweryId)
     .then(response => {
       this.brewery = response.data;
-    })
+    });
     BeerService.getBeersByBrewery(this.$route.params.breweryId)
     .then(response => {
       this.beers = response.data;
-    })
+    });
+    // LocationService.getLocation(`${this.address}` + '&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8')
+    // .then(response => {
+    //   if (response.data.results.length > 0) {
+    //     this.resp = response.data;
+    //     this.longitude = response.data.results[0].geometry.location.lng;
+    //     this.latitude = response.data.results[0].geometry.location.lat;
+    //   }
+    // })
   },
   computed: {
     fixedAddress() {

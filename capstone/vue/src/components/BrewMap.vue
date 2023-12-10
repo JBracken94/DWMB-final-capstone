@@ -1,12 +1,13 @@
 
 <template>
-  <div >
+  <div>
+    <!-- <button @click="toggleMap()"> {{ showMap ? 'Hide Map' : 'Show Map' }} </button> -->
     <h2>Find Us</h2>
     <!-- Add your Google Maps API Key as api-key attribute to demo functionality -->
-    <GoogleMap api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" style="width: 500px; height: 500px" :center="{ lat: this.latitude, lng: this.longitude }"
-      :zoom="15">
+    <GoogleMap v-if="showMap" api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" style="width: 500px; height: 500px"
+      :center="{ lat: this.latitude, lng: this.longitude }" :zoom="15">
       <Marker :options="{ position: center }" />
-      <Marker :options="{ position: {lat: this.latitude, lng: this.longitude} }" />
+      <Marker :options="{ position: { lat: this.latitude, lng: this.longitude } }" />
     </GoogleMap>
   </div>
 </template>
@@ -15,7 +16,6 @@
 import { defineComponent } from "vue";
 import { GoogleMap, Marker } from "vue3-google-map";
 import LocationService from '../services/LocationService';
-
 
 
 // function getAddressString(brew) {
@@ -28,14 +28,17 @@ export default defineComponent({
   props: ['brew', 'address'],
   data() {
     return {
-      longitude: '0',
-      latitude: '0',
-      resp: {meatball: 'sauce'},
+      longitude: '',
+      latitude: '',
+      resp: { meatball: 'sauce' },
       showMap: false,
+      test: false,
     }
   },
   components: { GoogleMap, Marker },
   setup() {
+
+    
     const center = { lat: 39.152243090211236, lng: -84.46729087516896 }; // center on TE cincinatti
     // const myBrewery = { lat: this.latitude, lng: this.longitude }
 
@@ -43,19 +46,30 @@ export default defineComponent({
     // const brewery = { lat: 40.44619813736048, lng: -80.07601741434895 };
 
     return { center };
+
+    
   },
   methods: {
-  },
-  created() {
-    LocationService.getLocation(`${this.address}` + '&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8')
-    .then(response => {
-      if (response.data.results.length > 0) {
-        this.resp = response.data;
-        this.longitude = response.data.results[0].geometry.location.lng;
-        this.latitude = response.data.results[0].geometry.location.lat;
-      }
-    })
+    toggleMap() {
+      this.showMap = !this.showMap
+    },
+    setTest() {
+      this.test = !this.test;
+    },
 
+  },
+  updated() {
+    this.showMap = true;
+    LocationService.getLocation(`${this.address}` + '&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8')
+      .then(response => {
+        if (response.data.results.length > 0) {
+          this.resp = response.data;
+          this.longitude = response.data.results[0].geometry.location.lng;
+          this.latitude = response.data.results[0].geometry.location.lat;
+
+          console.log(this.showMap);
+        }
+      });
   },
   computed: {
   }
