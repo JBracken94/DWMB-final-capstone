@@ -39,7 +39,7 @@ CREATE TABLE beer
     beer_type VARCHAR(50) NOT NULL,
     abv DECIMAL(3, 1) NOT NULL,
     label_image VARCHAR(1000),
-    description VARCHAR(200),
+    description VARCHAR(1000),
 
     CONSTRAINT PK_beer PRIMARY KEY (beer_id),
     CONSTRAINT FK_beer_brewery FOREIGN KEY (brewery_id) REFERENCES brewery(brewery_id)
@@ -120,72 +120,60 @@ INSERT INTO users  (username,password_hash,role) VALUES('brewtoo','$2a$10$tZE.X5
 
 --starting breweries
 INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
-VALUES ('Unity Brewing', '3862 US-30', 'Latrobe', 'PA', 15650, NOW(), '(724) 520-4234',
+VALUES ('Unity Brewing', '3862 US-30', 'Latrobe', 'PA', 15650, '3-7-2020', '(724) 520-4234',
 		'Unity Brewing was something I’ve always wanted to share with the people in my community. I’ve been brewing for 20 years and it only took about about half that time for my hobby to become more of an obsession. Now, when we brew, we’re changing only the subtlest elements of our process. Our Co-Brewer Alan and I have known each other for about the same length of time. He didn’t come into the brewing world until a bit later, but his passion and attention to detail make all the difference. Our beers really are a collective effort and you can taste that. While we offer the traditional styles year round, our menu is constantly changing with new and unique beers.',
-		 'brewboislogo.png', 'www.brewboisPA.com', 3);
+		 'unitybrewing.jpg', 'www.brewboisPA.com', 3);
 INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
-VALUES ('Fermata Brewing', '918 Merchant Street', 'Ambridge', 'PA', 15003, '2023', '(724) 318-8189',
+VALUES ('Fermata Brewing', '918 Merchant Street', 'Ambridge', 'PA', 15003, '7-25-2021', '(724) 318-8189',
 	   'Since the partners are all music enthusiasts, we thought it might be a nice idea to subtly incorporate something music-related when choosing a name or theme for the brewery. Fermata seemed a great idea because it can be connoted several ways. First, the word Fermata is derived from the Italian word fermare, meaning “to stay.” In music, it is used as a symbol to denote a hold (on either a note or a rest) of unspecified length. What better way to encapsulate the idea of a brewpub; we welcome everyone to pause (or stay) for a while and enjoy craft beers and comraderie. It seems to capture the best of both worlds, making for a comfortable and neighborly experience.',
-	    'otherlogo.jph', 'fermatabrewing.beer', 5);
+	    'fermata.jpg', 'fermatabrewing.beer', 5);
 INSERT INTO brewery (brewery_name, street_address, city, state, zip_code, date_est, phone_number, about_us, logo_image, website, founder_id)
-VALUES ('Sargetown Brew Works', '7 Puppy Road', 'Derry', 'PA', 15627, NOW(), '(777) 777-5555',
-	   'Bark bark, yum yum!', 'picofdog.jpg','www.pugdrunk.com', 2);
+VALUES ('New Belgium Brewing', '21 Craven Street', 'Asheville', 'NC', 28806, '3-14-1991', '(828) 333-6900',
+	   'New Belgium has been a human-powered company from the beginning. Before our founders ever sold a bottle of beer, they hiked into Rocky Mountain National Park with a jug of home brew to outline the values that would shape our brewery. As a certified B Corp, New Belgium continues its commitment to being a brewery for good. We put people and community first, consider the environmental and social impact of our work, and strive to set the highest standards of taste and quality when it comes to our craft—making great beer.',
+	   'newbelgium.jpg','https://www.newbelgium.com/', 5);
 
 
---starting beers
+--UnityBers
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Vanilla Bean Blonde', 1, 'Blonde Ale', 5.7, 'vanillabean', 'The undisputed Pub favorite! Unity Blonde Ale meets real Haitian Vanilla to make this ‘nilla cookie of a beer our best seller!  ');
+VALUES ('Vanilla Bean Blonde', 1, 'Blonde Ale', 5.7, 'vanillabeanblonde.jpg', 'The undisputed Pub favorite! Unity Blonde Ale meets real Haitian Vanilla to make this ‘nilla cookie of a beer our best seller!  ');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Unity Lager', 1, 'American Lager', 5.0, 'unitylager', 'Easy drinking Lager for beer lovers that love beer that tastes like beer!');
+VALUES ('Unity Lager', 1, 'American Lager', 5.0, 'unitylager.png', 'Easy drinking Lager for beer lovers that love beer that tastes like beer!');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Ridge Runnr', 1, 'Hazy IPA', 7.1, 'ridgerunner', 'Brewed with Oats, Wheat, and dry hopped with Citra, Loral, and Columbus hops.');
+VALUES ('Ridge Runner', 1, 'Hazy IPA', 7.1, 'ridgerunner.png', 'Brewed with Oats, Wheat, and dry hopped with Citra, Loral, and Columbus hops.');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Oatmeal Stout', 1, 'Oatmeal Stout', 5.7, 'oatmealstout', 'Roasted barley, Oats, Milk Sugar, and Centennial hops. (contains lactose)');
+VALUES ('Oatmeal Stout', 1, 'Oatmeal Stout', 5.7, 'oatmealstout.png', 'Roasted barley, Oats, Milk Sugar, and Centennial hops. (contains lactose)');
 
+-- Fermata Beers
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Out of Tune: Blueberry Plum', 2, 'Fruited Sour', 7.1, 'outtatuneferm.jpeg', 'Our clean souring process blends perfectly with the sweet and tart flavors of blueberry and plum. These two fruits combine for a symphony of flavors that is satisfying and quenching.');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Whole Lot Warmer', 2, 'Winter Warmer', 12.1, 'wholelotwarmer.jpeg', 'The full body, rich toffee, caramel, and traditional spices of our Wee Bit Warmer get even warmer! Aged in rye whiskey barrels from our friends at Big Spring Spirits, Whole Lot Warmer takes on the spicy oak and subtle vanilla from the barrel with a cozy embrace.');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Dr. Peters'' Porter', 2, 'English Porter', 5.0, 'peterporter.jpeg', 'Just like all the lads in Blighty, Dr. Peters fancies a proper pint. And when the winds blow across the Mersey and the weather takes a chill, there is no better proper pint than an English Porter. Slightly softer and a tad sweeter than our American Porter, this delightful quaffer has a mild range of restrained roasted flavors with a chocolate-caramel-malty profile that adds a measure of complexity, while remaining deliciously simple.');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Autumn Leaves', 2, 'Brown Al', 5.4, 'autumnleavesferm.jpeg', 'Our Brown Ale features a grist made up of Maris Otter, caramel, and chocolate malts crafted specifically to create a robust, full-bodied beer that has us begging for autumn weather. As the light winds blow, let us pretend we can change the season.');
 
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Slurp Juice', 2, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
---
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Slurp Juice', 2, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
---
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---VALUES ('Slurp Juice', 2, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
+-- New Belgium Beers
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Voodoo Ranger IPA', 3, 'IPA', 7.0, 'vripa.png', 'Packed with bright tropical aromas and brilliant citrusy flavors, this unfiltered IPA wraps up with a pleasantly smooth finish.');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Juice Force', 3, 'Hazy IPA', 5.0, 'jforce.jpeg', 'Juice Force is a fruit forward, highly drinkable, 9.5% ABV blast. Buckle up, with this hazy IPA you''ll be buzzing the tower in no time.');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Fat Tire', 3, 'Ale', 5.2, 'fattire.jpeg', 'Made with premium ingredients, Fat Tire is a bright and balanced beer that''s certified carbon neutral. Since 1991, we''ve been working to reduce our environmental impact, while investing a portion of every Fat Tire you buy in community-based climate action. From certified B-Corp New Belgium Brewing, this ale is easy-drinking and easy on the planet.');
+INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
+VALUES ('Holiday Ale', 3, 'Seasonal Ale', 7.0, 'holidayale.jpeg', 'Holiday Ale captures the best parts of winter: warmth and spice. Brewed by certified B-Corp New Belgium Brewing, this ale—with rich flavors of cranberries, orange and cinnamon—is a real holiday treat. Tis'' the season for complex, rich beers! So, whether you''ve been naughty or nice, you''ll want to put this beer on your beverage wish list. 7.5% ABV.');
 
---INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---  VALUES ('Junk in the Trunk', 1, 'Hazy IPA', 6.5, 'imagegoesher.png', 'This''ll junk your trunk!');
---  INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---  VALUES ('Beer for Drinking', 2, 'Amber Ale', 4.6, 'bfdlabel.jpg', 'You can drink it!');
---  INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---  VALUES ('Brew Bois Lager', 2, 'Lager', 5.2, 'bbl.jpg', 'Best beer in town!');
---  INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
---  VALUES ('Slurp Juice', 3, 'Sour', 9.9, 'sj.jpg', '1 Victory Royale...');
 
 --starting saved beer list
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,4); -- admin
-INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,2);
-INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,1); -- lovertest
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,5);
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,6); -- lovertest
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,2);
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,3);
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (4,4);
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (3,1); --brewertest
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (5,8);
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (5,9);
+INSERT INTO favorite_beer (user_id, beer_id) VALUES (5,1);
 
 COMMIT TRANSACTION;
