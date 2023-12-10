@@ -16,24 +16,24 @@
 import BeerService from '../services/BeerService'
 import BreweryService from '../services/BreweryService'
 
-let user = JSON.parse(window.localStorage.getItem('user')); // reads logged in user info from local storage (parse as JSON)
-let userId = user.id; // reads user id
-let roles = user.authorities; // gets authorities or roles array
-function checkRole(expected) { // check user role against passed role value
-  let allowed = false;
-  roles.forEach(auth => {
-    if (auth.name === expected) {
-      allowed = true;
-    }
-  })
-  return allowed;
-}
-console.log(checkRole('ROLE_ADMIN'));
+// let user = JSON.parse(window.localStorage.getItem('user')); // reads logged in user info from local storage (parse as JSON)
+// let userId = user.id; // reads user id
+// let roles = user.authorities; // gets authorities or roles array
+// function checkRole(expected) { // check user role against passed role value
+//   let allowed = false;
+//   roles.forEach(auth => {
+//     if (auth.name === expected) {
+//       allowed = true;
+//     }
+//   })
+//   return allowed;
+// }
+// console.log(checkRole('ROLE_ADMIN'));
 
-console
-console.log(roles);
-console.log(user);
-console.log(userId);
+// console
+// console.log(roles);
+// console.log(user);
+// console.log(userId);
 
 export default {
   // GET RANDOM BREWERY/BEER? BOTH
@@ -57,7 +57,7 @@ export default {
       .then(response => {
         this.breweries = response.data;
       });
-      this.isBrewer = checkRole('ROLE_BREWER');
+      // this.isBrewer = checkRole('ROLE_BREWER');
   }
 }
 
