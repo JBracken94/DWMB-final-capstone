@@ -35,4 +35,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+h1 {
+  color: gold;
+  font-size: 100px;
+}
+</style>

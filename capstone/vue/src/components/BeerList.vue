@@ -33,6 +33,5 @@ export default {
   flex-wrap: wrap;
   flex-grow: 1;
 }
-.beer-item {
-}
+
 </style>

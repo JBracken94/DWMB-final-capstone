@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import BeerService from '../services/BeerService';
 export default {
   data() {
     return {
@@ -30,6 +31,17 @@ export default {
   },
   methods: {
     submitForm() {
+      BeerService.addSavedBeer({
+        name:this.beerName,
+        type: this.beerType,
+        description: this.beerDescription
+      })
+      .then(response => {
+        console.log('Beer details saved successfully:', response);
+      })
+      .catch(error => {
+        console.error('Error saving beer details:', error);
+      });
       
       // this will be the log to submit the information such as beer
       // so note you can access the form data using the (this.beerName and this.beerType and this.beerDescription

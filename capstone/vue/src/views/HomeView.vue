@@ -15,6 +15,7 @@
 <script>
 import BeerService from '../services/BeerService'
 import BreweryService from '../services/BreweryService'
+import BeerList from '../components/BeerList.vue'
 
 // let user = JSON.parse(window.localStorage.getItem('user')); // reads logged in user info from local storage (parse as JSON)
 // let userId = user.id; // reads user id

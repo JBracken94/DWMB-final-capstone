@@ -56,6 +56,18 @@ export default defineComponent({
     setTest() {
       this.test = !this.test;
     },
+   // async getLocation(){
+     // try{
+       // const response = await LocationService.getLocation('${this.address}&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8');
+       // if(response.data.results.length > 0){
+        //  this.longitude = response.data.results[0].geometry.location.lng;
+        //  this.latitude = response.data.results[0].geometry.location.lat;
+        //  this.showMap = true;
+      //  }
+    //  } catch (error) {
+     //   console.error('Error fetching location:', error);
+     // }
+   // }
 
   },
   updated() {

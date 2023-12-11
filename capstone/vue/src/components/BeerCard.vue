@@ -26,11 +26,12 @@
     },
     mounted() {
 
-      // I would need to check if the beer is already saved only when the componenet is mounted
+      // I would need to check if the beer is already saved only when the component is mounted
       this.checkIfSaved();
     },
     methods: {
       checkIfSaved() {
+        
         
         // this method will check if the beer is saved
       
@@ -67,8 +68,21 @@
   
   <style scoped>
   .card {
+    display: flex;
     width: 18rem;
-    margin: 1rem;
+
+    background-color: gold;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    border-color: brown;
+    border-radius: 30px;
+    border-block-width: 10px;
+    
+    
+    margin: auto;
+    margin-bottom: 30px;
+    
   }
   .card-img-top {
     height: 200px;
@@ -77,12 +91,15 @@
   }
   .card-title {
     margin-top: 10px;
-    font-size: 1.2em;
+    font-size: 1em;
+    color:red;
   }
   .card-text {
     margin-top: 5px;
+    
   }
   .btn {
     margin-top: 10px;
+    color:black;
   }
   </style>
