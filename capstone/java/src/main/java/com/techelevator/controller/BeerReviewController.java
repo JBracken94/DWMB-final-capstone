@@ -33,6 +33,11 @@ public class BeerReviewController {
     public BeerReview beerReviewByID(@PathVariable("id") int reviewId) {
         return reviewService.getBeerReviewById(reviewId);
     }
+    @GetMapping("/beers/{id}/reviews")
+    public List<BeerReview> getReviewsByBeerId(int beerId) {
+        List<BeerReview> beerReviews = reviewService.getReviewsByBeerId(beerId);
+        return beerReviews;
+    }
     @GetMapping("beers/myreviews")
     public List<BeerReview> myBeerReviews(Principal principal) {
         List<BeerReview> myBeerReviews = reviewService.getMyBeerReviews(principal);

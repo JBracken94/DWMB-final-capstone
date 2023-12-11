@@ -53,6 +53,21 @@ public class JdbcBeerReviewDao implements BeerReviewDao {
             throw new DaoException("Unable to connect to server or database.");
         }
     }
+    @Override
+    public List<BeerReview> getReviewsByBeerId(int beerId) {
+        List<BeerReview> beerReviews = new ArrayList<>();
+        String sql = "SELECT beer_review_id, beer_id, reviewer_id, beer_rating, beer_review, date_posted " +
+                "FROM beer_review WHERE beer_id = ?;";
+        try {
+            SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, beerId);
+            while (rs.next()) {
+                beerReviews.add(mapRowToBeerReview(rs));
+            }
+            return beerReviews;
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.");
+        }
+    }
 
     @Override
     public List<BeerReview> getMyBeerReviews(Principal principal) {
