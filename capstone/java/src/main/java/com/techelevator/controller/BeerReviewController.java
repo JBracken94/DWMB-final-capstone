@@ -61,7 +61,7 @@ public class BeerReviewController {
         }
     }
 
-    @DeleteMapping("beers/reviews/{id}")
+    @DeleteMapping("/beers/reviews/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBeerReview(@PathVariable("id") int reviewId, Principal principal) {
         reviewService.deleteBeerReview(reviewId, principal);

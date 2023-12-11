@@ -11,7 +11,7 @@ import AboutBeerView from '../views/AboutBeerView.vue';
 import AboutBreweryView from '../views/AboutBreweryView.vue';
 import BeerCardSearchView from '../views/BeerCardSearchView.vue';
 import BreweryCardSearch from '../views/BreweryCardSearchView.vue';
-import BeerDetails from '../components/BeerDetails.vue';
+import BeerDetailsView from '../views/BeerDetailsView.vue';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -64,11 +64,6 @@ const routes = [
     component: MySavedLists
   },
   {
-    path: "/beer/:beerId",
-    name: "beer-details",
-    component: AboutBeerView
-  },
-  {
     path: "/breweries/:breweryId",
     name: "brewery-details",
     component: AboutBreweryView
@@ -86,7 +81,7 @@ const routes = [
   {
     path: '/beers/:id',
     name: 'beer-details',
-    component: BeerDetails
+    component: BeerDetailsView
   }
 ];
 

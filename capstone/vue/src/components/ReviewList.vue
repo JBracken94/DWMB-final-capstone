@@ -3,20 +3,23 @@
 </template>
 
 <script>
-import ReviewCard from './ReviewCard.vue';
+import ReviewCard from '../components/ReviewCard.vue';
 import BeerReviewService from '../services/BeerReviewService';
 export default {
     components: {
         ReviewCard
     },
+    props: ['beer'],
     data() {
         return {
             reviews: [],
         }
     },
-    props: ['beer'],
     created() {
-        BeerReviewService.getMyBeersReviews(this.beer.beerId)
+        BeerReviewService.getReviewsByBeerId(this.beer.beerId)
+        .then(response => {
+            this.reviews = response.data;
+        })
     }
 
 }
