@@ -78,8 +78,6 @@ export default defineComponent({
           this.resp = response.data;
           this.longitude = response.data.results[0].geometry.location.lng;
           this.latitude = response.data.results[0].geometry.location.lat;
-
-          console.log(this.showMap);
         }
       });
   },

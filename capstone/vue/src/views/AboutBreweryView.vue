@@ -1,10 +1,12 @@
 <template>
   <h1>Brewery Details</h1>
-  <div v-show="1">
-    <button>Update my Brewery</button>
-    <update-brewery-form />
-    <button>Add Beer</button>
-    <create-beer-form />
+  <div v-show="checkFounder">
+    <button @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
+    <update-brewery-form v-show="showUpdateBrewery"/>
+    <button @click="showCreateBeer = !showCreateBeer">{{ showCreateBeer ? 'Hide' : 'Add New Beer' }}</button>
+    <create-beer-form 
+    v-show="showCreateBeer"
+    v-bind:brewery="brewery"/>
   </div>
   
   <!-- Brewery Info Box -->
@@ -33,6 +35,8 @@ export default {
       brewery: [],
       beers: [],
       isFounder: false,
+      showUpdateBrewery: false,
+      showCreateBeer: false,
     }
   },
   // GET CURRENT BREWERY
@@ -68,6 +72,10 @@ export default {
     fixedAddress() {
       let newAddress = this.brewery.streetAddress + ' ' + this.brewery.city + ' ' + this.brewery.state + ' ' + this.brewery.zipcode;
       return newAddress;
+    },
+    checkFounder() {
+      let user = JSON.parse(window.localStorage.getItem('user'));
+      return user.id == this.brewery.founderId;
     }
   }
 }

@@ -1,67 +1,83 @@
 <template>
-    <form class="create-beer-form" v-on:submit.prevent="createBeer()">
+  <form class="create-beer-form" v-on:submit.prevent="createBeer()">
     <div class="mb-3">
       <label for="beerName" class="form-label">Beer Name</label>
-      <input v-model="newBeer.beerName" type="text" class="form-control" id="beerName" placeholder="Enter beer name">
+      <input v-model="newBeer.beerName" type="text" class="form-control" name="beerName" placeholder="Enter beer name" required>
     </div>
 
     <div class="mb-3">
       <label for="beerType" class="form-label">Beer Type</label>
-      <input v-model="newBeer.beerType" type="text" class="form-control" id="beerType" placeholder="Enter beer type">
+      <input v-model="newBeer.beerType" type="text" class="form-control" name="beerType" placeholder="Enter beer type" required>
     </div>
 
     <div class="mb-3">
       <label for="beerDescription" class="form-label">Description</label>
-      <textarea v-model="newBeer.beerDescription" class="form-control" id="beerDescription" rows="3"></textarea>
+      <textarea v-model="newBeer.description" class="form-control" name="beerDescription" rows="3" required></textarea >
     </div>
 
     <div class="mb-3">
       <label for="abv" class="form-label">Abv</label>
-      <input v-model="newBeer.abv" type="text" class="form-control" id="abv" placeholder="Enter % Abv, example 5.5">
+      <input v-model="newBeer.abv" type="number" class="form-control" step="0.1" name="abv" placeholder="Enter % Abv, example 5.5" required>
     </div>
 
     <div class="mb-3">
       <label for="labelImage" class="form-label">Label Image</label>
-      <input v-model="newBeer.labelImage" type="text" class="form-control" id="labelImage" placeholder="Enter Label Image, example 'yourbeerlabel.jpg'">
+      <input v-model="newBeer.labelImage" type="text" class="form-control" name="labelImage"
+        placeholder="Enter Label Image, example 'yourbeerlabel.jpg'" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit New Beer</button>
+    <button type="submit" class="btn btn-primary" @click.prevent="createBeer">Submit New Beer</button>
   </form>
 </template>
   
 <script>
 
-    import BeerService from '../services/BeerService'
+import BeerService from '../services/BeerService'
 
-    export default {
-        data() {
-            return {
-                newBeer: {}
-            }
-        },
-    
-        methods: {
-
-            createBeer() {
-                BeerService.createBeer(this.newBeer)
-                .then (response => {
-                    if (response.status == 200) {
-                        //Notification of successful
-                        alert('Success!');
-                    } else if (response.status == 500) {
-                        //Server error notification
-                        alert('Doh!');
-                    } else {
-                        //Some other error
-                        alert(response.status);
-                    }
-                });
-                // Look at setNotification from Lecture
-            }
-        }
+export default {
+  data() {
+    return {
+      newBeer: {
+        beerId: 0,
+        beerName: '',
+        beerType: '',
+        description: '',
+        abv: '',
+        labelImage: '',
+        breweryId: 0
+      },
+      currentBrewery: this.brewery.id,
     }
+  },
+  props: ['brewery'],
+  methods: {
+    createBeer() {
+      BeerService.createBeer(this.newBeer)
+        .then(response => {
+          if (response.status == 200) {
+            //Notification of successful
+            alert('Success!');
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 500) {
+            alert('500')
+          }
+        });
+      this.resetFrom();
+      // Look at setNotification from Lecture
+    },
+    resetFrom() {
+      this.newBeer = {
+        beerId: 0,
+        breweryId: this.currentBrewery.id
+      };
+    }
+  },
+  created() {
+    this.newBeer.breweryId = this.brewery.breweryId;
+  }
+}
 </script>
   
-<style>
-  
-</style>
+<style></style>
