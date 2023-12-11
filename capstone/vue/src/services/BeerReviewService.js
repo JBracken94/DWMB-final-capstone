@@ -11,7 +11,6 @@ export default {
 
   getReviewsByBeerId(beerId) {
     return axios.get(`/beers/${beerId}/reviews`);
-    
   },
 
   getMyReviews() {
