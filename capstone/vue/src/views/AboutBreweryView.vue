@@ -1,8 +1,10 @@
 <template>
-  <h1></h1>
+  <h1>Brewery Details</h1>
   <div v-show="1">
-    <button > Update my Brewery</button>
-    <button> Add Beer</button>
+    <button>Update my Brewery</button>
+    <update-brewery-form />
+    <button>Add Beer</button>
+    <create-beer-form />
   </div>
   
   <!-- Brewery Info Box -->
@@ -21,6 +23,10 @@ import BeerService from '../services/BeerService';
 import BreweryService from '../services/BreweryService';
 import BeerList from '../components/BeerList.vue';
 import LocationService from '../services/LocationService';
+
+import UpdateBreweryForm from '../components/UpdateBreweryForm.vue';
+import CreateBeerForm from '../components/CreateBeerForm.vue';
+
 export default {
   data() {
     return {
@@ -34,8 +40,11 @@ export default {
 
   components: {
     BrewMap,
-    BeerList
+    BeerList,
+    UpdateBreweryForm,
+    CreateBeerForm
   },
+
   created() {
     BreweryService.getBrewery(this.$route.params.breweryId)
     .then(response => {
@@ -54,6 +63,7 @@ export default {
     //   }
     // })
   },
+
   computed: {
     fixedAddress() {
       let newAddress = this.brewery.streetAddress + ' ' + this.brewery.city + ' ' + this.brewery.state + ' ' + this.brewery.zipcode;
