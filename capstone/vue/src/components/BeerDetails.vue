@@ -1,26 +1,18 @@
 <template>
   <div>
     <h2>Beer Details</h2>
-    <form @submit.prevent="submitForm">
-      <div class="mb-3">
-        <label for="beerName" class="form-label">Beer Name</label>
-        <input v-model="beerName" type="text" class="form-control" id="beerName" placeholder="Enter beer name">
-      </div>
-      <div class="mb-3">
-        <label for="beerType" class="form-label">Beer Type</label>
-        <input v-model="beerType" type="text" class="form-control" id="beerType" placeholder="Enter beer type">
-      </div>
-      <div class="mb-3">
-        <label for="beerDescription" class="form-label">Description</label>
-        <textarea v-model="beerDescription" class="form-control" id="beerDescription" rows="3"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <button>Update Beer Form</button>
+    <update-beer-form />
   </div>
 </template>
 
 <script>
+
 import BeerService from '../services/BeerService';
+
+import UpdateBeerForm from '../components/UpdateBeerForm.vue';
+
+
 export default {
   data() {
     return {
@@ -29,6 +21,11 @@ export default {
       beerDescription: ''
     };
   },
+
+  components: {
+    UpdateBeerForm
+  },
+
   methods: {
     submitForm() {
       BeerService.addSavedBeer({

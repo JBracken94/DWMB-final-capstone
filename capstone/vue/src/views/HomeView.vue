@@ -10,9 +10,12 @@
     <!-- Random Brewery Display -->
     <!-- Meet the Brew Boys Page -->
   </div>
+  <button>Create Brewery</button>
+  <create-brewery-form/>
 </template>
 
 <script>
+import CreateBreweryForm from '../components/CreateBreweryForm.vue'
 import BeerService from '../services/BeerService'
 import BreweryService from '../services/BreweryService'
 import BeerList from '../components/BeerList.vue'
@@ -37,6 +40,7 @@ import BeerList from '../components/BeerList.vue'
 // console.log(userId);
 
 export default {
+  components: { CreateBreweryForm },
   // GET RANDOM BREWERY/BEER? BOTH
 
   // CURRENTLY LOADS ALL BREWERIES AND BEERS TO HOME VIEW

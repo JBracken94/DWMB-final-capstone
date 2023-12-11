@@ -8,6 +8,7 @@ import java.util.List;
 public interface BeerReviewDao {
     List<BeerReview> getAllBeerReviews();
     BeerReview getBeerReviewById (int beerReviewId);
+    List<BeerReview> getReviewsByBeerId(int beerId);
     List<BeerReview> getMyBeerReviews(Principal principal);
     BeerReview createBeerReview(BeerReview newBeerReview, Principal principal);
     BeerReview updateBeerReview(BeerReview beerReview, Principal principal);
