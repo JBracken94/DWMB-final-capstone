@@ -157,7 +157,7 @@ VALUES ('Autumn Leaves', 2, 'Brown Al', 5.4, 'autumnleavesferm.jpeg', 'Our Brown
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
 VALUES ('Voodoo Ranger IPA', 3, 'IPA', 7.0, 'vripa.png', 'Packed with bright tropical aromas and brilliant citrusy flavors, this unfiltered IPA wraps up with a pleasantly smooth finish.');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Juice Force', 3, 'Hazy IPA', 5.0, 'jforce.jpeg', 'Juice Force is a fruit forward, highly drinkable, 9.5% ABV blast. Buckle up, with this hazy IPA you''ll be buzzing the tower in no time.');
+VALUES ('Juice Force', 3, 'Hazy IPA', 9.5, 'jforce.jpeg', 'Juice Force is a fruit forward, highly drinkable, 9.5% ABV blast. Buckle up, with this hazy IPA you''ll be buzzing the tower in no time.');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
 VALUES ('Fat Tire', 3, 'Ale', 5.2, 'fattire.jpeg', 'Made with premium ingredients, Fat Tire is a bright and balanced beer that''s certified carbon neutral. Since 1991, we''ve been working to reduce our environmental impact, while investing a portion of every Fat Tire you buy in community-based climate action. From certified B-Corp New Belgium Brewing, this ale is easy-drinking and easy on the planet.');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)

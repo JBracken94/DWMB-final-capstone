@@ -1,5 +1,5 @@
 <template>
-  <h1>Brewery Card Search</h1>
+  <h2 class="bcs">Brewery Card Search</h2>
   <!-- BUTTONS ON CARDS TO ADD SAVED -->
   <!-- ADD BREWERY BUTTON/FORM for ROLE_BREWER -->
   <!-- Brewery Search Bar/Filter fields -->
@@ -34,7 +34,18 @@ export default {
 </script>
 
 <style>
-h1 {
+
+.bcs {
+  background-image: url('../assests\images/placeholders/breweryBackground.jpg');
+  background-color: #cccccc;
+  background-size: cover;
+  background-position: center;
+  height: 100 vh;
+  font-size: 100px;
 color: gold;
+}
+
+h1 {
+ 
 }
 </style>

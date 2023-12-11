@@ -4,7 +4,7 @@
     <!-- <button @click="toggleMap()"> {{ showMap ? 'Hide Map' : 'Show Map' }} </button> -->
     <h2>Find Us</h2>
     <!-- Add your Google Maps API Key as api-key attribute to demo functionality -->
-    <GoogleMap v-if="showMap" api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" style="width: 500px; height: 500px"
+    <GoogleMap v-if="showMap" api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" style="width: 100%; height: 500px"
       :center="{ lat: this.latitude, lng: this.longitude }" :zoom="15">
       <Marker :options="{ position: center }" />
       <Marker :options="{ position: { lat: this.latitude, lng: this.longitude } }" />
@@ -18,11 +18,7 @@ import { GoogleMap, Marker } from "vue3-google-map";
 import LocationService from '../services/LocationService';
 
 
-// function getAddressString(brew) {
-//       let fullAddress = brew.streetAddress + ' ' + brew.city + ' ' + brew.state + ' ' + brew.zipcode;
-//       let fixed = fullAddress.replaceAll(' ', '%');
-//       return fixed;
-//     }
+
 
 export default defineComponent({
   props: ['brew', 'address'],
@@ -40,10 +36,7 @@ export default defineComponent({
 
     
     const center = { lat: 39.152243090211236, lng: -84.46729087516896 }; // center on TE cincinatti
-    // const myBrewery = { lat: this.latitude, lng: this.longitude }
-
-    // find way to turn address into coordinates
-    // const brewery = { lat: 40.44619813736048, lng: -80.07601741434895 };
+    
 
     return { center };
 
@@ -56,18 +49,7 @@ export default defineComponent({
     setTest() {
       this.test = !this.test;
     },
-   // async getLocation(){
-     // try{
-       // const response = await LocationService.getLocation('${this.address}&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8');
-       // if(response.data.results.length > 0){
-        //  this.longitude = response.data.results[0].geometry.location.lng;
-        //  this.latitude = response.data.results[0].geometry.location.lat;
-        //  this.showMap = true;
-      //  }
-    //  } catch (error) {
-     //   console.error('Error fetching location:', error);
-     // }
-   // }
+   
 
   },
   updated() {

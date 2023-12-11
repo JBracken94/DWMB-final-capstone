@@ -69,6 +69,16 @@ export default {
 </script>
 
 <style scoped>
+
+body {
+  background-image: url('https://images.app.goo.gl/By7m3UhbYvVw7fNf6');
+  background-size: cover;
+  background-position: center;
+  height: cover;
+}
+
+
+
 h1 {
   text-align: center;
   font-size: 100px;
