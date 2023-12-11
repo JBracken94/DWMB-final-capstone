@@ -50,7 +50,7 @@ export default {
   },
 
   created() {
-    BreweryService.getBrewery(this.$route.params.breweryId)
+    BreweryService.getBreweryById(this.$route.params.breweryId)
     .then(response => {
       this.brewery = response.data;
     });
@@ -58,14 +58,6 @@ export default {
     .then(response => {
       this.beers = response.data;
     });
-    // LocationService.getLocation(`${this.address}` + '&key=AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8')
-    // .then(response => {
-    //   if (response.data.results.length > 0) {
-    //     this.resp = response.data;
-    //     this.longitude = response.data.results[0].geometry.location.lng;
-    //     this.latitude = response.data.results[0].geometry.location.lat;
-    //   }
-    // })
   },
 
   computed: {

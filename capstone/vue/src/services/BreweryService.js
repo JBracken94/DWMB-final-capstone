@@ -5,12 +5,8 @@ export default {
     return axios.get('/breweries');
   },
   
-  getBrewery(breweryId) {
+  getBreweryById(breweryId) {
     return axios.get(`/breweries/${breweryId}`);
-  },
-
-  searchBreweries(searchTerms) {
-    return axios.get('/breweries/search', searchTerms); // probably take out
   },
 
   getMySavedBreweries() {

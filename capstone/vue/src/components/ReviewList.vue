@@ -1,5 +1,5 @@
 <template>
-    <review-card v-bind:beer="beer" v-for="review in reviews" v-bind:key="review.beerReviewId"/>
+    <review-card v-bind:beer="myBeer" v-for="review in currentReviews" v-bind:key="review.beerReviewId"/>
 </template>
 
 <script>
@@ -9,17 +9,12 @@ export default {
     components: {
         ReviewCard
     },
-    props: ['beer'],
+    props: ['beer', 'reviews'],
     data() {
         return {
-            reviews: [],
         }
     },
     created() {
-        BeerReviewService.getReviewsByBeerId(this.beer.beerId)
-        .then(response => {
-            this.reviews = response.data;
-        })
     }
 
 }

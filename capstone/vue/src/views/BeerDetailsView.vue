@@ -1,9 +1,10 @@
 <template>
   <div>
     <h2>Beer Details</h2>
-    <button @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
+    {{ beer.beerName }}
+    <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
     <update-beer-form v-show="showUpdateForm"/>
-    <review-list v-bind:beer="beer"/>
+    <review-list v-bind:beer="beer" v-bind:reviews="reviews"/>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import BeerService from '../services/BeerService';
 import UpdateBeerForm from '../components/UpdateBeerForm.vue';
 import ReviewList from '../components/ReviewList.vue';
 import BeerReviewService from '../services/BeerReviewService';
+import BreweryService from '../services/BreweryService';
 
 
 export default {
@@ -21,6 +23,7 @@ export default {
     return {
       beer: {},
       reviews: [],
+      brewery: {},
       showUpdateForm: false,
     };
   },
@@ -39,10 +42,25 @@ export default {
       // take note i need to make 200 or 201 or 404  basically the success and error situation 
   },
   created() {
+    
     BeerService.getBeerById(this.$route.params.id)
     .then(response => {
       this.beer = response.data;
-    })
+    });
+    BeerReviewService.getReviewsByBeerId(this.$route.params.id)
+    .then(response => {
+      this.reviews = response.data;
+    });
+    BreweryService.getBreweryById(this.beer.breweryId)
+    .then(response => {
+      this.brewery = response.data;
+    });
+  },
+  computed: {
+    isFounder() {
+      let user = JSON.parse(window.localStorage.getItem('user'));
+      return user.id == this.brewery.founderId;
+    }
   }
 };
 </script>

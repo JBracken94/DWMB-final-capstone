@@ -34,7 +34,7 @@ public class BeerReviewController {
         return reviewService.getBeerReviewById(reviewId);
     }
     @GetMapping("/beers/{id}/reviews")
-    public List<BeerReview> getReviewsByBeerId(int beerId) {
+    public List<BeerReview> getReviewsByBeerId(@PathVariable("id") int beerId) {
         List<BeerReview> beerReviews = reviewService.getReviewsByBeerId(beerId);
         return beerReviews;
     }
