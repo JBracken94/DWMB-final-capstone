@@ -55,5 +55,5 @@ export default {
   }
 img {
     height: 75px;
-}
+    }
 </style>
