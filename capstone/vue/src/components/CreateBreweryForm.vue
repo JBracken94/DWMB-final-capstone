@@ -83,13 +83,13 @@
         <label for="logoImage" class="form-label">Logo Image</label>
         <input class="form-control" type="text" placeholder="Enter Logo Image, example 'yourlogo.jpg'" v-model="newBrewery.logoImage" required>
 
-      <button type="submit" class="btn btn-primary">Submit Changes</button>
+        <button type="submit" class="btn btn-primary">Submit Changes</button>
     </form>
 </template>
   
 <script>
 
-    import BreweryService from '../services/BreweryService'
+import BreweryService from '../services/BreweryService'
 
     export default {
         data() {
@@ -152,6 +152,4 @@
     }
 </script>
   
-<style>
-  
-</style>
+<style></style>
