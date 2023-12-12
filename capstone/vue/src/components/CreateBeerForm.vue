@@ -1,5 +1,5 @@
 <template>
-  <form class="create-beer-form" v-on:submit.prevent="createBeer()">
+  <form class="create-beer-form" v-on:submit.prevent="createBeer" v-show="showForm">
     <div class="mb-3">
       <label for="beerName" class="form-label">Beer Name</label>
       <input v-model="newBeer.beerName" type="text" class="form-control" name="beerName" placeholder="Enter beer name" required>
@@ -26,7 +26,7 @@
         placeholder="Enter Label Image, example 'yourbeerlabel.jpg'" required>
     </div>
 
-    <button type="submit" class="btn btn-primary" @click.prevent="createBeer">Submit New Beer</button>
+    <button type="submit" class="btn btn-primary">Submit New Beer</button>
   </form>
 </template>
   
@@ -46,7 +46,10 @@ export default {
         labelImage: '',
         breweryId: 0
       },
-      currentBrewery: this.brewery.id,
+
+      currentBrewery: this.brewery.breweryId,
+
+      showForm: true
     }
   },
   props: ['brewery'],
@@ -54,7 +57,7 @@ export default {
     createBeer() {
       BeerService.createBeer(this.newBeer)
         .then(response => {
-          if (response.status == 200) {
+          if (response.status == 201) {
             //Notification of successful
             alert('Success!');
           }
@@ -69,12 +72,12 @@ export default {
     },
     resetForm() {
       this.newBeer = {
-        beerId: 0,
-        breweryId: this.currentBrewery.id
+        // beerId: 0,
+        // breweryId: this.currentBrewery.breweryId
       };
     }
   },
-  created() {
+  updated() {
     this.newBeer.breweryId = this.brewery.breweryId;
   }
 }

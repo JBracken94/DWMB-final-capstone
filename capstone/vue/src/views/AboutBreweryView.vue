@@ -2,11 +2,13 @@
   <h1>Brewery Details</h1>
   <div v-show="checkFounder">
     <button @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
-    <update-brewery-form v-show="showUpdateBrewery"/>
-    <button @click="showCreateBeer = !showCreateBeer">{{ showCreateBeer ? 'Hide' : 'Add New Beer' }}</button>
-    <create-beer-form 
-    v-show="showCreateBeer"
-    v-bind:brewery="brewery"/>
+    <update-brewery-form v-show="showUpdateBrewery" v-bind:brewery="brewery"/>
+
+    <!-- <button @click="showCreateBeer = !showCreateBeer">{{ showCreateBeer ? 'Hide' : 'Add New Beer' }}</button> -->
+    <button v-show="!showCreateBeer" @click="showCreateBeer = !showCreateBeer">Add New Beer</button>
+    <create-beer-form v-show="showCreateBeer" v-bind:brewery="brewery" />
+    <button v-show="showCreateBeer" @click="showCreateBeer = !showCreateBeer">Cancel Add New Beer</button>
+
   </div>
   
   <!-- Brewery Info Box -->
