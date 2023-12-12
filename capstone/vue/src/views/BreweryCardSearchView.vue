@@ -36,7 +36,7 @@ export default {
 <style>
 
 .bcs {
-  background-image: url('../assests\images/placeholders/breweryBackground.jpg');
+  background-image: url('../assests/images/placeholders/breweryBackground.jpg');
   background-color: #cccccc;
   background-size: cover;
   background-position: center;

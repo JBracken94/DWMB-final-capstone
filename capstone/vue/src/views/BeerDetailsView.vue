@@ -25,6 +25,7 @@ export default {
       myBrewery: {
       },
       showUpdateForm: false,
+      isFounder: false,
     };
   },
 
@@ -43,21 +44,22 @@ export default {
     BeerService.getBeerById(this.$route.params.id)
     .then(response => {
       this.beer = response.data;
+      BreweryService.getBreweryById(this.beer.breweryId)
+    .then(response => {
+      this.myBrewery = response.data;
+    });
     });
     BeerReviewService.getReviewsByBeerId(this.$route.params.id)
     .then(response => {
       this.reviews = response.data;
     });
-    BreweryService.getBreweryById(0)
-    .then(response => {
-      this.myBrewery = response.data;
-    });
+    
   },
   computed: {
-    isFounder() {
-      let user = JSON.parse(window.localStorage.getItem('user'));
-      return user.id == this.myBrewery.founderId;
-    },
+    // isFounder() {
+    //   let user = JSON.parse(window.localStorage.getItem('user'));
+    //   return user.id == this.myBrewery.founderId;
+    // },
     brewId() {
       return this.beer.breweryId;
     }
