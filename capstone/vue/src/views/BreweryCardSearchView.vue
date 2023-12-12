@@ -36,12 +36,12 @@ export default {
 <style>
 
 .bcs {
-  background-image: url('../assests/images/placeholders/breweryBackground.jpg');
+  background-image: url('../assests\images/placeholders/breweryBackground.jpg');
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
   height: 100 vh;
-  font-size: 100px;
+   font-size: 100px;
 color: gold;
 }
 

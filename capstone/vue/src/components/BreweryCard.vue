@@ -27,19 +27,26 @@ export default {
 
 <style>
 .card-brew-body {
-    display: flex;
-    background-color: brown;
+    display: grid;
+    width: 70vh;
+    background-color: rgb(167, 15, 15);
     justify-content: center;
-    align-items: center;
+    align-items: left;
     min-height: 30vh;
-    border-radius: 100px;
+    
+    border-radius: 40px;
     border-color: gold;
-    
-    
+    margin-bottom: 40px;
+    height: 50px;
+    background-image: url('../assests/images/placeholders/twobeers.jpg');
+    background-color: #cccccc;
+    background-size: cover;
+    background-position: center;
+ 
     
 }
 .brew-card {
-    display: grid;
+    display: flex;
     width: 35vh;
     min-height: 30vh;
     margin: auto;
@@ -50,10 +57,17 @@ export default {
     
   }
   .card-title{
-    font-size: 30px;
-    color: gold;
+    font-size: 40px;
+   
   }
 img {
     height: 75px;
-    }
+    
+
+}
+.btn {
+    margin-top: 20px;
+    
+}
+
 </style>
