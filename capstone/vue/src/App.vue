@@ -36,5 +36,14 @@ export default {
 }
 #nav {
   background-color: gold;
+  
 }
+
+/* this is remove that whitespace gap and it reflects to all the componetns */
+body, html, #app {
+  margin: 0;
+  padding: 0;
+}
+
+
 </style>
