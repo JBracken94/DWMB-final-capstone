@@ -1,9 +1,12 @@
 <template>
   <div class="review-card">
-    <h1>Review Card</h1>
     <div>
-      <h3>{{ review.beerRating }}</h3>
-      <p>{{ review.beerReview }}</p>
+      <div>
+        <h3 class="rev-rating">{{ review.beerRating }}</h3>
+      </div>
+      <div class="rev-text">
+        <p>{{ review.beerReview }}</p>
+      </div>
 
     </div>
     <!-- <form @submit="submitReview">
@@ -58,4 +61,25 @@ export default {
 
 <style>
 /* make it look sexy X styles */
+.rev-card {
+    display: flex;
+    width: 18rem;
+
+    background-color: gold;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    border-color: brown;
+    border-radius: 30px;
+    
+    
+    margin: auto;
+    margin-bottom: 30px;
+    
+  }
+  .rev-card-text {
+    margin-top: 10px;
+    font-size: 5em;
+    color:red;
+  }
 </style>
