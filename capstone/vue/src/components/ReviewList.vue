@@ -1,5 +1,5 @@
 <template>
-    <review-card v-bind:beer="myBeer" v-for="review in reviews" v-bind:key="review.beerReviewId"/>
+    <review-card v-for="review in reviews" v-bind:review="review" v-bind:key="review.beerReviewId"/>
 </template>
 
 <script>

@@ -24,7 +24,6 @@ import BrewMap from '../components/BrewMap.vue';
 import BeerService from '../services/BeerService';
 import BreweryService from '../services/BreweryService';
 import BeerList from '../components/BeerList.vue';
-import LocationService from '../services/LocationService';
 
 import UpdateBreweryForm from '../components/UpdateBreweryForm.vue';
 import CreateBeerForm from '../components/CreateBeerForm.vue';

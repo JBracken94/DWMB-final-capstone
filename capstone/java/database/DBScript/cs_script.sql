@@ -151,7 +151,7 @@ VALUES ('Whole Lot Warmer', 2, 'Winter Warmer', 12.1, 'wholelotwarmer.jpeg', 'Th
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
 VALUES ('Dr. Peters'' Porter', 2, 'English Porter', 5.0, 'peterporter.jpeg', 'Just like all the lads in Blighty, Dr. Peters fancies a proper pint. And when the winds blow across the Mersey and the weather takes a chill, there is no better proper pint than an English Porter. Slightly softer and a tad sweeter than our American Porter, this delightful quaffer has a mild range of restrained roasted flavors with a chocolate-caramel-malty profile that adds a measure of complexity, while remaining deliciously simple.');
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
-VALUES ('Autumn Leaves', 2, 'Brown Al', 5.4, 'autumnleavesferm.jpeg', 'Our Brown Ale features a grist made up of Maris Otter, caramel, and chocolate malts crafted specifically to create a robust, full-bodied beer that has us begging for autumn weather. As the light winds blow, let us pretend we can change the season.');
+VALUES ('Autumn Leaves', 2, 'Brown Ale', 5.4, 'autumnleavesferm.jpeg', 'Our Brown Ale features a grist made up of Maris Otter, caramel, and chocolate malts crafted specifically to create a robust, full-bodied beer that has us begging for autumn weather. As the light winds blow, let us pretend we can change the season.');
 
 -- New Belgium Beers
 INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, description)
