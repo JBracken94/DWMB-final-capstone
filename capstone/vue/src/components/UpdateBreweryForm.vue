@@ -108,7 +108,7 @@
                     aboutUs: this.brewery.aboutUs,
                     website: this.brewery.website,
                     logoImage: this.brewery.logoImage,
-                    founderId: this.getFounderId
+                    founderId: 1
                 }
             }
         },

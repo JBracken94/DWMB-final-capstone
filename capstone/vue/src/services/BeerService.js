@@ -17,7 +17,7 @@ export default {
   },
 
   addSavedBeer(beerId) {
-    return axios.post('/beers/mybeers', beerId);
+    return axios.post(`/mybeers/${beerId}`);
   },
 
   createBeer(beer) {
