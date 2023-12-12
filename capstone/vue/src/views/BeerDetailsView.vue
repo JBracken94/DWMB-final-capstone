@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Beer Details</h2>
+    <h2 class="">Beer Details</h2>
     <h3>
       {{ beer.beerName }} 
     </h3>
@@ -76,6 +76,7 @@ export default {
 </script>
 
 <style>
+
 .form-label {
   font-weight: bold;
 }

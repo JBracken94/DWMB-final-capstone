@@ -61,6 +61,7 @@ export default {
     font-size: 40px;
     color: white;
     background-color: black;
+    
   }
 
 img {
