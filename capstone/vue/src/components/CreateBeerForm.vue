@@ -64,10 +64,10 @@ export default {
             alert('500')
           }
         });
-      this.resetFrom();
+      this.resetForm();
       // Look at setNotification from Lecture
     },
-    resetFrom() {
+    resetForm() {
       this.newBeer = {
         beerId: 0,
         breweryId: this.currentBrewery.id
@@ -80,4 +80,6 @@ export default {
 }
 </script>
   
-<style></style>
+<style>
+
+</style>
