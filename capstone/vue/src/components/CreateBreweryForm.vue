@@ -1,34 +1,87 @@
 <template>
     <form class="create-brewery-form" v-on:submit.prevent="createBrewery()">
         <label for="breweryName" class="form-label">Brewery Name</label>
-        <input class="form-control" type="text" placeholder="Enter Brewery Name" v-model="newBrewery.breweryName" >
+        <input class="form-control" type="text" placeholder="Enter Brewery Name" v-model="newBrewery.breweryName" required>
 
         <label for="streetAddress" class="form-label">Street Address</label>
-        <input class="form-control" type="text" placeholder="Enter Street Address" v-model="newBrewery.streetAddress" >
+        <input class="form-control" type="text" placeholder="Enter Street Address" v-model="newBrewery.streetAddress" required>
 
         <label for="city" class="form-label">City</label>
-        <input class="form-control" type="text" placeholder="Enter City" v-model="newBrewery.city" >
+        <input class="form-control" type="text" placeholder="Enter City" v-model="newBrewery.city" required>
 
         <label for="state" class="form-label">State</label>
-        <input class="form-control" type="text" placeholder="Enter State, example 'PA'" v-model="newBrewery.state" >
+        <select class="form-control" v-model="newBrewery.state" required>
+            <option selected disabled>Select A State</option>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AR">AR</option>
+            <option value="AZ">AZ</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DC">DC</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="IA">IA</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="MA">MA</option>
+            <option value="MD">MD</option>
+            <option value="ME">ME</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MO">MO</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="NC">NC</option>
+            <option value="NE">NE</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NV">NV</option>
+            <option value="NY">NY</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WI">WI</option>
+            <option value="WV">WV</option>
+            <option value="WY">WY</option>
+        </select>
 
-        <label for="zipCode" class="form-label">ZipCode</label>
+        <label for="zipcode" class="form-label">ZipCode</label>
         <input class="form-control" type="text" placeholder="Enter ZipCode" v-model="newBrewery.zipcode" >
 
         <label for="dateEst" class="form-label">Date Established</label>
-        <input class="form-control" type="text" placeholder="Enter Date Established, example 'YYYY-MM-DD'" v-model="newBrewery.dateEst" >
+        <input class="form-control" type="text" placeholder="Enter Date Established, example 'YYYY-MM-DD'" v-model="newBrewery.dateEst" required>
 
         <label for="phoneNumber" class="form-label">Phone Number</label>
-        <input class="form-control" type="tel" placeholder="Enter Phone Number, example '(555) 555-5555'" v-model="newBrewery.phoneNumber" >
+        <input class="form-control" type="tel" placeholder="Enter Phone Number, example '(555) 555-5555'" v-model="newBrewery.phoneNumber" required>
 
         <label for="aboutUs" class="form-label">About Us</label>
-        <textarea class="form-control" rows="5" v-model="newBrewery.aboutUs" ></textarea>
+        <textarea class="form-control" rows="5" v-model="newBrewery.aboutUs" required></textarea>
 
         <label for="website" class="form-label">Website URL</label>
-        <input class="form-control" type="text" placeholder="Enter Web URL, example 'https://yourwesbiturl.com/'" v-model="newBrewery.website" >
+        <input class="form-control" type="text" placeholder="Enter Web URL, example 'https://yourwesbiturl.com/'" v-model="newBrewery.website" required>
 
         <label for="logoImage" class="form-label">Logo Image</label>
-        <input class="form-control" type="text" placeholder="Enter Logo Image, example 'yourlogo.jpg'" v-model="newBrewery.logoImage" >
+        <input class="form-control" type="text" placeholder="Enter Logo Image, example 'yourlogo.jpg'" v-model="newBrewery.logoImage" required>
 
       <button type="submit" class="btn btn-primary">Submit Changes</button>
     </form>
@@ -41,12 +94,24 @@
     export default {
         data() {
             return {
-                newBrewery: {}
+                newBrewery: {
+                    breweryId: 0,
+                    breweryName: '',
+                    streetAddress: '',
+                    city: '',
+                    state: '',
+                    zipcode: '',
+                    dateEst: '',
+                    phoneNumber: '',
+                    aboutUs: '',
+                    website: '',
+                    logoImage: '',
+                    founderId: this.getFounderId
+                }
             }
         },
     
         methods: {
-
             createBrewery() {
                 BreweryService.createBrewery(this.newBrewery)
                 .then (response => {
@@ -61,7 +126,27 @@
                         alert(response.status);
                     }
                 });
+                this.resetForm();
                 // Look at setNotification from Lecture
+            },
+
+            resetForm() {
+              this.newBrewery = {
+                breweryId: 0,
+                founderId: this.getFounderId
+              };
+            }
+        }, 
+
+        computed: {
+            getFounderId() {
+                const user = JSON.parse(window.localStorage.getItem('user'));
+                return user.id;
+            },
+
+            checkFounder() {
+                let user = JSON.parse(window.localStorage.getItem('user'));
+                return user.id == this.brewery.founderId;
             }
         }
     }

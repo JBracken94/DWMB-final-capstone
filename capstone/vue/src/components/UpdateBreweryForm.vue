@@ -12,7 +12,7 @@
         <label for="state" class="form-label">State</label>
         <input class="form-control" type="text" placeholder="Update State, example 'PA'" v-model="updatedBrewery.state" >
 
-        <label for="zipCode" class="form-label">ZipCode</label>
+        <label for="zipcode" class="form-label">ZipCode</label>
         <input class="form-control" type="text" placeholder="Update ZipCode" v-model="updatedBrewery.zipcode" >
 
         <label for="dateEst" class="form-label">Date Established</label>
