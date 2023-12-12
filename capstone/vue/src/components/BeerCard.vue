@@ -17,7 +17,6 @@
   
   <script>
   import BeerService from '../services/BeerService';
-import BreweryCardSearchViewVue from '../views/BreweryCardSearchView.vue';
   
   export default {
     props: ['beer'],
