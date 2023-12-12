@@ -91,8 +91,9 @@
   }
   .card-title {
     margin-top: 10px;
-    font-size: 1em;
+    font-size: 1rem;
     color:red;
+    
   }
   .card-text {
     margin-top: 5px;

@@ -64,22 +64,29 @@ export default {
 .rev-card {
     display: flex;
     width: 18rem;
-
-    background-color: gold;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
     border-color: brown;
     border-radius: 30px;
-    
+    background-image: url('../assests\images/placeholders/review1.jpg');
+    background-color:black;
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
     
     margin: auto;
     margin-bottom: 30px;
     
   }
-  .rev-card-text {
+  .rev-text {
     margin-top: 10px;
-    font-size: 5em;
+    font-size: 1.5rem;
+    color:black;
+
+  }
+  .rev-rating{
+    font-size: 3rem;
     color:red;
   }
 </style>
