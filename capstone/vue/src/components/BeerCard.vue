@@ -5,7 +5,8 @@
         <h2 class="card-title">{{ beer.beerName }}</h2>
         <p class="card-text">{{ beer.beerType }}</p>
         <p class="card-text">{{ beer.abv }}% ABV</p>
-        <button class="btn btn-primary" @click="addSaved">{{ saved ? 'Unsave' : 'Save'}}</button>
+        <button class="btn btn-primary" @click="addSaved(); isSaved = true;">Save</button>
+        <button class="btn btn-primary" @click="deleteSaved(); isSaved = false"> Unsave </button>
         <router-link :to="{ name: 'beer-details', params: { id: beer.beerId } }" class="btn btn-secondary">View Details</router-link>
 
          <!-- BUTTON TO ADD/REMOVE FROM SAVED if savedBeers.contains(beer.beerId)-->
@@ -16,31 +17,21 @@
   
   <script>
   import BeerService from '../services/BeerService';
-import BreweryCardSearchViewVue from '../views/BreweryCardSearchView.vue';
   
   export default {
     props: ['beer'],
     data() {
       return {
         myBeers: [],
-        saved: this.checkSaved
+        isSaved: false,
       };
     },
-    mounted() {
-    },
     methods: {
-      handleSaved() {
-        if (this.checkSaved) {
-          this.deleteSaved(this.beer.beerId);
-        } else {
-          this.addSaved(this.beer.beerId);
-        }
-      },
       addSaved() {
         BeerService.addSavedBeer(this.beer.beerId)
         .then(response => {
           if (response.status == 201) {
-            console.log('success')
+            alert('Added to saved')
           }
         })
         .catch (error => {
@@ -53,32 +44,10 @@ import BreweryCardSearchViewVue from '../views/BreweryCardSearchView.vue';
         BeerService.deleteSavedBeer(this.beer.beerId)
         .then(response => {
           if (response.status == 204) {
-            alert('bye bye')
+            alert('all good')
           }
         })
-        .catch(error => {
-          if (error.response.status == 500) {
-            alert('fix this')
-          }
-        })
-      },
-      checkSaved() {
-          BeerService.getSavedBeers()
-          .then(response => {
-            let savedBeers = response.data;
-            savedBeers.forEach ( current => {
-              if(current.beerId == this.beer.beerId) {
-                return true;
-              } else {
-                return false;
-              }
-            })
-          })
-        },
-        
-      },
-      updated() {
-        this.saved = this.checkSaved
+      }
       }
   };
   </script>
