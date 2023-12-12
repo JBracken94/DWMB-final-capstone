@@ -164,6 +164,16 @@ INSERT INTO beer (beer_name, brewery_id, beer_type, abv, label_image, descriptio
 VALUES ('Holiday Ale', 3, 'Seasonal Ale', 7.0, 'holidayale.jpeg', 'Holiday Ale captures the best parts of winter: warmth and spice. Brewed by certified B-Corp New Belgium Brewing, this ale—with rich flavors of cranberries, orange and cinnamon—is a real holiday treat. Tis'' the season for complex, rich beers! So, whether you''ve been naughty or nice, you''ll want to put this beer on your beverage wish list. 7.5% ABV.');
 
 
+--STARTING REVIEWS
+INSERT INTO beer_review (beer_id, reviewer_id, beer_rating, beer_review, date_posted)
+VALUES (1,4,4.5,'solid beer',NOW());
+
+INSERT INTO beer_review (beer_id, reviewer_id, beer_rating, beer_review, date_posted)
+VALUES (1,4,3.2,'I don''t know what I''m talking about',NOW());
+
+INSERT INTO beer_review (beer_id, reviewer_id, beer_rating, beer_review, date_posted)
+VALUES (1,4,5.0,'Great blonde ale! Vanilla shines through on the initial taste. Creamy with a hint of sweetness. Now this is just filler text so that Xhelal can style the review card without some weird garbage happening.',NOW());
+
 --starting saved beer list
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,4); -- admin
 INSERT INTO favorite_beer (user_id, beer_id) VALUES (2,5);
