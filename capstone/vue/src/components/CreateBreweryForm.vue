@@ -68,8 +68,8 @@
         <label for="zipcode" class="form-label">ZipCode</label>
         <input class="form-control" type="text" placeholder="Enter ZipCode" v-model="newBrewery.zipcode" >
 
-        <label for="dateEst" class="form-label">Date Established</label>
-        <input class="form-control" type="text" placeholder="Enter Date Established, example 'YYYY-MM-DD'" v-model="newBrewery.dateEst" required>
+        <!-- <label for="dateEst" class="form-label">Date Established</label>
+        <input class="form-control" type="text" placeholder="Enter Date Established, example 'YYYY-MM-DD'" v-model="newBrewery.dateEst" required> -->
 
         <label for="phoneNumber" class="form-label">Phone Number</label>
         <input class="form-control" type="tel" placeholder="Enter Phone Number, example '(555) 555-5555'" v-model="newBrewery.phoneNumber" required>
@@ -80,8 +80,8 @@
         <label for="website" class="form-label">Website URL</label>
         <input class="form-control" type="text" placeholder="Enter Web URL, example 'https://yourwesbiturl.com/'" v-model="newBrewery.website" required>
 
-        <label for="logoImage" class="form-label">Logo Image</label>
-        <input class="form-control" type="text" placeholder="Enter Logo Image, example 'yourlogo.jpg'" v-model="newBrewery.logoImage" required>
+        <!-- <label for="logoImage" class="form-label">Logo Image</label>
+        <input class="form-control" type="text" placeholder="Enter Logo Image, example 'yourlogo.jpg'" v-model="newBrewery.logoImage" required> -->
 
         <button type="submit" class="btn btn-primary">Submit Changes</button>
     </form>
@@ -101,13 +101,14 @@ import BreweryService from '../services/BreweryService'
                     city: '',
                     state: '',
                     zipcode: '',
-                    dateEst: '',
+                    dateEst: new Date(99, 5, 24),
                     phoneNumber: '',
                     aboutUs: '',
                     website: '',
-                    logoImage: '',
+                    logoImage: 'logo',
                     founderId: this.getFounderId
-                }
+                },
+                myId: this.getFounderId
             }
         },
     
@@ -133,7 +134,17 @@ import BreweryService from '../services/BreweryService'
             resetForm() {
               this.newBrewery = {
                 breweryId: 0,
-                founderId: this.getFounderId
+                    breweryName: '',
+                    streetAddress: '',
+                    city: '',
+                    state: '',
+                    zipcode: '',
+                    dateEst: Date.now,
+                    phoneNumber: '',
+                    aboutUs: '',
+                    website: '',
+                    logoImage: '',
+                    founderId: this.getFounderId
               };
             }
         }, 
@@ -146,8 +157,13 @@ import BreweryService from '../services/BreweryService'
 
             checkFounder() {
                 let user = JSON.parse(window.localStorage.getItem('user'));
-                return user.id == this.brewery.founderId;
-            }
+                return user.id == this.newBrewery.founderId;
+            },
+        },
+        created() {
+            this.getFounderId;
+            this.checkFounder;
+            this.getId;
         }
     }
 </script>

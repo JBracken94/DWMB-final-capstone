@@ -136,7 +136,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery createBrewery(Brewery newBrewery, Principal principal) {
         String sql = "INSERT INTO brewery (brewery_name, street_address, city, state, zip_code," +
-                " date_est, phone_number, about_us, website, logo_image, founder_id " +
+                " date_est, phone_number, about_us, website, logo_image, founder_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
                 "RETURNING brewery_id;";
         try {

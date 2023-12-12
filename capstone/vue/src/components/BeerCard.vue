@@ -5,7 +5,7 @@
         <h2 class="card-title">{{ beer.beerName }}</h2>
         <p class="card-text">{{ beer.beerType }}</p>
         <p class="card-text">{{ beer.abv }}% ABV</p>
-        <button class="btn btn-primary" @click="toggleSaved">{{ isSaved ? 'Remove from Saved' : 'Add to Saved' }}</button>
+        <button class="btn btn-primary" @click="addSaved">{{ saved ? 'Unsave' : 'Save'}}</button>
         <router-link :to="{ name: 'beer-details', params: { id: beer.beerId } }" class="btn btn-secondary">View Details</router-link>
 
          <!-- BUTTON TO ADD/REMOVE FROM SAVED if savedBeers.contains(beer.beerId)-->
@@ -16,53 +16,70 @@
   
   <script>
   import BeerService from '../services/BeerService';
+import BreweryCardSearchViewVue from '../views/BreweryCardSearchView.vue';
   
   export default {
     props: ['beer'],
     data() {
       return {
-        isSaved: false
+        myBeers: [],
+        saved: this.checkSaved
       };
     },
     mounted() {
-
-      // I would need to check if the beer is already saved only when the component is mounted
-      this.checkIfSaved();
     },
     methods: {
-      checkIfSaved() {
-        
-        
-        // this method will check if the beer is saved
-      
-        // BeerService.isBeerSaved(this.beer.beerId)
-        //   .then(response => {
-        //     this.isSaved = response.data.isSaved;
-        //   })
-        //   .catch(error => {
-        //     console.error("Error checking saved state:", error);
-        //   });
-      },
-      toggleSaved() {
-        if (this.isSaved) {
-          BeerService.removeFromSavedBeers(this.beer.beerId)
-            .then(() => {
-              this.isSaved = false;
-            })
-            .catch(error => {
-              console.error("Error removing from saved beers:", error);
-            });
+      handleSaved() {
+        if (this.checkSaved) {
+          this.deleteSaved(this.beer.beerId);
         } else {
-          BeerService.addToSavedBeers(this.beer.beerId)
-            .then(() => {
-              this.isSaved = true;
-            })
-            .catch(error => {
-              console.error("Error adding to saved beers:", error);
-            });
+          this.addSaved(this.beer.beerId);
         }
+      },
+      addSaved() {
+        BeerService.addSavedBeer(this.beer.beerId)
+        .then(response => {
+          if (response.status == 201) {
+            console.log('success')
+          }
+        })
+        .catch (error => {
+          if (error.response.status === 500) {
+            this.deleteSaved;
+          }
+        })
+      },
+      deleteSaved() {
+        BeerService.deleteSavedBeer(this.beer.beerId)
+        .then(response => {
+          if (response.status == 204) {
+            alert('bye bye')
+          }
+        })
+        .catch(error => {
+          if (error.response.status == 500) {
+            alert('fix this')
+          }
+        })
+      },
+      checkSaved() {
+          BeerService.getSavedBeers()
+          .then(response => {
+            let savedBeers = response.data;
+            savedBeers.forEach ( current => {
+              if(current.beerId == this.beer.beerId) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+          })
+        },
+        
+      },
+      updated() {
+        this.saved = this.checkSaved
       }
-    }
   };
   </script>
   

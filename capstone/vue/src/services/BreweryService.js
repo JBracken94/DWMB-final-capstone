@@ -14,7 +14,7 @@ export default {
   },
 
   createBrewery(brewery) {
-    return axios.post('/breweries', brewery)
+    return axios.post('/breweries', brewery);
   },
 
   addSavedBrewery(breweryId) {
