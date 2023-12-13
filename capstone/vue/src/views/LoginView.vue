@@ -75,7 +75,7 @@ label {
   justify-content: center;
   min-height: 100vh;
   background-color: rgb(121, 7, 7);
-  color:gold
+  color: goldenrod;
 }
 
   

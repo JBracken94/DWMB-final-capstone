@@ -42,7 +42,7 @@ export default {
   background-position: center;
   height: 100 vh;
   font-size: 80px;
-  color: gold;
+  color: goldenrod;
   padding-top: 20px;
 }
 

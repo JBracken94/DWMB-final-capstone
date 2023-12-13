@@ -86,7 +86,7 @@ h1 {
 
 p {
   text-align: center;
-  color: gold;
+  color: goldenrod;
   font-size: 50px;
 }
 
@@ -97,7 +97,7 @@ img {
   height: 50vh;
 }
 .create-brew-button {
-  color: gold;
+  color: goldenrod;
     display: grid;
     width: 40vh;
     background-color:brown;

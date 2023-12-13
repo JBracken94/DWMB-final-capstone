@@ -173,7 +173,7 @@ import BreweryService from '../services/BreweryService'
     color: brown;
     display: grid;
     width: 40vh;
-    background-color:gold;
+    background-color: goldenrod;
     justify-content: center;
     align-items: center;
     min-height: 100vh;

@@ -5,10 +5,8 @@
             <h2 class="card-titles">{{brewery.breweryName}}</h2>
             <p class="card-test"><a v-bind:href="brewery.website" target="_blank">Visit Us on the Web</a></p>
             <div>
-                <button class="btn btn-primary" >{{ isSaved ? 'Remove from Saved' : 'Add to Saved' }}</button>
             <router-link :to="{ name: 'brewery-details', params: { breweryId: brewery.breweryId } }" class="btn btn-secondary">View Details</router-link>
             </div>
-
         </div>
 
     </div>

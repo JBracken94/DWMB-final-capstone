@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h2 class="beer-dets">Beer Details</h2>
+    <h2 class="beer-dets">DWM Reviews</h2>
     <h3 class="beer-nam">
-      {{ beer.beerName }} 
+      {{ beer.beerName }}
     </h3>
     <div class="review-button">
+    <h4 class="type">
+      {{beer.abv}}%  {{ beer.beerType }}
+    </h4>
+    
     <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
-    <button @click="showReviewForm = !showReviewForm"> Button for pressing review thing</button>
+    <button @click="showReviewForm = !showReviewForm"> Review this Beer </button>
     <update-beer-form v-show="showUpdateForm"/>
     <create-review v-bind:beer="this.$store.state.beer" v-show="showReviewForm"/>
   </div>
@@ -82,10 +86,13 @@ export default {
 <style>
 .beer-dets {
   color: brown;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 .beer-nam {
   color: gold;
+}
+.type{
+  color: goldenrod;
 }
 
 .form-label {
