@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import BeerCard from './components/BeerCard.vue';
 
 export default {
   data() {
@@ -38,7 +37,7 @@ export default {
   margin-top: 60px;
   background-color: rgb(34, 31, 31); 
   background-size: auto;
-  height: 200vh;
+  height: 100%;
  
 }
 #nav {

@@ -3,6 +3,16 @@
     <div>
       <div>
         <h3 class="rev-rating">{{ review.beerRating }}</h3>
+        <star-rating 
+        :rating="review.beerRating"
+        :increment=".5"
+        :read-only="true"
+
+        active-color="#daa520" border-color="#a52a2a"
+                        :padding="1"
+                        :glow="3" glow-color="#FFC0CB" 
+                        :animate="true" :border-width="2"
+                        :show-rating="false" />
       </div>
       <div class="rev-text">
         <p>{{ review.beerReview }}</p>
@@ -24,37 +34,19 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating';
 
 export default {
   props: ['review'],
+  components: {
+    StarRating
+   
+  },
   data() {
     return {
-      newReview: {
-        reviewId: 0,
-        beerId: 0,
-        beerRating: 0,
-        beerReview: '',
-        datePosted: Date.now
-      }
     };
   },
   methods: {
-    fetchReviews() {
-
-      // make a request to get the reviews api etc
-    },
-    resetForm () {
-      this.newReview = {
-        reviewId: 0,
-      }
-    },
-    submitReview() {
-      // so i would need to send a post method request to the server with the reivew stuff detailed informaiton
-      // then i would need to review the text and the rating props propeties in the request payload
-      // last i would need to figure out how to handle the response from the server
-      
-// display fields ssomthing prop from review list
-    },
   },
 };
 </script>
@@ -67,8 +59,7 @@ export default {
     justify-content: center;
     align-items: center;
     min-height: 50vh;
-    border-color: brown;
-    border-radius: 30px;
+    border-color: #a52a2a;    border-radius: 30px;
     background-image: url('../assests\images/placeholders/review1.jpg');
     background-color:black;
     background-size: cover;

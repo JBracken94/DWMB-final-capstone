@@ -4,7 +4,7 @@
     <!-- <button @click="toggleMap()"> {{ showMap ? 'Hide Map' : 'Show Map' }} </button> -->
     <h2 class="find-us">Find Us</h2>
     <!-- Add your Google Maps API Key as api-key attribute to demo functionality -->
-    <GoogleMap v-if="showMap" api-key="AIzaSyAWksYN7JVApW1%banana%qfftkveDLOTpnQQfdol8" style="width: 100%; height: 500px"
+    <GoogleMap v-if="showMap" api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" style="width: 100%; height: 500px"
       :center="{ lat: this.latitude, lng: this.longitude }" :zoom="15">
       <Marker :options="{ position: center }" />
       <Marker :options="{ position: { lat: this.latitude, lng: this.longitude } }" />

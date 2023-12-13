@@ -10,8 +10,9 @@
     </h4>
     
     <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
+    <button @click="showUpBeerForm = !showUpBeerForm"> Update this Beer </button>
+    <update-beer-form v-show="showUpBeerForm"/>
     <button @click="showReviewForm = !showReviewForm"> Review this Beer </button>
-    <update-beer-form v-show="showUpdateForm"/>
     <create-review v-bind:beer="this.$store.state.beer" v-show="showReviewForm"/>
   </div>
     <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews"/>
@@ -35,7 +36,7 @@ export default {
       reviews: [],
       myBrewery: {
       },
-      showUpdateForm: true,
+      showUpBeerForm: false,
       showReviewForm: false,
       isFounder: false,
     };

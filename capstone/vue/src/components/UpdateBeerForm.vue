@@ -1,5 +1,5 @@
 <template>
-  <form class="update-beer-form" v-on:submit.prevent="updateBeer">
+  <form class="update-beer-form" v-on:submit.prevent="updateBeer" v-show="showUpdateBeer">
     <div class="mb-3">
       <label for="beerName" class="form-label">Beer Name</label>
       <input v-model="updatedBeer.beerName" type="text" class="form-control" id="beerName" placeholder="Update beer name" required>
@@ -39,7 +39,8 @@ import BeerService from '../services/BeerService'
 export default {
   data() {
     return {
-      updatedBeer: {}
+      updatedBeer: {},
+      showUpdateBeer: false
     }
   },
 
