@@ -2,6 +2,7 @@ import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
 import BeerService from '../services/BeerService';
 import BeerReviewService from '../services/BeerReviewService';
+import BreweryService from '../services/BreweryService'
 
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
@@ -51,6 +52,9 @@ export function createStore(currentToken, currentUser) {
       SET_BREWERY(state, brewery) {
         state.brewery = brewery;
       },
+      SET_BREWERIES(state, breweries) {
+        state.breweries = breweries;
+      },
       SET_BEER(state, beer) {
         state.beer = beer;
       },
@@ -72,12 +76,25 @@ export function createStore(currentToken, currentUser) {
           const updatedReviews = response.data;
           commit('SET_REVIEWS', updatedReviews);
         })
+      },
+      getBreweryById({commit}, breweryId) {
+        BreweryService.getBreweryById(breweryId)
+        .then(response => {
+          const currentBrewery = response.data;
+          commit('SET_BREWERY', currentBrewery);
+        })
+      },
+      getBreweries({commit}) {
+        BreweryService.getBreweries()
+        .then(response => {
+          const updatedBreweries = response.data;
+          commit('SET_BREWERIES', updatedBreweries);
+        })
       }
     }
     // set saved beers
     // set brewery beers
     // set all beers
-    //
 
     /* 
     save to service - updates DB
