@@ -6,7 +6,7 @@
     </h3>
     <div class="review-button">
     <h4 class="type">
-      {{beer.abv}}%  {{ beer.beerType }}
+       {{ beer.beerType }}  ::  {{beer.abv}}% 
     </h4>
     
     <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
@@ -35,7 +35,7 @@ export default {
       reviews: [],
       myBrewery: {
       },
-      showUpdateForm: false,
+      showUpdateForm: true,
       showReviewForm: false,
       isFounder: false,
     };
