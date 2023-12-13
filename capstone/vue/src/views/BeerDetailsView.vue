@@ -4,6 +4,7 @@
     <h3 class="beer-nam">
       {{ beer.beerName }}
     </h3>
+    <div class="review-button">
     <h4 class="type">
       {{beer.abv}}%  {{ beer.beerType }}
     </h4>
@@ -12,7 +13,7 @@
     <button @click="showReviewForm = !showReviewForm"> Review this Beer </button>
     <update-beer-form v-show="showUpdateForm"/>
     <create-review v-bind:beer="this.$store.state.beer" v-show="showReviewForm"/>
-    
+  </div>
     <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews"/>
   </div>
 </template>
@@ -99,5 +100,20 @@ export default {
 }
 .form-control {
   margin-bottom: 10px;
+}
+.review-button {
+    color: gold;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  
+    width: 40vh;
+    height: 5vh;
+    background-color:brown;
+    border-radius: 10px;
+    font-size: 20px;
+  
+   
+    
 }
 </style>
