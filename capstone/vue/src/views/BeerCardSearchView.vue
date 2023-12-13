@@ -42,7 +42,7 @@ export default {
 }
 
 h1 {
-  color: gold;
+  color: goldenrod;
   font-size: 100px;
   
 }

@@ -58,7 +58,7 @@
     display: flex;
     width: 18rem;
 
-    background-color: gold;
+    background-color: goldenrod;
     justify-content: center;
     align-items: center;
     min-height: 50vh;

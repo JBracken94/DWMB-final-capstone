@@ -1,8 +1,8 @@
 <template>
-  <h1 class="my-list">My Saved Lists</h1>
+  <h1 class="my-list">My Favorite Beers</h1>
   <!-- BUTTONS ON CARDS TO DELETE SAVED -->
   <!-- List of My Saved Breweries -->
-  <h2 v-show="myBeers.length != 0">Beers</h2>
+  <!-- What should show if no saved beers? -->
   <beer-list v-bind:beers="this.$store.state.savedBeers"/>
   <!-- List of My Saved Beers -->
 </template>
@@ -34,15 +34,13 @@ export default {
   created() {
     this.getSavedBeers();
   }
-  // GET SAVED BEERS FOR USER
-  // GET SAVED BREWERIES FOR USER (MAYBE IMPLEMENT)
 }
 </script>
 
 <style>
 .my-list {
   padding-top: 20px;
-  color: gold;
+  color: goldenrod;
   font-size: 80px;
 }
 .my-saved-beers {

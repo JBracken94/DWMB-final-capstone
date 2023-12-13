@@ -41,7 +41,7 @@ export default {
  
 }
 #nav {
-  background-color: gold;
+  background-color: goldenrod;
   position: fixed;
   width: 100%;
   word-spacing: 20px;
