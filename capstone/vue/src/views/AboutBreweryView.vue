@@ -1,5 +1,5 @@
 <template>
-  <h1>Brewery Details</h1>
+  <h1 class="brew-details">Brewery Details</h1>
   <div v-show="checkFounder">
     <button @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
     <update-brewery-form v-show="showUpdateBrewery" v-bind:brewery="brewery"/>
@@ -75,5 +75,7 @@ export default {
 </script>
 
 <style>
-
+.brew-details {
+  color: white;
+}
 </style>

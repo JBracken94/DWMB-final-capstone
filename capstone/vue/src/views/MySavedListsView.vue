@@ -1,10 +1,10 @@
 <template>
-  <h1>My Saved Lists</h1>
+  <h1 class="my-list">My Saved Lists</h1>
   <!-- BUTTONS ON CARDS TO DELETE SAVED -->
   <h2 v-show="myBreweries.length != 0">Breweries</h2>
   <brewery-list v-bind:breweries="myBreweries"/>
   <!-- List of My Saved Breweries -->
-  <h2 v-show="myBeers.length != 0">Beers</h2>
+  <h2 class="my-saved-beers" v-show="myBeers.length != 0">Beers</h2>
   <beer-list v-bind:beers="myBeers"/>
   <!-- List of My Saved Beers -->
 </template>
@@ -41,4 +41,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.my-list {
+  padding-top: 20px;
+  color: gold;
+  font-size: 80px;
+}
+.my-saved-beers {
+  color: brown;
+}
+</style>

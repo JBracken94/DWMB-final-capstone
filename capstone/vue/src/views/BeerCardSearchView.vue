@@ -36,7 +36,9 @@ export default {
 </script>
 
 <style scoped>
-
+.bca {
+  padding-top: 20px;
+}
 
 h1 {
   color: gold;
