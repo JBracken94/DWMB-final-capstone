@@ -1,5 +1,5 @@
 <template>
-  <h1>Brewery Details</h1>
+  <h1>{{ brewery.breweryName }}</h1>
   <div v-show="checkFounder">
     <button @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
     <update-brewery-form v-show="showUpdateBrewery" v-bind:brewery="brewery"/>
@@ -17,7 +17,7 @@
   <!-- OPTIONAL :: BUTTON TOGGLE ADD BREWERY REVIEW -->
   <!-- BEER LIST / BEER CARDS -->
   <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
-  <beer-list v-bind:beers="beers"/>
+  <beer-list v-bind:beers="this.$store.state.beers"/>
 </template>
 
 <script>
@@ -51,14 +51,28 @@ export default {
   },
 
   created() {
-    BreweryService.getBreweryById(this.$route.params.breweryId)
-    .then(response => {
-      this.brewery = response.data;
-    });
-    BeerService.getBeersByBrewery(this.$route.params.breweryId)
+    this.getBreweryById();
+    this.getBeersByBrewery();
+    
+  },
+  methods: {
+    getBeersByBrewery() {
+      BeerService.getBeersByBrewery(this.$route.params.breweryId)
     .then(response => {
       this.beers = response.data;
+      this.$store.commit('SET_BEER_LIST', this.beers);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+    },
+    getBreweryById() {
+      BreweryService.getBreweryById(this.$route.params.breweryId)
+    .then(response => {
+      this.brewery = response.data;
+      this.$store.commit('SET_BREWERY', this.brewery);
     });
+    }
   },
 
   computed: {

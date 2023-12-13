@@ -4,7 +4,7 @@
   <!-- ADD BEER button for ROLE_BREWER (Maybe lives in brewery details) -->
   <!-- Search/Filter Fields -->
   <!-- Container with BeerCards / Beer List -->
-  <beer-list v-bind:beers="beers"/>
+  <beer-list v-bind:beers="this.$store.state.beers"/>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ export default {
     BeerService.getBeers()
       .then(response => {
         this.beers = response.data;
+        this.$store.commit('SET_BEER_LIST', this.beers);
         this.isLoading = false;
       });
   }

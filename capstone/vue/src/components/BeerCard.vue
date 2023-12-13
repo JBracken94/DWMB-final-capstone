@@ -31,7 +31,7 @@
         BeerService.addSavedBeer(this.beer.beerId)
         .then(response => {
           if (response.status == 201) {
-            alert('Added to saved')
+            console.log('added')
           }
         })
         .catch (error => {
@@ -44,9 +44,10 @@
         BeerService.deleteSavedBeer(this.beer.beerId)
         .then(response => {
           if (response.status == 204) {
-            alert('all good')
+            console.log('beerdeleted');
           }
-        })
+          this.$store.dispatch('getUpdatedBeers');
+        });
       }
       }
   };

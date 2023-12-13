@@ -1,5 +1,7 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
+import BeerService from '../services/BeerService';
+import BeerReviewService from '../services/BeerReviewService';
 
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
@@ -7,7 +9,19 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
 
-      breweries: []
+      breweries: [],
+      beers: [],
+      reviews: [],
+      savedBeers: [],
+      brewery: [],
+      beer: [],
+
+
+    },
+    getters: {
+      getSavedBeers : (state) => {
+        return state.savedBeers;
+      }
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -27,8 +41,50 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      SET_SAVED_BEERS(state, mySavedBeers) {
+        state.savedBeers = mySavedBeers;
+      },
+      SET_BEER_LIST(state, beerList) {
+        state.beers = beerList
+      },
+      SET_BREWERY(state, brewery) {
+        state.brewery = brewery;
+      },
+      SET_BEER(state, beer) {
+        state.beer = beer;
+      },
+      SET_REVIEWS(state, reviews) {
+        state.reviews = reviews;
       }
     },
+    actions: {
+      getUpdatedBeers({ commit }) {
+        BeerService.getSavedBeers()
+        .then(response => {
+          const updatedBeers = response.data;
+          commit('SET_SAVED_BEERS', updatedBeers);
+        })
+      },
+      getUpdatedReviews({commit}, beerId) {
+        BeerReviewService.getReviewsByBeerId(beerId)
+        .then(response => {
+          const updatedReviews = response.data;
+          commit('SET_REVIEWS', updatedReviews);
+        })
+      }
+    }
+    // set saved beers
+    // set brewery beers
+    // set all beers
+    //
+
+    /* 
+    save to service - updates DB
+    repopulate list in store
+      - SET_BEER_LIST
+      -dynamically updates beer list since it's pulling from store
+    */
   });
   return store;
 }

@@ -7,9 +7,9 @@
     <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
     <button @click="showReviewForm = !showReviewForm"> Button for pressing review thing</button>
     <update-beer-form v-show="showUpdateForm"/>
-    <create-review v-bind:beer="beer" v-show="showReviewForm"/>
+    <create-review v-bind:beer="this.$store.state.beer" v-show="showReviewForm"/>
     
-    <review-list v-bind:beer="beer" v-bind:reviews="reviews"/>
+    <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews"/>
   </div>
 </template>
 
@@ -52,14 +52,17 @@ export default {
     BeerService.getBeerById(this.$route.params.id)
     .then(response => {
       this.beer = response.data;
+      this.$store.commit('SET_BEER', this.beer);
       BreweryService.getBreweryById(this.beer.breweryId)
     .then(response => {
       this.myBrewery = response.data;
+      this.$store.commit('SET_BREWERY', this.myBrewery);
     });
     });
     BeerReviewService.getReviewsByBeerId(this.$route.params.id)
     .then(response => {
       this.reviews = response.data;
+      this.$store.commit('SET_REVIEWS', this.reviews);
     });
     
   },
