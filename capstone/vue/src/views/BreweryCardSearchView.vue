@@ -28,6 +28,8 @@ export default {
     BreweryService.getBreweries()
     .then(response => {
       this.breweries = response.data;
+      this.$store.commit('SET_BREWERIES', this.breweries);
+      this.$store.dispatch('getBreweries');
     })
   }
 }
