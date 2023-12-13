@@ -25,7 +25,7 @@ export default {
   },
 
   updateBeer(beer) {
-    return axios.put(`/beers/${beer.id}`, beer);
+    return axios.put(`/beers/${beer.beerId}`, beer);
   },
 
   deleteSavedBeer(beerId) {

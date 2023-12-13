@@ -45,7 +45,7 @@ export default {
   height: 100 vh;
   font-size: 80px;
   color: goldenrod;
-  padding-top: 20px;
+  padding-top: 3rem;
 }
 
 
