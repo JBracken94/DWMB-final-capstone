@@ -51,7 +51,9 @@ export default {
         .then(response => {
           if (response.status == 200) {
             //Notification of successful
+            alert('you did it')
             console.log(response.status)
+            this.getBeer;
           }
         })
         .catch(error => {

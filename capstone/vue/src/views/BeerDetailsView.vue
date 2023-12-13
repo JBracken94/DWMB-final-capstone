@@ -47,11 +47,6 @@ export default {
     ReviewList,
     CreateReview
   },
-      // this will be the log to submit the information such as beer
-      // so note you can access the form data using the (this.beerName and this.beerType and this.beerDescription
-      // In theory you make a api request to save the beer details (brewery also possible)
-      // then using the Services stuff for example the BeerService.saveBeer(this.beerName, this.beerType, this.beerDescription)
-
       // take note i need to make 200 or 201 or 404  basically the success and error situation 
 
   created() {
@@ -59,6 +54,7 @@ export default {
     .then(response => {
       this.beer = response.data;
       this.$store.commit('SET_BEER', this.beer);
+      // needs to run on beer update
       BreweryService.getBreweryById(this.beer.breweryId)
     .then(response => {
       this.myBrewery = response.data;
