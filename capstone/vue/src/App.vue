@@ -38,6 +38,7 @@ export default {
   margin-top: 60px;
   background-color: rgb(34, 31, 31); 
   background-size: auto;
+  height: 200vh;
  
 }
 #nav {
