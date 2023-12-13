@@ -60,7 +60,7 @@ public class JdbcBreweryDao implements BreweryDao {
         List<Brewery> breweries = new ArrayList<>();
         String sql = "SELECT brewery_id, brewery_name, street_address, city, state, zip_code," +
                 " date_est, phone_number, about_us, website, logo_image, founder_id " +
-                "FROM brewery;";
+                "FROM brewery ORDER BY brewery_id ASC;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -156,15 +156,15 @@ public class JdbcBreweryDao implements BreweryDao {
         User user = jdbcUserDao.getUserByUsername(principal.getName());
         String userValidSql = "SELECT founder_id FROM brewery WHERE brewery_id = ?;";
         String sql = "UPDATE brewery " +
-                "SET brewery_name = ?, street_address = ?, city = ?, state = ?, zip_code = ?" +
-                " date_est =?, phone_number = ?, about_us = ?, website = ?, logo_image = ?, founder_id = ?" +
+                "SET brewery_name = ?, street_address = ?, city = ?, state = ?, zip_code = ?, " +
+                "date_est = ?, phone_number = ?, about_us = ?, website = ?, logo_image = ?, founder_id = ? " +
                 "WHERE brewery_id = ?";
         try {
             int founderId = jdbcTemplate.queryForObject(userValidSql, int.class, updatedBrewery.getBreweryId());
             if (user.getId() == founderId) {
                 int rowsAffected = jdbcTemplate.update(sql, updatedBrewery.getBreweryName(), updatedBrewery.getStreetAddress(), updatedBrewery.getCity(),
                         updatedBrewery.getState(), updatedBrewery.getZipcode(), updatedBrewery.getDateEst(), updatedBrewery.getPhoneNumber(),
-                        updatedBrewery.getAboutUs(), updatedBrewery.getWebsite(), updatedBrewery.getLogoImage(), updatedBrewery.getFounderId());
+                        updatedBrewery.getAboutUs(), updatedBrewery.getWebsite(), updatedBrewery.getLogoImage(), updatedBrewery.getFounderId(), updatedBrewery.getBreweryId());
                 return getBreweryById(updatedBrewery.getBreweryId());
             } else {
                 throw new DaoException("You do not have required permissions to update this Brewery. Please contact the Brewery Founder.");

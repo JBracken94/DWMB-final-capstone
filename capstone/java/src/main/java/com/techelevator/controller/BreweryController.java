@@ -79,7 +79,7 @@ public class BreweryController {
         breweryService.deleteSavedBrewery(breweryId, principal);
     }
     @PreAuthorize("hasAnyRole('ROLE_BREWER', 'ROLE_ADMIN')")
-    @PostMapping("/breweries/{id}")
+    @DeleteMapping("/breweries/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBrewery(@PathVariable("id") int breweryId, Principal principal) {
         breweryService.deleteBrewery(breweryId, principal);

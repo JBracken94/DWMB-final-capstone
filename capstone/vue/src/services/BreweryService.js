@@ -22,7 +22,7 @@ export default {
   },
 
   updateBrewery(brewery) {
-    return axios.post(`/breweries/${brewery.breweryId}`, brewery)
+    return axios.put(`/breweries/${brewery.breweryId}`, brewery)
   },
 
   deleteSavedBrewery(breweryId) {

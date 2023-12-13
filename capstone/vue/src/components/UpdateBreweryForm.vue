@@ -1,5 +1,5 @@
 <template>
-    <form class="update-brewery-form" v-on:submit.prevent="updateBrewery(breweryToUpdate)">
+    <form class="update-brewery-form" v-on:submit.prevent="updateBrewery()">
         <label for="breweryName" class="form-label">Brewery Name</label>
         <input class="form-control" type="text" placeholder="Update Brewery Name" v-model="updatedBrewery.breweryName">
 
@@ -118,7 +118,7 @@ export default {
     },
 
     methods: {
-        updateBrewery(breweryToUpdate) {
+        updateBrewery() {
             BreweryService.updateBrewery(this.updatedBrewery)
                 .then(response => {
                     if (response.status == 200) {
@@ -143,7 +143,7 @@ export default {
                 })
         }
     },
-    updated() {
+    created() {
         this.getBrewery();
     }
 }
