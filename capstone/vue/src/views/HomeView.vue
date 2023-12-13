@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <h1 class="header">Dude Where's my Brewery!!</h1>
+    <h1 class="header">Dude, Where's My Brewery?</h1>
 
-    <p>Welcome to the home for Brewers and Beer lovers</p>
+    <p>Welcome to the home for Brewers and Beer Lovers</p>
     <img src="https://glacier-design.com/wp-content/uploads/2022/10/Can-you-hydrate-yourself-with-beer-1536x1024.jpg" />
     <img src="../assests/images/placeholders/twobeers.jpg" />
     <!-- Button for Brewer Dashboard v-show="user.role = ROLE_BREWER localstorage reference" -->
@@ -13,9 +13,10 @@
     
   </div>
 
-  <button class="create-brew-button">Create Brewery</button>
-  <create-brewery-form/>
-  <footer class="meet-the-bois">Brought to you by</footer>
+  <button class="create-brew-button" @click="toggleCreateBreweryForm">{{ this.$store.state.showCreateBreweryForm ? 'Hide' : 'Add New Brewery' }}</button>
+  <create-brewery-form v-show="this.$store.state.showCreateBreweryForm"/>
+
+  <footer class="meet-the-bois">Meet the Brew Bois!</footer>
   <p>Xhelal Mahmuti | Jeff Bracken | Steven Pickering | Spencer Meredith</p>
 </template>
 
@@ -58,6 +59,13 @@ export default {
       isBrewer: false,
     }
   },
+
+  methods: {
+    toggleCreateBreweryForm() {
+      this.$store.commit('FLIP_CREATE_BREWERY_FORM');
+    }
+  },
+
   created() {
     BeerService.getBeers()
       .then(response => {

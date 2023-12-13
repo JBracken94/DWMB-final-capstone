@@ -17,7 +17,11 @@ export function createStore(currentToken, currentUser) {
       brewery: [],
       beer: [],
 
-
+      showReviewForm: false,
+      showCreateBreweryForm: false,
+      showUpdateBreweryForm: false,
+      showCreateBeerForm: false,
+      showUpdateBeerForm: false
     },
     getters: {
       getSavedBeers : (state) => {
@@ -60,6 +64,9 @@ export function createStore(currentToken, currentUser) {
       },
       SET_REVIEWS(state, reviews) {
         state.reviews = reviews;
+      },
+      FLIP_CREATE_BREWERY_FORM(state) {
+        state.showCreateBreweryForm = !state.showCreateBreweryForm;
       }
     },
     actions: {

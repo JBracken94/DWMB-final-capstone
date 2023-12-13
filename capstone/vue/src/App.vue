@@ -6,7 +6,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home &nbsp;|&nbsp;</router-link> 
       <router-link v-bind:to="{ name: 'beers' }" v-if="$store.state.token">Beers &nbsp;|&nbsp;</router-link>
       <router-link v-bind:to="{ name: 'breweries' }" v-if="$store.state.token">Breweries &nbsp;|&nbsp;</router-link>
-      <router-link v-bind:to="{ name: 'saved' }" v-if="$store.state.token">My D.W.B &nbsp;|&nbsp;</router-link>
+      <router-link v-bind:to="{ name: 'saved' }" v-if="$store.state.token">My D.W.M.B &nbsp;|&nbsp;</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     

@@ -20,7 +20,7 @@ CREATE TABLE brewery
     city VARCHAR(50) NOT NULL,
     state VARCHAR(2) NOT NULL,
     zip_code VARCHAR(10) NOT NULL,
-    date_est DATE NOT NULL,
+    date_est DATE NULL,
     phone_number VARCHAR(20) NOT NULL,
     about_us VARCHAR (1000) NOT NULL,
     logo_image VARCHAR(1000),
