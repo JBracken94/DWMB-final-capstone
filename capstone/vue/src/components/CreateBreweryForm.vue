@@ -106,7 +106,7 @@ import BreweryService from '../services/BreweryService'
                     aboutUs: '',
                     website: '',
                     logoImage: 'logo',
-                    founderId: this.getFounderId
+                    founderId: this.$store.state.user.id
                 },
                 myId: this.getFounderId
             }
@@ -144,14 +144,14 @@ import BreweryService from '../services/BreweryService'
                     aboutUs: '',
                     website: '',
                     logoImage: '',
-                    founderId: this.getFounderId
+                  founderId: this.$store.state.user.id,
               };
             }
         }, 
 
         computed: {
             getFounderId() {
-                const user = JSON.parse(window.localStorage.getItem('user'));
+                const user = this.$store.state.user;
                 return user.id;
             },
 

@@ -33,7 +33,7 @@ import CreateBeerForm from '../components/CreateBeerForm.vue';
 export default {
   data() {
     return {
-      brewery: [],
+      brewery: {},
       beers: [],
       isFounder: false,
       showUpdateBrewery: false,
