@@ -61,8 +61,8 @@ export default {
 
 <style>
 /* make it look sexy X styles */
-.rev-card {
-    display: flex;
+.review-card {
+    display: grid;
     width: 18rem;
     justify-content: center;
     align-items: center;

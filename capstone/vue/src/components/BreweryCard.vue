@@ -58,7 +58,7 @@ export default {
     
   }
   .card-titles {
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     background-color: black;
     

@@ -41,11 +41,10 @@ export default {
   background-size: cover;
   background-position: center;
   height: 100 vh;
-   font-size: 100px;
-color: gold;
+  font-size: 80px;
+  color: gold;
+  padding-top: 20px;
 }
 
-h1 {
- 
-}
+
 </style>

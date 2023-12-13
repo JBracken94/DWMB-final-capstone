@@ -89,5 +89,7 @@ export default {
 </script>
 
 <style>
-
+.brew-details {
+  color: white;
+}
 </style>

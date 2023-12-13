@@ -3,11 +3,11 @@
     
     
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout &nbsp;|&nbsp;</router-link>
+      <router-link v-bind:to="{ name: 'home' }">Home &nbsp;|&nbsp;</router-link> 
       <router-link v-bind:to="{ name: 'beers' }" v-if="$store.state.token">Beers &nbsp;|&nbsp;</router-link>
       <router-link v-bind:to="{ name: 'breweries' }" v-if="$store.state.token">Breweries &nbsp;|&nbsp;</router-link>
-      <router-link v-bind:to="{ name: 'saved' }" v-if="$store.state.token">My APP NAME</router-link>
+      <router-link v-bind:to="{ name: 'saved' }" v-if="$store.state.token">My D.W.B &nbsp;|&nbsp;</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     
     <router-view />
@@ -36,10 +36,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  background-color: rgb(44, 44, 44); 
+  background-color: rgb(34, 31, 31); 
+  background-size: auto;
+ 
 }
 #nav {
   background-color: gold;
+  position: fixed;
+  width: 100%;
+  word-spacing: 20px;
   
 }
 

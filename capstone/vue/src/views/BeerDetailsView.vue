@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h2 class="">Beer Details</h2>
-    <h3>
+    <h2 class="beer-dets">Beer Details</h2>
+    <h3 class="beer-nam">
       {{ beer.beerName }} 
     </h3>
+    
     <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
     <button @click="showReviewForm = !showReviewForm"> Button for pressing review thing</button>
     <update-beer-form v-show="showUpdateForm"/>
@@ -79,6 +80,13 @@ export default {
 </script>
 
 <style>
+.beer-dets {
+  color: brown;
+  padding-top: 20px;
+}
+.beer-nam {
+  color: gold;
+}
 
 .form-label {
   font-weight: bold;
