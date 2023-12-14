@@ -23,6 +23,7 @@
         {{ this.$store.state.showReviewForm ? 'Hide Add Review' : 'Add A Review'}}</button>
       <create-review class="review-form" v-bind:beer="this.$store.state.beer" v-show="this.$store.state.showReviewForm" />
 
+      <button class="delete-beer-btn" @click="deleteBeer()">Delete Beer</button>
       <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews" />
     </div>
     
@@ -37,6 +38,7 @@ import ReviewList from '../components/ReviewList.vue';
 import BeerReviewService from '../services/BeerReviewService';
 import BreweryService from '../services/BreweryService';
 import CreateReview from '../components/CreateReview.vue';
+import { routerKey } from 'vue-router';
 
 
 export default {
@@ -57,8 +59,41 @@ export default {
     ReviewList,
     CreateReview
   },
-  // take note i need to make 200 or 201 or 404  basically the success and error situation 
-
+  methods: {
+    deleteBeer() {
+      if (confirm) {
+        BeerService.deleteBeer(this.$route.params.id)
+        .then(response => {
+          if (response.status == 204) {
+            this.$store.commit('SET_NOTIFICATION',
+            {
+              message: `${this.beer.beerName} has been deleted.`,
+              type: 'success'
+            })
+            this.refreshBeers;
+            this.$router.go(-1);
+          }
+        })
+        .catch(error => {
+          if(error) {
+            console.log(error.message)
+            this.$store.commit('SET_NOTIFICATION',
+            {
+              message: `Unable to delete this beer.`,
+              type: 'error'
+            })
+          }
+        })
+      }
+    },
+    refreshBeers() {
+      BeerService.getBeers()
+      .then(response => {
+        const currBeers = response.data;
+        this.$store.commit('SET_BEERS', currBeers);
+      })
+    }
+  },
   created() {
     BeerService.getBeerById(this.$route.params.id)
       .then(response => {
@@ -83,6 +118,7 @@ export default {
     //   let user = JSON.parse(window.localStorage.getItem('user'));
     //   return user.id == this.myBrewery.founderId;
     // },
+    
     brewId() {
       return this.beer.breweryId;
     }
