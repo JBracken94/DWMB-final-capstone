@@ -1,5 +1,6 @@
 <template>
   <h1 class="brew-name">{{ brewery.breweryName }}</h1>
+  <p>{{ brewery.aboutUs }}</p>
   <div v-show="checkFounder">
     <button class="update-brew" @click="this.$store.state.showUpdateBreweryForm = !this.$store.state.showUpdateBreweryForm">
       {{this.$store.state.showUpdateBreweryForm ? 'Hide Update My Brewery' : 'Update My Brewery'}}</button>
@@ -17,8 +18,11 @@
   <!-- GOOGLE MAP OF BREWERY LOCATION??? -->
   <!-- OPTIONAL :: BUTTON TOGGLE ADD BREWERY REVIEW -->
   <!-- BEER LIST / BEER CARDS -->
-  <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
-  <beer-list v-bind:beers="this.$store.state.beers"/>
+  <div>
+    <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
+    <beer-list v-bind:beers="this.$store.state.beers"/>
+
+  </div>
 </template>
 
 <script>

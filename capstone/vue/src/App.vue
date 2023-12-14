@@ -39,7 +39,7 @@ export default {
       return {
         'status-message': true,
         error: this.notification?.type?.toLowerCase() === 'error',
-        success: this.notifcation?.type?.toLowerCase() === 'success'
+        success: this.notification?.type?.toLowerCase() === 'success'
       };
     }
   },

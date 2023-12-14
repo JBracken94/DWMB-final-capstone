@@ -68,10 +68,6 @@
         <label for="zipcode" class="form-label">ZipCode</label>
         <input class="form-control" type="text" placeholder="Update ZipCode" v-model="updatedBrewery.zipcode">
 
-        <label for="dateEst" class="form-label">Date Established</label>
-        <input class="form-control" type="text" placeholder="Update Date Established, example 'YYYY-MM-DD'"
-            v-model="updatedBrewery.dateEst">
-
         <label for="phoneNumber" class="form-label">Phone Number</label>
         <input class="form-control" type="tel" placeholder="Update Phone Number, example '(555) 555-5555'"
             v-model="updatedBrewery.phoneNumber">
@@ -82,10 +78,6 @@
         <label for="website" class="form-label">Website URL</label>
         <input class="form-control" type="text" placeholder="Update Web URL, example 'https://yourwesbiturl.com/'"
             v-model="updatedBrewery.website">
-
-        <label for="logoImage" class="form-label">Logo Image</label>
-        <input class="form-control" type="text" placeholder="Update Logo Image, example 'yourlogo.jpg'"
-            v-model="updatedBrewery.logoImage">
 
         <button type="submit" class="btn btn-primary" @click="toggleUpdateBreweryForm">Submit Changes</button>
     </form>
@@ -122,16 +114,22 @@ export default {
             BreweryService.updateBrewery(this.updatedBrewery)
                 .then(response => {
                     if (response.status == 200) {
-                        //Notification of successful
-                        alert('Success!');
-                    } else if (response.status == 500) {
-                        //Server error notification
-                        alert('Doh!');
-                    } else {
-                        //Some other error
-                        alert(response.status);
+                        this.$store.commit('SET_NOTIFICATION',
+                        {
+                            messages: 'Your brewery has been updated.',
+                            type: 'success'
+                        })
                     }
-                });
+                })
+                .catch(error => {
+                    if (error.response.status) {
+                        this.store.commit('SET_NOTIFICATION',
+                        {
+                            message: 'There was an error updating your brewery. Please try again later.',
+                            type: 'error'
+                        })
+                    }
+                })
             // Look at setNotification from Lecture
         },
         getBrewery() {

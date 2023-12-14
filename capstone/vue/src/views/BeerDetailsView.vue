@@ -10,6 +10,7 @@
       <h4 class="beer-type">
         {{ beer.beerType }} :: {{ beer.abv }}%
       </h4>
+      <p>{{ beer.description }}</p>
 
         <!-- <button v-show="isFounder" @click="this.$store.state.showUpdateBeerForm = !this.$store.state.showUpdateBeerForm">
           {{ this.$store.state.showUpdateBeerForm ? 'Hide Update Beer' : 'Update Beer Info'}}</button> -->

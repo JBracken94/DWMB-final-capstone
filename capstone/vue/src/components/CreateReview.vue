@@ -13,8 +13,7 @@
                 </div>
             </div>
             <div>
-                <label for="reviewText">Your Review:</label>
-                <textarea name="reviewText" id="reviewText" cols="30" rows="5" placeholder="What did you think?"
+                <textarea name="reviewText" id="reviewText" cols="30" rows="5" 
                     v-model="newReview.beerReview" required></textarea>
             </div>
             <button type="submit" @click="toggleReviewForm">Submit Review</button>
@@ -55,7 +54,7 @@ export default {
                 beerId: this.$store.state.beer.beerId,
                 reviewerId: this.reviewer,
                 beerRating: 0.0,
-                beerReview: 0,
+                beerReview: '',
                 datePosted: new Date(2023, 12, 12),
             };
         },
@@ -63,12 +62,21 @@ export default {
             BeerReviewService.createBeerReview(this.newReview)
                 .then(response => {
                     if (response.status == 201) {
+                        this.$store.commit('SET_NOTIFICATION',
+                        {
+                            message: 'Your review has been posted.',
+                            type: 'success'
+                        })
                         this.$store.dispatch('getUpdatedReviews', this.$store.state.beer.beerId);
                     }
                 })
                 .catch(error => {
-                    if (error == 500) {
-                        alert('createReview failed change this alert')
+                    if (error) {
+                        this.$store.commit('SET_NOTIFICATION',
+                        {
+                            message: 'There was an error posting your review. Please try again later.',
+                            type: 'error'
+                        })
                     }
                 });
             this.resetForm();

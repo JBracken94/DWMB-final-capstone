@@ -60,17 +60,17 @@ export default {
           if (response.status == 201) {
             this.$store.commit('SET_NOTIFICATION',
             {
-              message: 'Your beer has been created',
+              message: 'Your beer has been created.',
               type: 'success'
             })
             this.$store.dispatch('getBeersByBrewery', this.brewery)
           }
         })
         .catch(error => {
-          if (error.response.status === 500) {
+          if (error.response.status) {
             this.$store.commit('SET_NOTIFICATION',
             {
-              message: 'There was an error creating your beer. Please try again later',
+              message: 'There was an error creating your beer. Please try again later.',
               type: 'Error'
             })
           }

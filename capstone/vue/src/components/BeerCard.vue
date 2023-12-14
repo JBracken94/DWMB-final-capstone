@@ -31,12 +31,19 @@
         BeerService.addSavedBeer(this.beer.beerId)
         .then(response => {
           if (response.status == 201) {
-            console.log('added')
+            this.$store.commit('SET_NOTIFICATION',
+            {
+              message: `${this.beer.beerName} has been saved.`,
+              type: 'success'
+            })
           }
         })
         .catch (error => {
-          if (error.response.status === 500) {
-            this.deleteSaved;
+          if (error) {
+            this.$store.commit('SET_NOTIFICATION', 
+            {
+              message: `${this.beer.beerName} is already saved.`
+            })
           }
         })
       },
@@ -44,7 +51,11 @@
         BeerService.deleteSavedBeer(this.beer.beerId)
         .then(response => {
           if (response.status == 204) {
-            console.log('beerdeleted');
+            this.$store.commit('SET_NOTIFICATION', 
+            {
+              message: `${this.beer.beerName} removed from favorites.`,
+              type: 'success'
+            })
           }
           this.$store.dispatch('getUpdatedSaved');
         });
