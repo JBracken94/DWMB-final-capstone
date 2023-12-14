@@ -3,7 +3,6 @@
     
     <aside>
       <nav>
-        
         <ul class="nav-list">
           <li><router-link v-bind:to="{ name: 'home' }">
           <img src="src\assests\images\logo\logo.png" :to="{ name: 'home' }" class="logo">
@@ -15,7 +14,12 @@
         </ul>   
       </nav>
     </aside>
-    
+
+    <!-- notification handling -->
+    <div v-bind:class="notificationClass" v-show="notification" v-on:click="clearNotification">
+      {{ notification?.message }}
+    </div>
+
     <router-view class="views"/>
   </div>
 </template>
@@ -27,8 +31,22 @@ export default {
     return {
     };
   },
-  components: {
-    
+  computed: {
+    notification() {
+      return this.$store.state.notification;
+    },
+    notificationClass() {
+      return {
+        'status-message': true,
+        error: this.notification?.type?.toLowerCase() === 'error',
+        success: this.notifcation?.type?.toLowerCase() === 'success'
+      };
+    }
+  },
+  methods: {
+    clearNotification() {
+      this.$store.commit('CLEAR_NOTIFICATION');
+    }
   }
 };
 </script>
@@ -65,6 +83,24 @@ nav {
 body, html, #app {
   margin: 0;
   padding: 0;
+}
+
+.status-message {
+  background-color: #bababa;
+  display: block;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.status-message.success {
+  background-color: #90ee90;
+}
+.status-message.error {
+  background-color: #f08080;
 }
 
 

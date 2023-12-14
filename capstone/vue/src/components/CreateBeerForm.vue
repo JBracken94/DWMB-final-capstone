@@ -58,14 +58,21 @@ export default {
       BeerService.createBeer(this.newBeer)
         .then(response => {
           if (response.status == 201) {
-            //Notification of successful
-            alert('Success!');
+            this.$store.commit('SET_NOTIFICATION',
+            {
+              message: 'Your beer has been created',
+              type: 'success'
+            })
             this.$store.dispatch('getBeersByBrewery', this.brewery)
           }
         })
         .catch(error => {
           if (error.response.status === 500) {
-            alert('500')
+            this.$store.commit('SET_NOTIFICATION',
+            {
+              message: 'There was an error creating your beer. Please try again later',
+              type: 'Error'
+            })
           }
         });
       this.resetForm();
