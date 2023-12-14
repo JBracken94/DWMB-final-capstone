@@ -157,6 +157,7 @@ img {
   border-radius: 10px;
   font-size: 20px;
   margin-right: 20%;
+  margin-left: 700px;
 }
 
 .meet-the-bois {

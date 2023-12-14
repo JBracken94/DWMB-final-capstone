@@ -2,7 +2,7 @@
     <div class="brewery-card brew-card">
         <div class="card-brew-body">
             <h2 class="card-titles">{{brewery.breweryName}}</h2>
-            <h4>{{ brewery.city }}, {{ brewery.state }}</h4>
+            <h4 class="brew-location">{{ brewery.city }}, {{ brewery.state }}</h4>
             <p class="card-test"><a v-bind:href="brewery.website" target="_blank">Visit Us on the Web</a></p>
             <div>
                 
@@ -45,6 +45,9 @@ export default {
     height: 100 vh;
  
     
+}
+.brew-location {
+    color: red;
 }
 
 .brew-card {

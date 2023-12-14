@@ -85,10 +85,13 @@
   }
   .card-text {
     margin-top: 5px;
+    font-size: x-large;
     
   }
   .btn {
     margin-top: 10px;
     color:black;
+    word-spacing: 10px;
+    margin: 10px;
   }
   </style>

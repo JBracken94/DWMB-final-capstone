@@ -60,7 +60,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   background-color: rgb(34, 31, 31); 
-  background-size: auto;
+  background-size: 100vh;
   height: 100%;
   margin-left: 500px;
  
@@ -77,6 +77,7 @@ nav {
 .nav-list {
   list-style: none;
   height: 100vh;
+  
 }
 
 /* this is remove that whitespace gap and it reflects to all the components */
