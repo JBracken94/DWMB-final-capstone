@@ -68,10 +68,6 @@
         <label for="zipcode" class="form-label">ZipCode</label>
         <input class="form-control" type="text" placeholder="Update ZipCode" v-model="updatedBrewery.zipcode">
 
-        <label for="dateEst" class="form-label">Date Established</label>
-        <input class="form-control" type="text" placeholder="Update Date Established, example 'YYYY-MM-DD'"
-            v-model="updatedBrewery.dateEst">
-
         <label for="phoneNumber" class="form-label">Phone Number</label>
         <input class="form-control" type="tel" placeholder="Update Phone Number, example '(555) 555-5555'"
             v-model="updatedBrewery.phoneNumber">
@@ -82,10 +78,6 @@
         <label for="website" class="form-label">Website URL</label>
         <input class="form-control" type="text" placeholder="Update Web URL, example 'https://yourwesbiturl.com/'"
             v-model="updatedBrewery.website">
-
-        <label for="logoImage" class="form-label">Logo Image</label>
-        <input class="form-control" type="text" placeholder="Update Logo Image, example 'yourlogo.jpg'"
-            v-model="updatedBrewery.logoImage">
 
         <button type="submit" class="btn btn-primary">Submit Changes</button>
     </form>

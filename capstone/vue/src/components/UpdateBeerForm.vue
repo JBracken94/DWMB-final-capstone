@@ -19,14 +19,6 @@
       <label for="abv" class="form-label">ABV</label>
       <input v-model="updatedBeer.abv" type="text" class="form-control" id="abv" placeholder="Update % ABV, example 5.5" required>
     </div>
-<!-- 
-    <div class="mb-3">
-      <label for="labelImage" class="form-label">Label Image</label>
-      <input v-model="updatedBeer.labelImage" type="text" class="form-control" id="labelImage"
-        placeholder="Update Label Image, example 'yourbeerlabel.jpg'">
-    </div> --> 
-    <!-- disregard label image unless image server can be set up
-     -->
 
     <button type="submit" class="btn btn-primary">Submit Changes</button>
   </form>

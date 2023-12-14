@@ -16,8 +16,11 @@
   <!-- GOOGLE MAP OF BREWERY LOCATION??? -->
   <!-- OPTIONAL :: BUTTON TOGGLE ADD BREWERY REVIEW -->
   <!-- BEER LIST / BEER CARDS -->
-  <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
-  <beer-list v-bind:beers="this.$store.state.beers"/>
+  <div>
+    <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
+    <beer-list v-bind:beers="this.$store.state.beers"/>
+
+  </div>
 </template>
 
 <script>
