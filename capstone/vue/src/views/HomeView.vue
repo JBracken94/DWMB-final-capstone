@@ -130,7 +130,7 @@ h1 {
   text-align: center;
   font-size: 90px;
   color: brown;
-  font-family:cursive;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 }
 
@@ -138,7 +138,7 @@ p {
   text-align: center;
   color: goldenrod;
   font-size: 40px;
-  font-family: cursive;
+  
 }
 
 img {
