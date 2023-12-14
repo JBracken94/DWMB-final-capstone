@@ -4,6 +4,8 @@ import BeerService from '../services/BeerService';
 import BeerReviewService from '../services/BeerReviewService';
 import BreweryService from '../services/BreweryService'
 
+const NOTIFICATION_TIMEOUT = 3000;
+
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
@@ -21,7 +23,8 @@ export function createStore(currentToken, currentUser) {
       showCreateBreweryForm: false,
       showUpdateBreweryForm: false,
       showCreateBeerForm: false,
-      showUpdateBeerForm: false
+      showUpdateBeerForm: false,
+      notification: null,
     },
     getters: {
       getSavedBeers : (state) => {
@@ -29,6 +32,38 @@ export function createStore(currentToken, currentUser) {
       }
     },
     mutations: {
+      SET_NOTIFICATION(state, notification) {
+        // clear current if one exists
+        if (state.notification) {
+          this.commit('CLEAR_NOTIFICATION')
+        }
+        if (typeof notification === 'string') {
+          notification = {
+            message: notification,
+            type: 'error',
+            timeout: NOTIFICATION_TIMEOUT
+          }
+        } else {
+          // else add default values
+          notification.type = notification.type || 'error';
+          notification.timeout = notification.timeout || NOTIFICATION_TIMEOUT;
+        }
+
+        //set notification in state
+        state.notification = notification;
+
+        // clear message after timeout
+        notification.time = window.setTimeout(() => {
+          this.commit('CLEAR_NOTIFICATION');
+        }, notification.timeout);
+
+      },
+      CLEAR_NOTIFICATION(state) {
+        if (state.notification && state.notification.timer) {
+          window.clearTimeout(state.notification.time);
+        }
+        state.notification = null;
+      },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;
         localStorage.setItem('token', token);

@@ -1,13 +1,13 @@
 <template>
-  <h1>{{ brewery.breweryName }}</h1>
+  <h1 class="brew-name">{{ brewery.breweryName }}</h1>
   <div v-show="checkFounder">
-    <button @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
-    <update-brewery-form v-show="showUpdateBrewery" v-bind:brewery="brewery"/>
+    <button class="update-brew" @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
+    <update-brewery-form class="update-brewery" v-show="showUpdateBrewery" v-bind:brewery="brewery"/>
 
     <!-- <button @click="showCreateBeer = !showCreateBeer">{{ showCreateBeer ? 'Hide' : 'Add New Beer' }}</button> -->
-    <button v-show="!showCreateBeer" @click="showCreateBeer = !showCreateBeer">Add New Beer</button>
+    <button class="create-burr" v-show="!showCreateBeer" @click="showCreateBeer = !showCreateBeer">Add New Beer</button>
+    <button class="cancel-beer" v-show="showCreateBeer" @click="showCreateBeer = !showCreateBeer">Cancel Add New Beer</button>
     <create-beer-form v-show="showCreateBeer" v-bind:brewery="brewery" />
-    <button v-show="showCreateBeer" @click="showCreateBeer = !showCreateBeer">Cancel Add New Beer</button>
 
   </div>
   
@@ -92,7 +92,55 @@ export default {
 </script>
 
 <style>
+.brew-name {
+  color: goldenrod;
+}
 .brew-details {
   color: white;
+}
+.update-brew {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 750px;
+  
+}
+.create-burr {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 750px;
+}
+.cancel-beer {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 750px;
+}
+.update-brewery {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 750px;
 }
 </style>

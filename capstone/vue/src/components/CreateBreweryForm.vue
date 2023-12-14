@@ -182,6 +182,7 @@ import BreweryService from '../services/BreweryService'
     align-items: center;
     min-height: 100vh;
     border-radius: 70px;
+    margin-left: 700px;
     
     
     
