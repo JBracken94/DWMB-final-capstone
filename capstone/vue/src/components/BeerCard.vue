@@ -46,7 +46,7 @@
           if (response.status == 204) {
             console.log('beerdeleted');
           }
-          this.$store.dispatch('getUpdatedBeers');
+          this.$store.dispatch('getUpdatedSaved');
         });
       }
       }

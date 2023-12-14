@@ -84,6 +84,9 @@ export default {
       let user = JSON.parse(window.localStorage.getItem('user'));
       return user.id == this.brewery.founderId;
     }
+  },
+  updated() {
+    this.getBeersByBrewery();
   }
 }
 </script>

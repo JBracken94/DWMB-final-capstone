@@ -70,12 +70,12 @@ export function createStore(currentToken, currentUser) {
       }
     },
     actions: {
-      getUpdatedBeers({ commit }) {
+      getUpdatedSaved({ commit }) {
         BeerService.getSavedBeers()
         .then(response => {
           const updatedBeers = response.data;
           commit('SET_SAVED_BEERS', updatedBeers);
-        })
+        });
       },
       getUpdatedReviews({commit}, beerId) {
         BeerReviewService.getReviewsByBeerId(beerId)
@@ -96,6 +96,13 @@ export function createStore(currentToken, currentUser) {
         .then(response => {
           const updatedBreweries = response.data;
           commit('SET_BREWERIES', updatedBreweries);
+        })
+      },
+      getBeersByBrewery({commit}, breweryId) {
+        BeerService.getBeersByBrewery(breweryId)
+        .then(response => {
+          const updatedBeers = response.data;
+          commit('SET_BEER_LIST', updatedBeers)
         })
       }
     }

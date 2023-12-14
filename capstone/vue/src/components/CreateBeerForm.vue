@@ -20,11 +20,11 @@
       <input v-model="newBeer.abv" type="number" class="form-control" step="0.1" name="abv" placeholder="Enter % Abv, example 5.5" required>
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="labelImage" class="form-label">Label Image</label>
       <input v-model="newBeer.labelImage" type="text" class="form-control" name="labelImage"
         placeholder="Enter Label Image, example 'yourbeerlabel.jpg'" required>
-    </div>
+    </div> -->
 
     <button type="submit" class="btn btn-primary">Submit New Beer</button>
   </form>
@@ -60,6 +60,7 @@ export default {
           if (response.status == 201) {
             //Notification of successful
             alert('Success!');
+            this.$store.dispatch('getBeersByBrewery', this.brewery)
           }
         })
         .catch(error => {
