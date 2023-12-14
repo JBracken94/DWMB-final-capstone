@@ -87,6 +87,12 @@ body, html, #app {
 }
 
 .status-message {
+  margin: auto;
+  position: fixed;
+  justify-content: center;
+  width: 50vw;
+  left: 0;
+  right: 0;
   background-color: #bababa;
   display: block;
   border-radius: 5px;
@@ -96,6 +102,7 @@ body, html, #app {
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+  z-index: 1;
 }
 .status-message.success {
   background-color: #90ee90;

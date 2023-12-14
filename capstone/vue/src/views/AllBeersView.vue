@@ -4,7 +4,7 @@
   <!-- ADD BEER button for ROLE_BREWER (Maybe lives in brewery details) -->
   <!-- Search/Filter Fields -->
   <!-- Container with BeerCards / Beer List -->
-  <beer-list v-bind:beers="this.$store.state.beers"/>
+  <beer-list v-bind:beers="this.$store.state.beers" class="beer-list"/>
 </template>
 
 <script>
@@ -40,6 +40,12 @@ export default {
 .bca {
   padding-top: 20px;
   
+}
+.beer-list {
+  margin: left 200px;
+}
+* {
+  margin-left: 200px;
 }
 
 h1 {

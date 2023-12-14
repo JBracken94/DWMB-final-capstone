@@ -6,11 +6,11 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import MySavedLists from '../views/MySavedListsView.vue';
-import AboutBreweryView from '../views/AboutBreweryView.vue';
-import BeerCardSearchView from '../views/BeerCardSearchView.vue';
-import BreweryCardSearch from '../views/BreweryCardSearchView.vue';
-import BeerDetailsView from '../views/BeerDetailsView.vue';
+import MySavedBeers from '../views/MySavedBeersView.vue';
+import BreweryDetails from '../views/BreweryDetailsView.vue';
+import BeerDetails from '../views/BeerDetailsView.vue';
+import AllBeers from '../views/AllBeersView.vue';
+import AllBreweries from '../views/AllBreweriesView.vue';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -60,27 +60,27 @@ const routes = [
   {
     path: "/saved",
     name: "saved",
-    component: MySavedLists
+    component: MySavedBeers
   },
   {
     path: "/breweries/:breweryId",
     name: "brewery-details",
-    component: AboutBreweryView
+    component: BreweryDetails
   },
   {
     path: "/beers",
     name: "beers",
-    component: BeerCardSearchView
+    component: AllBeers
   },
   {
     path: "/breweries",
     name: "breweries",
-    component: BreweryCardSearch
+    component: AllBreweries
   },
   {
     path: '/beers/:id',
     name: 'beer-details',
-    component: BeerDetailsView
+    component: BeerDetails
   }
 ];
 

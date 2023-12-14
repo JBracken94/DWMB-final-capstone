@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="rev-form">
         <form v-on:submit.prevent="addReview" >
             <div>
                 <div class="stars">
@@ -90,6 +90,9 @@ export default {
 </script>
 
 <style>
+.rev-form {
+ 
+}
 .stars {
     margin: 10px;
 }

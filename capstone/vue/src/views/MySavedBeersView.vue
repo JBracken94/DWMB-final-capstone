@@ -3,7 +3,7 @@
   <!-- BUTTONS ON CARDS TO DELETE SAVED -->
   <!-- List of My Saved Breweries -->
   <!-- What should show if no saved beers? -->
-  <beer-list v-bind:beers="this.$store.state.savedBeers"/>
+  <beer-list v-bind:beers="this.$store.state.savedBeers" class="my-saved-beers"/>
   <!-- List of My Saved Beers -->
 </template>
 
@@ -45,5 +45,6 @@ export default {
 }
 .my-saved-beers {
   color: brown;
+  margin-left: 200px;
 }
 </style>

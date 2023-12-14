@@ -77,10 +77,7 @@
     border-radius: 30px;
     border-block-width: 10px;
     
-    
     margin: auto;
-    margin-bottom: 30px;
-    margin-left: 150px;
   
   }
   .card-img-top {

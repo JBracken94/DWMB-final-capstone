@@ -1,15 +1,18 @@
 <template>
-  <h1 class="brew-name">{{ brewery.breweryName }}</h1>
-  <p>{{ brewery.aboutUs }}</p>
-  <div v-show="checkFounder">
+  <div class="brew-info">
+    <h1 class="brew-name">{{ brewery.breweryName }}</h1>
+    <h4>{{ brewery.city }}, {{ brewery.state }}</h4>
+    <p class="brew-details">{{ brewery.aboutUs }}</p>
+  </div>
+  <div v-show="checkFounder" class="forms">
     <button class="update-brew" @click="this.$store.state.showUpdateBreweryForm = !this.$store.state.showUpdateBreweryForm">
       {{this.$store.state.showUpdateBreweryForm ? 'Hide Update My Brewery' : 'Update My Brewery'}}</button>
-    <update-brewery-form class="update-brewery" v-show="this.$store.state.showUpdateBreweryForm" v-bind:brewery="brewery"/>
+    <update-brewery-form class="update-brew" v-show="this.$store.state.showUpdateBreweryForm" v-bind:brewery="brewery"/>
 
     <!-- <button @click="showCreateBeer = !showCreateBeer">{{ showCreateBeer ? 'Hide' : 'Add New Beer' }}</button> -->
     <button class="create-burr" @click="this.$store.state.showCreateBeerForm = !this.$store.state.showCreateBeerForm">
       {{this.$store.state.showCreateBeerForm ? 'Hide Add a New Beer' : 'Add a New Beer'}}</button>
-    <create-beer-form v-show="this.$store.state.showCreateBeerForm" v-bind:brewery="brewery" />
+    <create-beer-form v-show="this.$store.state.showCreateBeerForm" v-bind:brewery="brewery" class="create-burr"/>
 
   </div>
   
@@ -19,8 +22,8 @@
   <!-- OPTIONAL :: BUTTON TOGGLE ADD BREWERY REVIEW -->
   <!-- BEER LIST / BEER CARDS -->
   <div>
-    <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress"/>
-    <beer-list v-bind:beers="this.$store.state.beers"/>
+    <brew-map v-bind:brew="brewery" v-bind:address="fixedAddress" class="map"/>
+    <beer-list v-bind:beers="this.$store.state.beers" class="list"/>
 
   </div>
 </template>
@@ -97,55 +100,72 @@ export default {
 </script>
 
 <style>
+.brew-info {
+  margin: auto;
+  justify-items: center;
+}
 .brew-name {
   color: goldenrod;
+  margin: auto;
 }
 .brew-details {
   color: white;
+  width: 50vw;
+  margin: auto;
 }
 .update-brew {
   color: goldenrod;
   display: grid;
-  width: 40vh;
+  width: 20vw;
   background-color: brown;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  margin-left: 750px;
+  margin-left: 200px;
   
 }
 .create-burr {
   color: goldenrod;
   display: grid;
-  width: 40vh;
+  width: 20vw;
   background-color: brown;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  margin-left: 750px;
+  margin-left: 200px;
 }
 .cancel-beer {
   color: goldenrod;
   display: grid;
-  width: 40vh;
+  width: 20vw;
   background-color: brown;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  margin-left: 750px;
 }
 .update-brewery {
   color: goldenrod;
   display: grid;
-  width: 40vh;
+  width: 20vw;
   background-color: brown;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  margin-left: 750px;
+}
+.forms {
+  margin: auto;
+  padding: 10px;
+  justify-self: center;
+  width: 40vw;
+
+}
+.list {
+  margin: 50px 200px  50px 200px;
+  border: solid black 10px;
+  padding: 25px;
 }
 </style>
