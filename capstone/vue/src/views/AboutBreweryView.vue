@@ -1,5 +1,6 @@
 <template>
   <h1 class="brew-name">{{ brewery.breweryName }}</h1>
+  <p>{{ brewery.aboutUs }}</p>
   <div v-show="checkFounder">
     <button class="update-brew" @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
     <update-brewery-form class="update-brewery" v-show="showUpdateBrewery" v-bind:brewery="brewery"/>
