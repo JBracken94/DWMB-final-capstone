@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div>
-                <textarea name="reviewText" id="reviewText" cols="30" rows="5" 
+                <textarea class="review-text" name="reviewText" id="reviewText" cols="30" rows="5" 
                     v-model="newReview.beerReview" required></textarea>
             </div>
             <button type="submit" @click="toggleReviewForm">Submit Review</button>
@@ -90,10 +90,14 @@ export default {
 </script>
 
 <style>
-.rev-form {
- 
-}
+
 .stars {
     margin: 10px;
+    
+}
+.review-text {
+    background-color: goldenrod;
+
+    
 }
 </style>

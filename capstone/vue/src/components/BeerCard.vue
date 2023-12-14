@@ -76,8 +76,8 @@
     border-color: brown;
     border-radius: 30px;
     border-block-width: 10px;
-    
-    margin: auto;
+    ;
+    margin: 20px;
   
   }
   .card-img-top {

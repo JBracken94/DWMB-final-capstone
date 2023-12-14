@@ -74,10 +74,13 @@ export default {
     margin-top: 10px;
     font-size: 1.5rem;
     color:black;
+    
 
   }
   .rev-rating{
     font-size: 3rem;
     color:red;
+    
+   
   }
 </style>

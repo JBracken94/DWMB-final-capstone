@@ -128,15 +128,17 @@ export default {
 
 h1 {
   text-align: center;
-  font-size: 100px;
+  font-size: 90px;
   color: brown;
+  font-family:cursive;
 
 }
 
 p {
   text-align: center;
   color: goldenrod;
-  font-size: 50px;
+  font-size: 40px;
+  font-family: cursive;
 }
 
 img {
@@ -161,5 +163,6 @@ img {
 
 .meet-the-bois {
   font-size: 50px;
-  color: red;
+  color: brown;
+  font-family: cursive;
 }</style>

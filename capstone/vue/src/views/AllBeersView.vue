@@ -40,6 +40,7 @@ export default {
 .bca {
   padding-top: 20px;
   
+  
 }
 .beer-list {
   margin: left 200px;

@@ -10,7 +10,7 @@
       <h4 class="beer-type">
         {{ beer.beerType }} :: {{ beer.abv }}%
       </h4>
-      <p>{{ beer.description }}</p>
+      <p class="desc">{{ beer.description }}</p>
 
         <!-- <button v-show="isFounder" @click="this.$store.state.showUpdateBeerForm = !this.$store.state.showUpdateBeerForm">
           {{ this.$store.state.showUpdateBeerForm ? 'Hide Update Beer' : 'Update Beer Info'}}</button> -->
@@ -96,6 +96,11 @@ export default {
   color: brown;
   padding-top: 60px;
 }
+.desc {
+  color: brown;
+  font-size: x-large;
+  
+}
 
 .beer-name {
   color: gold;
@@ -122,7 +127,7 @@ export default {
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  /* margin-left: 750px; */
+   margin-left: 670px; 
 }
 
 .update-form {
@@ -135,6 +140,8 @@ export default {
   background-color: brown;
   border-radius: 10px;
   font-size: 20px;
+  margin-left: 670px;
+  
 }
 
 .add-review-btn {
@@ -146,7 +153,7 @@ export default {
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  /* margin-left: 750px; */
+ margin-left: 670px;;
 }
 
 .review-form {
@@ -156,10 +163,10 @@ export default {
   align-items: center;
 
   width: 40vh;
-  height: 5vh;
-  /* background-color: brown; */
+  background-color: brown;
   border-radius: 10px;
   font-size: 20px;
+  margin-left: 670px;
 }
 
 .review-update {
