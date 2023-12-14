@@ -60,9 +60,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   background-color: rgb(34, 31, 31); 
-  background-size: 100%;
-  height: 100%;
+  background-size: 100vh;
+  height: 200vh;
   margin-left: 500px;
+  position: center;
  
 }
 
@@ -91,7 +92,7 @@ body, html, #app {
   position: fixed;
   justify-content: center;
   width: 50vw;
-  left: 0;
+  left: 20;
   right: 0;
   background-color: #bababa;
   display: block;

@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
-      <h1>Create Account</h1>
+      <h1 class="create-account">Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -86,5 +86,28 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+.create-account {
+  
+  color: goldenrod;
+  display: grid;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+   margin: center;
+}
+#register {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+   margin-left: 670px;
+   
 }
 </style>
