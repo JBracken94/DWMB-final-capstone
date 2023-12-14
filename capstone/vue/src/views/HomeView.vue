@@ -120,6 +120,9 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  margin-left: 150px;
+}
 .header {
   padding-top: 20px;
 }

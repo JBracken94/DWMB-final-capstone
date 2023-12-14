@@ -39,6 +39,7 @@ export default {
 <style scoped>
 .bca {
   padding-top: 20px;
+  
 }
 
 h1 {

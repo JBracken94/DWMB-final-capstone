@@ -1,6 +1,6 @@
 <template>
-  <body class="beerlist">
-    <div>
+  
+    <div class="review-update">
       <h2 class="beer-dets">DWM Reviews</h2>
       <h3 class="beer-nam">
         {{ beer.beerName }}
@@ -19,7 +19,7 @@
       <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews" />
     </div>
     
-  </body>
+  
 </template>
 
 <script>
@@ -84,6 +84,7 @@ export default {
 </script>
 
 <style>
+
 .beer-dets {
   color: brown;
   padding-top: 60px;
@@ -117,7 +118,8 @@ export default {
   border-radius: 10px;
   font-size: 20px;
 }
-.beerlist {
+.review-update {
   margin-left: 200px;
 }
+
 </style>

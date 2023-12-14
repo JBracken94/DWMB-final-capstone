@@ -69,7 +69,8 @@
     
     margin: auto;
     margin-bottom: 30px;
-    
+    margin-left: 150px;
+  
   }
   .card-img-top {
     height: 200px;
