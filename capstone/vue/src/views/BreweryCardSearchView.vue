@@ -1,5 +1,5 @@
 <template>
-  <h2 class="bcs">Brewery Card Search</h2>
+  <h2 class="bcs">Find a Brewery</h2>
   <!-- BUTTONS ON CARDS TO ADD SAVED -->
   <!-- ADD BREWERY BUTTON/FORM for ROLE_BREWER -->
   <!-- Brewery Search Bar/Filter fields -->
@@ -42,7 +42,7 @@ export default {
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
-  height: 100 vh;
+  height: 200px;
   font-size: 80px;
   color: goldenrod;
   padding-top: 3rem;

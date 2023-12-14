@@ -12,6 +12,10 @@ export default {
     return axios.get('/mybeers')
   },
 
+  getRandomBeer() {
+    return axios.get('/beers/random')
+  },
+
   getBeersByBrewery(breweryId) {
     return axios.get(`/brewery/beers/${breweryId}`);
   },

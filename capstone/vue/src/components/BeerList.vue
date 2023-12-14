@@ -6,7 +6,6 @@
 
 <script>
 import BeerCard from "./BeerCard.vue";
-import BeerService from '../services/BeerService';
 
 export default {
   components: {

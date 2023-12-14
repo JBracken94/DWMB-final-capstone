@@ -1,16 +1,22 @@
 <template>
   <div id="capstone-app">
     
+    <aside>
+      <nav>
+        
+        <ul class="nav-list">
+          <li><router-link v-bind:to="{ name: 'home' }">
+          <img src="src\assests\images\logo\logo.png" :to="{ name: 'home' }" class="logo">
+          </router-link>  </li>
+          <li><router-link v-bind:to="{ name: 'beers' }" v-if="$store.state.token">Beers</router-link> </li>
+          <li><router-link v-bind:to="{ name: 'breweries' }" v-if="$store.state.token">Breweries</router-link> </li>
+          <li><router-link v-bind:to="{ name: 'saved' }" v-if="$store.state.token">My D.W.M.B</router-link> </li>
+          <li><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> </li>
+        </ul>   
+      </nav>
+    </aside>
     
-    <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home &nbsp;|&nbsp;</router-link> 
-      <router-link v-bind:to="{ name: 'beers' }" v-if="$store.state.token">Beers &nbsp;|&nbsp;</router-link>
-      <router-link v-bind:to="{ name: 'breweries' }" v-if="$store.state.token">Breweries &nbsp;|&nbsp;</router-link>
-      <router-link v-bind:to="{ name: 'saved' }" v-if="$store.state.token">My D.W.M.B &nbsp;|&nbsp;</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-    </div>
-    
-    <router-view />
+    <router-view class="views"/>
   </div>
 </template>
 
@@ -38,17 +44,24 @@ export default {
   background-color: rgb(34, 31, 31); 
   background-size: auto;
   height: 100%;
+  margin-left: 500px;
  
 }
-#nav {
-  background-color: goldenrod;
+
+aside {
+  width: 200px;
+  height: 100%;
+}
+nav {
+  background-color: #e79115;
   position: fixed;
-  width: 100%;
-  word-spacing: 20px;
-  
+}
+.nav-list {
+  list-style: none;
+  height: 100vh;
 }
 
-/* this is remove that whitespace gap and it reflects to all the componetns */
+/* this is remove that whitespace gap and it reflects to all the components */
 body, html, #app {
   margin: 0;
   padding: 0;

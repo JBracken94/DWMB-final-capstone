@@ -1,22 +1,25 @@
 <template>
-  <div>
-    <h2 class="beer-dets">DWM Reviews</h2>
-    <h3 class="beer-nam">
-      {{ beer.beerName }}
-    </h3>
-    <div class="review-button">
-    <h4 class="type">
-       {{ beer.beerType }}  ::  {{beer.abv}}% 
-    </h4>
+  <body class="beerlist">
+    <div>
+      <h2 class="beer-dets">DWM Reviews</h2>
+      <h3 class="beer-nam">
+        {{ beer.beerName }}
+      </h3>
+      <div class="review-button">
+        <h4 class="type">
+          {{ beer.beerType }} :: {{ beer.abv }}%
+        </h4>
+  
+        <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'UpdateBeer'}}</button>
+        <button @click="showUpBeerForm = !showUpBeerForm"> Update this Beer </button>
+        <update-beer-form v-show="showUpBeerForm" />
+        <button @click="showReviewForm = !showReviewForm"> Review this Beer </button>
+        <create-review v-bind:beer="this.$store.state.beer" v-show="showReviewForm" />
+      </div>
+      <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews" />
+    </div>
     
-    <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'Update Beer'}}</button>
-    <button @click="showUpBeerForm = !showUpBeerForm"> Update this Beer </button>
-    <update-beer-form v-show="showUpBeerForm"/>
-    <button @click="showReviewForm = !showReviewForm"> Review this Beer </button>
-    <create-review v-bind:beer="this.$store.state.beer" v-show="showReviewForm"/>
-  </div>
-    <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews"/>
-  </div>
+  </body>
 </template>
 
 <script>
@@ -47,26 +50,26 @@ export default {
     ReviewList,
     CreateReview
   },
-      // take note i need to make 200 or 201 or 404  basically the success and error situation 
+  // take note i need to make 200 or 201 or 404  basically the success and error situation 
 
   created() {
     BeerService.getBeerById(this.$route.params.id)
-    .then(response => {
-      this.beer = response.data;
-      this.$store.commit('SET_BEER', this.beer);
-      // needs to run on beer update
-      BreweryService.getBreweryById(this.beer.breweryId)
-    .then(response => {
-      this.myBrewery = response.data;
-      this.$store.commit('SET_BREWERY', this.myBrewery);
-    });
-    });
+      .then(response => {
+        this.beer = response.data;
+        this.$store.commit('SET_BEER', this.beer);
+        // needs to run on beer update
+        BreweryService.getBreweryById(this.beer.breweryId)
+          .then(response => {
+            this.myBrewery = response.data;
+            this.$store.commit('SET_BREWERY', this.myBrewery);
+          });
+      });
     BeerReviewService.getReviewsByBeerId(this.$route.params.id)
-    .then(response => {
-      this.reviews = response.data;
-      this.$store.commit('SET_REVIEWS', this.reviews);
-    });
-    
+      .then(response => {
+        this.reviews = response.data;
+        this.$store.commit('SET_REVIEWS', this.reviews);
+      });
+
   },
   computed: {
     // isFounder() {
@@ -85,32 +88,36 @@ export default {
   color: brown;
   padding-top: 60px;
 }
+
 .beer-nam {
   color: gold;
 }
-.type{
+
+.type {
   color: goldenrod;
 }
 
 .form-label {
   font-weight: bold;
 }
+
 .form-control {
   margin-bottom: 10px;
 }
+
 .review-button {
-    color: gold;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-  
-    width: 40vh;
-    height: 5vh;
-    background-color:brown;
-    border-radius: 10px;
-    font-size: 20px;
-  
-   
-    
+  color: gold;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  width: 40vh;
+  height: 5vh;
+  background-color: brown;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.beerlist {
+  margin-left: 200px;
 }
 </style>

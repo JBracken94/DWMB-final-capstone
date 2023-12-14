@@ -3,28 +3,45 @@
     <h1 class="header">Dude, Where's My Brewery?</h1>
 
     <p>Welcome to the home for Brewers and Beer Lovers</p>
-    <img src="https://glacier-design.com/wp-content/uploads/2022/10/Can-you-hydrate-yourself-with-beer-1536x1024.jpg" />
-    <img src="../assests/images/placeholders/twobeers.jpg" />
+    <div>
+      <button class="create-brew-button" @click="toggleCreateBreweryForm">{{ this.$store.state.showCreateBreweryForm ?
+        'Hide' : 'Add New Brewery' }}</button>
+      <create-brewery-form v-show="this.$store.state.showCreateBreweryForm" />
+    </div>
+    <div>
+      <img src="../assests/images/placeholders/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash-2-1536x639.webp" />
+      <img src="../assests/images/placeholders/twobeers.jpg" />
+      <!-- <beer-card v-bind:beer="this.$store.state.beer" /> -->
+
+    </div>
+    <div>
+
+      <!-- <brewery-card v-bind:brewery="this.$store.state.brewery"/> -->
+      <img src="../assests/images/placeholders/twobeers.jpg" />
+      <img src="../assests/images/placeholders/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash-2-1536x639.webp" />
+
+    </div>
     <!-- Button for Brewer Dashboard v-show="user.role = ROLE_BREWER localstorage reference" -->
     <!-- Button for BreweryCardSearch View -->
     <!-- Button for BeerCardSearch View -->
     <!-- Random Brewery Display -->
     <!-- Meet the Brew Boys Page -->
-    
+
   </div>
 
-  <button class="create-brew-button" @click="toggleCreateBreweryForm">{{ this.$store.state.showCreateBreweryForm ? 'Hide' : 'Add New Brewery' }}</button>
-  <create-brewery-form v-show="this.$store.state.showCreateBreweryForm"/>
 
-  <footer class="meet-the-bois">Meet the Brew Bois!</footer>
-  <p>Xhelal Mahmuti | Jeff Bracken | Steven Pickering | Spencer Meredith</p>
+  <footer class="meet-the-bois">Meet the Brew Bois!
+    <p>Xhelal Mahmuti | Jeff Bracken | Steven Pickering | Spencer Meredith</p>
+
+  </footer>
 </template>
 
 <script>
-import CreateBreweryForm from '../components/CreateBreweryForm.vue'
-import BeerService from '../services/BeerService'
-import BreweryService from '../services/BreweryService'
-import BeerList from '../components/BeerList.vue'
+import CreateBreweryForm from '../components/CreateBreweryForm.vue';
+import BeerService from '../services/BeerService';
+import BreweryService from '../services/BreweryService';
+import BeerCard from '../components/BeerCard.vue';
+import BreweryCard from '../components/BreweryCard.vue';
 
 // let user = JSON.parse(window.localStorage.getItem('user')); // reads logged in user info from local storage (parse as JSON)
 // let userId = user.id; // reads user id
@@ -46,7 +63,7 @@ import BeerList from '../components/BeerList.vue'
 // console.log(userId);
 
 export default {
-  components: { CreateBreweryForm },
+  components: { CreateBreweryForm, BeerCard, BreweryCard },
   // GET RANDOM BREWERY/BEER? BOTH
 
   // CURRENTLY LOADS ALL BREWERIES AND BEERS TO HOME VIEW
@@ -57,12 +74,30 @@ export default {
       beers: [],
       breweries: [],
       isBrewer: false,
+      randomBrewery: {},
+      randomBeer: {}
     }
   },
 
   methods: {
     toggleCreateBreweryForm() {
       this.$store.commit('FLIP_CREATE_BREWERY_FORM');
+    },
+    getRandomBrewery() {
+      BreweryService.getRandomBrewery()
+      .then(response => {
+        const currBrewery = response.data;
+        this.randomBrewery = currBrewery;
+        this.$store.commit('SET_BREWERY', currBrewery);
+      })
+    },
+    getRandomBeer() {
+      BeerService.getRandomBeer()
+      .then(response => {
+        const currBeer = response.data.
+        this.randomBeer = currBeer;
+        this.$store.commit('SET_BEER', currBeer);
+      })
     }
   },
 
@@ -75,7 +110,10 @@ export default {
       .then(response => {
         this.breweries = response.data;
       });
-      // this.isBrewer = checkRole('ROLE_BREWER');
+      this.getRandomBeer;
+      this.getRandomBrewery;
+
+    // this.isBrewer = checkRole('ROLE_BREWER');
   }
 }
 
@@ -85,11 +123,12 @@ export default {
 .header {
   padding-top: 20px;
 }
+
 h1 {
   text-align: center;
   font-size: 100px;
   color: brown;
-  
+
 }
 
 p {
@@ -102,21 +141,22 @@ img {
   margin-left: 30px;
   justify-content: center;
   align-items: stretch;
-  height: 50vh;
+  height: 300px;
 }
+
 .create-brew-button {
   color: goldenrod;
-    display: grid;
-    width: 40vh;
-    background-color:brown;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    font-size: 20px;
-    margin-right: 20%;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-right: 20%;
 }
+
 .meet-the-bois {
   font-size: 50px;
   color: red;
-}
-</style>
+}</style>

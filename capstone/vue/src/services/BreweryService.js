@@ -12,6 +12,10 @@ export default {
   getMySavedBreweries() {
     return axios.get('/mybreweries');
   },
+  
+  getRandomBrewery() {
+    return axios.get('/breweries/random')
+  },
 
   createBrewery(brewery) {
     return axios.post('/breweries', brewery);

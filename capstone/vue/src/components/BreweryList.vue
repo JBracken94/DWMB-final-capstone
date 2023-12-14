@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import BreweryService from '../services/BreweryService';
 import BreweryCard from './BreweryCard.vue';
 
 export default {
