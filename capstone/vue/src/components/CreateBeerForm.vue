@@ -26,7 +26,7 @@
         placeholder="Enter Label Image, example 'yourbeerlabel.jpg'" required>
     </div> -->
 
-    <button type="submit" class="btn btn-primary">Submit New Beer</button>
+    <button type="submit" class="btn btn-primary" @click="toggleCreateBeerForm">Submit New Beer</button>
   </form>
 </template>
   
@@ -83,6 +83,10 @@ export default {
         // beerId: 0,
         // breweryId: this.currentBrewery.breweryId
       };
+    },
+
+    toggleCreateBeerForm() {
+      this.$store.commit('FLIP_CREATE_BEER_FORM');
     }
   },
   updated() {

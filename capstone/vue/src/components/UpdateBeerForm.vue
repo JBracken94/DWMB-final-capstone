@@ -1,5 +1,5 @@
 <template>
-  <form class="update-beer-form" v-on:submit.prevent="updateBeer" v-show="showUpdateBeer">
+  <form class="update-beer-form" v-on:submit.prevent="updateBeer" v-show="this.$store.state.showUpdateBeerForm">
     <div class="mb-3">
       <label for="beerName" class="form-label">Beer Name</label>
       <input v-model="updatedBeer.beerName" type="text" class="form-control" id="beerName" placeholder="Update beer name" required>
@@ -28,7 +28,7 @@
     <!-- disregard label image unless image server can be set up
      -->
 
-    <button type="submit" class="btn btn-primary">Submit Changes</button>
+    <button type="submit" class="btn btn-primary" @click="toggleUpdateBeerForm">Submit Changes</button>
   </form>
 </template>
   
@@ -72,6 +72,10 @@ export default {
         this.updatedBeer = currentBeer;
         this.$store.commit('SET_BEER', currentBeer);
       })      
+    },
+
+    toggleUpdateBeerForm() {
+      this.$store.commit('FLIP_UPDATE_BEER_FORM');
     }
   },
   created() {

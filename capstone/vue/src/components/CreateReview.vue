@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form action="">
+        <form v-on:submit.prevent="addReview" >
             <div>
                 <div class="stars">
                     <star-rating v-model:rating="newReview.beerRating" 
@@ -17,7 +17,7 @@
                 <textarea name="reviewText" id="reviewText" cols="30" rows="5" placeholder="What did you think?"
                     v-model="newReview.beerReview" required></textarea>
             </div>
-            <input type="submit" @click.prevent="addReview">
+            <button type="submit" @click="toggleReviewForm">Submit Review</button>
         </form>
     </div>
 </template>
@@ -72,6 +72,10 @@ export default {
                     }
                 });
             this.resetForm();
+        },
+
+        toggleReviewForm() {
+            this.$store.commit('FLIP_REVIEW_FORM');
         }
     }
 }

@@ -102,6 +102,18 @@ export function createStore(currentToken, currentUser) {
       },
       FLIP_CREATE_BREWERY_FORM(state) {
         state.showCreateBreweryForm = !state.showCreateBreweryForm;
+      },
+      FLIP_UPDATE_BREWERY_FORM(state) {
+        state.showUpdateBreweryForm = !state.showUpdateBreweryForm;
+      },
+      FLIP_CREATE_BEER_FORM(state) {
+        state.showCreateBeerForm = !state.showCreateBeerForm;
+      },
+      FLIP_UPDATE_BEER_FORM(state) {
+        state.showUpdateBeerForm = !state.showUpdateBeerForm;
+      },
+      FLIP_REVIEW_FORM(state) {
+        state.showReviewForm = !state.showReviewForm;
       }
     },
     actions: {

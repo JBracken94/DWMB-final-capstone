@@ -87,7 +87,7 @@
         <input class="form-control" type="text" placeholder="Update Logo Image, example 'yourlogo.jpg'"
             v-model="updatedBrewery.logoImage">
 
-        <button type="submit" class="btn btn-primary">Submit Changes</button>
+        <button type="submit" class="btn btn-primary" @click="toggleUpdateBreweryForm">Submit Changes</button>
     </form>
 </template>
   
@@ -141,6 +141,10 @@ export default {
                     this.updatedBrewery = currentBrewery;
                     this.$store.commit('SET_BREWERY', currentBrewery);
                 })
+        },
+
+        toggleUpdateBreweryForm() {
+            this.$store.commit('FLIP_UPDATE_BREWERY_FORM');
         }
     },
     created() {

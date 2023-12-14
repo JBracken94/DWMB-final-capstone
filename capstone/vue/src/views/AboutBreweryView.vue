@@ -1,13 +1,14 @@
 <template>
   <h1 class="brew-name">{{ brewery.breweryName }}</h1>
   <div v-show="checkFounder">
-    <button class="update-brew" @click="showUpdateBrewery = !showUpdateBrewery">{{showUpdateBrewery ? 'Hide Brewery Update Form' : 'Update My Brewery'}}</button>
-    <update-brewery-form class="update-brewery" v-show="showUpdateBrewery" v-bind:brewery="brewery"/>
+    <button class="update-brew" @click="this.$store.state.showUpdateBreweryForm = !this.$store.state.showUpdateBreweryForm">
+      {{this.$store.state.showUpdateBreweryForm ? 'Hide Update My Brewery' : 'Update My Brewery'}}</button>
+    <update-brewery-form class="update-brewery" v-show="this.$store.state.showUpdateBreweryForm" v-bind:brewery="brewery"/>
 
     <!-- <button @click="showCreateBeer = !showCreateBeer">{{ showCreateBeer ? 'Hide' : 'Add New Beer' }}</button> -->
-    <button class="create-burr" v-show="!showCreateBeer" @click="showCreateBeer = !showCreateBeer">Add New Beer</button>
-    <button class="cancel-beer" v-show="showCreateBeer" @click="showCreateBeer = !showCreateBeer">Cancel Add New Beer</button>
-    <create-beer-form v-show="showCreateBeer" v-bind:brewery="brewery" />
+    <button class="create-burr" @click="this.$store.state.showCreateBeerForm = !this.$store.state.showCreateBeerForm">
+      {{this.$store.state.showCreateBeerForm ? 'Hide Add a New Beer' : 'Add a New Beer'}}</button>
+    <create-beer-form v-show="this.$store.state.showCreateBeerForm" v-bind:brewery="brewery" />
 
   </div>
   

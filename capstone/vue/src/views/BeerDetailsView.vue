@@ -1,21 +1,27 @@
 <template>
   
     <div class="review-update">
-      <h2 class="beer-dets">DWM Reviews</h2>
-      <h3 class="beer-nam">
+      <h2 class="beer-dets">DWMB Reviews</h2>
+
+      <h3 class="beer-name">
         {{ beer.beerName }}
       </h3>
-      <div class="review-button">
-        <h4 class="type">
-          {{ beer.beerType }} :: {{ beer.abv }}%
-        </h4>
-  
-        <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'UpdateBeer'}}</button>
-        <button @click="showUpBeerForm = !showUpBeerForm"> Update this Beer </button>
-        <update-beer-form v-show="showUpBeerForm" />
-        <button @click="showReviewForm = !showReviewForm"> Review this Beer </button>
-        <create-review v-bind:beer="this.$store.state.beer" v-show="showReviewForm" />
-      </div>
+
+      <h4 class="beer-type">
+        {{ beer.beerType }} :: {{ beer.abv }}%
+      </h4>
+
+        <!-- <button v-show="isFounder" @click="this.$store.state.showUpdateBeerForm = !this.$store.state.showUpdateBeerForm">
+          {{ this.$store.state.showUpdateBeerForm ? 'Hide Update Beer' : 'Update Beer Info'}}</button> -->
+
+      <button class="update-beer-btn" @click="this.$store.state.showUpdateBeerForm = !this.$store.state.showUpdateBeerForm">
+        {{ this.$store.state.showUpdateBeerForm ? 'Hide Update Beer' : 'Update Beer Info'}}</button>
+      <update-beer-form class="update-form" v-show="this.$store.state.showUpdateBeerForm" />
+
+      <button class="add-review-btn" @click="this.$store.state.showReviewForm = !this.$store.state.showReviewForm">
+        {{ this.$store.state.showReviewForm ? 'Hide Add Review' : 'Add A Review'}}</button>
+      <create-review class="review-form" v-bind:beer="this.$store.state.beer" v-show="this.$store.state.showReviewForm" />
+
       <review-list v-bind:beer="this.$store.state.beer" v-bind:reviews="this.$store.state.reviews" />
     </div>
     
@@ -90,11 +96,11 @@ export default {
   padding-top: 60px;
 }
 
-.beer-nam {
+.beer-name {
   color: gold;
 }
 
-.type {
+.beer-type {
   color: goldenrod;
 }
 
@@ -106,18 +112,55 @@ export default {
   margin-bottom: 10px;
 }
 
-.review-button {
-  color: gold;
+.update-beer-btn {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  /* margin-left: 750px; */
+}
+
+.update-form {
+  color: goldenrod;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  width: 40vh;
+  background-color: brown;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.add-review-btn {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  /* margin-left: 750px; */
+}
+
+.review-form {
+  color: goldenrod;
   display: grid;
   justify-content: center;
   align-items: center;
 
   width: 40vh;
   height: 5vh;
-  background-color: brown;
+  /* background-color: brown; */
   border-radius: 10px;
   font-size: 20px;
 }
+
 .review-update {
   margin-left: 200px;
 }

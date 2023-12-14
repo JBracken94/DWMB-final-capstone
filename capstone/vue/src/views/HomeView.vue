@@ -4,7 +4,7 @@
 
     <p>Welcome to the home for Brewers and Beer Lovers</p>
     <div>
-      <button class="create-brew-button" @click="toggleCreateBreweryForm">{{ this.$store.state.showCreateBreweryForm ? 'Hide' : 'Add New Brewery' }}</button>
+      <button class="create-brew-button" @click="toggleCreateBreweryForm">{{ this.$store.state.showCreateBreweryForm ? 'Hide Add New Brewery' : 'Add New Brewery' }}</button>
       <create-brewery-form v-show="this.$store.state.showCreateBreweryForm" />
     </div>
     <div>
