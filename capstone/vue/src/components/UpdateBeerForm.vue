@@ -42,17 +42,21 @@ export default {
       BeerService.updateBeer(this.updatedBeer)
         .then(response => {
           if (response.status == 200) {
-            //Notification of successful
-            alert('you did it')
-            console.log(response.status)
+            this.$store.commit('SET_NOTIFICATION',
+            {
+              message: 'Your beer has been updated.',
+              type: 'success'
+            })
             this.getBeer;
           }
         })
         .catch(error => {
-          if (error.response.status == 500) {
-            alert('500')
-          } else {
-            console.log(error);
+          if (error.response.status) {
+            this.$store.commit('SET_NOTIFICATION',
+            {
+              message: 'There was an error updating your beer. Please try again later.',
+              type: 'error'
+            })
           }
         })
       // Look at setNotification from Lecture

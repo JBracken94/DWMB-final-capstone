@@ -5,10 +5,11 @@
       <h3 class="beer-nam">
         {{ beer.beerName }}
       </h3>
+      <h4 class="type">
+        {{ beer.beerType }} :: {{ beer.abv }}%
+      </h4>
+      <p>{{ beer.description }}</p>
       <div class="review-button">
-        <h4 class="type">
-          {{ beer.beerType }} :: {{ beer.abv }}%
-        </h4>
   
         <button v-show="isFounder" @click="showUpdateForm = !showUpdateForm">{{ showUpdateForm ? 'Hide Form' : 'UpdateBeer'}}</button>
         <button @click="showUpBeerForm = !showUpBeerForm"> Update this Beer </button>

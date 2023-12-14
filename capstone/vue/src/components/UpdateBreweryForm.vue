@@ -114,16 +114,22 @@ export default {
             BreweryService.updateBrewery(this.updatedBrewery)
                 .then(response => {
                     if (response.status == 200) {
-                        //Notification of successful
-                        alert('Success!');
-                    } else if (response.status == 500) {
-                        //Server error notification
-                        alert('Doh!');
-                    } else {
-                        //Some other error
-                        alert(response.status);
+                        this.$store.commit('SET_NOTIFICATION',
+                        {
+                            messages: 'Your brewery has been updated.',
+                            type: 'success'
+                        })
                     }
-                });
+                })
+                .catch(error => {
+                    if (error.response.status) {
+                        this.store.commit('SET_NOTIFICATION',
+                        {
+                            message: 'There was an error updating your brewery. Please try again later.',
+                            type: 'error'
+                        })
+                    }
+                })
             // Look at setNotification from Lecture
         },
         getBrewery() {

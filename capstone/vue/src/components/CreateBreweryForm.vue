@@ -112,18 +112,23 @@ import BreweryService from '../services/BreweryService'
                 BreweryService.createBrewery(this.newBrewery)
                 .then (response => {
                     if (response.status == 200) {
-                        //Notification of successful
-                        alert('Success!');
-                    } else if (response.status == 500) {
-                        //Server error notification
-                        alert('Doh!');
-                    } else {
-                        //Some other error
-                        alert(response.status);
+                        this.$store.commit('SET_NOTIFICATION',
+                        {
+                            message: 'Your brewery has been created.',
+                            type: 'success'
+                        })
                     }
+                })
+                .catch(error => {
+                    if (error.response.status) {
+                        this.$store.commit('SET_NOTIFICATION',
+                        {
+                            message: 'There was an error creating your brewery. Please try again later.',
+                            type: 'error'
+                        })
+                    }  
                 });
                 this.resetForm();
-                // Look at setNotification from Lecture
             },
 
             resetForm() {
