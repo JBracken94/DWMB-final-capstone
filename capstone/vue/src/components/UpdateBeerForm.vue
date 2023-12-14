@@ -81,5 +81,15 @@ export default {
 </script>
   
 <style>
-
+.update-beer-form {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-right: 20%;
+}
 </style>

@@ -85,5 +85,16 @@ export default {
 </script>
   
 <style>
+.create-beer-form {
+  color: goldenrod;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 750px;
+}
 
 </style>
