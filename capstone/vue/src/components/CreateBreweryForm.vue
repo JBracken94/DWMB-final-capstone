@@ -83,7 +83,7 @@
         <!-- <label for="logoImage" class="form-label">Logo Image</label>
         <input class="form-control" type="text" placeholder="Enter Logo Image, example 'yourlogo.jpg'" v-model="newBrewery.logoImage" required> -->
 
-        <button type="submit" class="btn btn-primary">Submit Changes</button>
+        <button type="submit" class="btn btn-primary" @click="toggleCreateBreweryForm">Submit</button>
     </form>
 </template>
   
@@ -146,6 +146,10 @@ import BreweryService from '../services/BreweryService'
                     logoImage: '',
                   founderId: this.$store.state.user.id,
               };
+            },
+
+            toggleCreateBreweryForm() {
+              this.$store.commit('FLIP_CREATE_BREWERY_FORM');
             }
         }, 
 
