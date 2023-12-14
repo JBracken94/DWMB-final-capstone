@@ -78,7 +78,7 @@
         <input class="form-control" type="text" placeholder="Enter Web URL, example 'https://yourwesbiturl.com/'" v-model="newBrewery.website" required>
 
 
-        <button type="submit" class="btn btn-primary">Submit Changes</button>
+        <button type="submit" class="btn btn-primary" @click="toggleCreateBreweryForm">Submit</button>
     </form>
 </template>
   
@@ -141,6 +141,10 @@ import BreweryService from '../services/BreweryService'
                     logoImage: '',
                   founderId: this.$store.state.user.id,
               };
+            },
+
+            toggleCreateBreweryForm() {
+              this.$store.commit('FLIP_CREATE_BREWERY_FORM');
             }
         }, 
 
