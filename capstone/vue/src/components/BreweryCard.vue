@@ -1,10 +1,10 @@
 <template>
-    <div class="brewery-card brew-card">
+    <div class="brew-card">
         <div class="card-brew-body">
             <h2 class="card-titles">{{brewery.breweryName}}</h2>
             <h4 class="brew-location">{{ brewery.city }}, {{ brewery.state }}</h4>
             <p class="card-test"><a v-bind:href="brewery.website" target="_blank">Visit Us on the Web</a></p>
-            <div>
+        <div>
                 
             <router-link :to="{ name: 'brewery-details', params: { breweryId: brewery.breweryId } }" class="btn btn-secondary">View Details</router-link>
             </div>
@@ -28,23 +28,16 @@ export default {
 <style scope>
 .card-brew-body {
     display: grid;
-    width: 70vh;
-   
-    justify-content: center;
-    align-items: left;
-    min-height: 30vh;
     
+    min-height: 30vh;
     border-radius: 40px;
     
     margin-bottom: 40px;
-    height: 50px;
-    background-image: url('../assests\images/placeholders/brewery-icon.png');
+    background-color: #E79115;
     
     background-size: cover;
     background-position: center;
-    height: 100 vh;
- 
-    
+    height: 100 vh;   
 }
 .brew-location {
     color: red;
@@ -53,29 +46,27 @@ export default {
 .brew-card {
     display: flex;
     width: 35vh;
+
     min-height: 30vh;
     margin: auto;
+    align-content: center;
+    justify-content: center;
     border-radius: 30px;
     margin-bottom: 30px;
-    
-    
-    
   }
+
   .card-titles {
     font-size: 30px;
-    color: white;
-    background-color: black;
-    
+    color: black;
+    background-color: white;
+    height: 100px;
+    width: 300px;
+    border-radius: 5px;
   }
 
-img {
-    height: 75px;
-    
-
-}
 .btn {
     margin-top: 20px;
-    
+    margin-bottom: 10px;
 }
 
 </style>

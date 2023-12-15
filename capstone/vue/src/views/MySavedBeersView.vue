@@ -39,12 +39,13 @@ export default {
 
 <style>
 .my-list {
-  padding-top: 20px;
-  color: #e79115;
-  font-size: 80px;
+  font-size: 60px;
+  text-shadow: 2px 2px 1px #e79115;
+  color: black;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .my-saved-beers {
   color: brown;
-  margin-left: 200px;
+  margin: auto;
 }
 </style>

@@ -4,7 +4,7 @@
   <!-- ADD BREWERY BUTTON/FORM for ROLE_BREWER -->
   <!-- Brewery Search Bar/Filter fields -->
   <!-- Container with Brewery Cards / Brewery List-->
-  <brewery-list v-bind:breweries="breweries" />
+  <brewery-list id="brewery-list" v-bind:breweries="breweries" />
 </template>
 
 <script>
@@ -38,15 +38,19 @@ export default {
 <style>
 
 .bcs {
-  background-image: url('../assests\images/placeholders/breweryBackground.jpg');
-  background-color: #cccccc;
   background-size: cover;
-  background-position: center;
   height: 200px;
   font-size: 80px;
   color: #e79115;
   padding-top: 3rem;
+  margin: auto;
+
+  font-size: 60px;
+  text-shadow: 1px 1px 2px #e79115;
+  color: black;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
 
 
 </style>
