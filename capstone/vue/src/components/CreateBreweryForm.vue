@@ -174,17 +174,16 @@ import BreweryService from '../services/BreweryService'
   
 <style>
 .create-brewery-form {
-    color: brown;
-    display: grid;
-    width: 40vh;
-    background-color:#e79115;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    border-radius: 70px;
-    margin: auto;
-    
-    
-    
+    color:black;
+  width: 85vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin: auto;
+  padding: 25px;
+  border: double #e79115;
+  border-width: 3px;
 }
 </style>
