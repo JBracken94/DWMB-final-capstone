@@ -69,7 +69,7 @@
     display: flex;
     width: 18rem;
 
-    background-color: goldenrod;
+    background-color: #e79115;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
