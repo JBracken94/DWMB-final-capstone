@@ -31,6 +31,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 </style>

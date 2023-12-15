@@ -2,11 +2,16 @@
 <template>
   <div>
     <!-- <button @click="toggleMap()"> {{ showMap ? 'Hide Map' : 'Show Map' }} </button> -->
-    <h2 class="find-us">Find Us</h2>
+    <h2 class="find-us">Where to Find Us</h2>
     <!-- Add your Google Maps API Key as api-key attribute to demo functionality -->
-    <GoogleMap class="google-map" v-if="showMap" api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8" 
-    style=""
-      :center="{ lat: this.latitude, lng: this.longitude }" :zoom="15">
+    <GoogleMap class="google-map" v-if="showMap" api-key="AIzaSyAWksYN7JVApW1qfftkveDLOTpnQQfdol8"
+      :center="{ lat: this.latitude, lng: this.longitude }" :zoom="15"
+      style="
+      height: 350px;
+  border-style: double;
+  border-color: #e79115;
+  border-width: 10px;
+      ">
       <Marker :options="{ position: center }" />
       <Marker :options="{ position: { lat: this.latitude, lng: this.longitude } }" />
     </GoogleMap>
@@ -71,17 +76,7 @@ export default defineComponent({
 
 <style>
 .find-us {
-  color: goldenrod;
+  color: #e79115;
 padding-top: 20px;
-}
-.google-map {
-  margin: auto;
-  justify-content: center;
-  width: 70vw;
-  height: 40vh;
-  border-style: double;
-  border-color: goldenrod;
-  border-width: 10px;
-  
 }
 </style>

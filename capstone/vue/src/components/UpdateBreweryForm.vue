@@ -153,14 +153,16 @@ export default {
   
 <style>
 .update-brewery-form {
-    color: goldenrod;
-  display: grid;
+    color:black;
   width: 40vh;
   background-color: brown;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  margin-right: 20%;
+  margin: auto;
+  padding: 25px;
+  border: double #e79115;
+  border-width: 3px;
 }
 </style>
