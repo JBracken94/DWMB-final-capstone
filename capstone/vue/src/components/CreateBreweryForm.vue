@@ -183,7 +183,7 @@ import BreweryService from '../services/BreweryService'
   font-size: 20px;
   margin: auto;
   padding: 25px;
-  border: double #e79115;
+  border: double 3px #e79115;
   border-width: 3px;
 }
 </style>

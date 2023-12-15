@@ -13,7 +13,7 @@
     <div id="blist">
       <beer-list v-bind:beers="this.$store.state.beers" class="list" />
     </div>
-    <div id="update">
+    <div id="updatebrew">
       <button class="update-brew"
         @click="this.$store.state.showUpdateBreweryForm = !this.$store.state.showUpdateBreweryForm">
         {{ this.$store.state.showUpdateBreweryForm ? 'Hide' : 'Update My Brewery' }}</button>
@@ -115,7 +115,7 @@ export default {
   padding: 10px;
   border-radius: 10px 10px 0 0;
 }
-div#update {
+div#updatebrew {
   grid-area: updateform;
 }
 
@@ -134,7 +134,7 @@ div#container {
   width: 80vw;
   height: 80vh;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr ;
   gap: 20px;
   grid-template-areas:
     "info map"
@@ -149,9 +149,6 @@ div#map {
 
 div#blist {
   grid-area: list;
-}
-
-.brew-info {
 }
 
 .brew-name {
@@ -200,12 +197,5 @@ div#blist {
   background-color: brown;
   border-radius: 10px;
   font-size: 20px;
-}
-
-.forms {
-
-}
-
-.list {
 }
 </style>

@@ -68,7 +68,6 @@
   .card {
     display: flex;
     width: 18rem;
-
     background-color: #e79115;
     justify-content: center;
     align-items: center;

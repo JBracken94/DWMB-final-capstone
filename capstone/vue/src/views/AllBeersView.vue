@@ -1,5 +1,7 @@
 <template>
-  <h1 class="bca">Beers</h1>
+  <div id="bvaa">
+    <h1 class="bca">Beers</h1>
+  </div>
   <!-- BUTTONS ON CARDS TO ADD SAVED -->
   <!-- ADD BEER button for ROLE_BREWER (Maybe lives in brewery details) -->
   <!-- Search/Filter Fields -->
@@ -38,9 +40,12 @@ export default {
 
 <style scoped>
 .bca {
-  padding-top: 20px;
-  
-  
+  font-size: 90px;
+  text-shadow: 2px 2px 4px #E79115;
+  color: black;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: auto;
+  width: 20vw;
 }
 .beer-list {
   margin: left 200px;
