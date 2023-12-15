@@ -3,7 +3,7 @@
         <form v-on:submit.prevent="addReview" >
             <div>
                 <div class="stars">
-                    <star-rating v-model:rating="newReview.beerRating" 
+                    <star-rating id="dastars" v-model:rating="newReview.beerRating" 
                     active-color="#daa520" border-color="#a52a2a"
                     :increment=".5"
                         :padding="1"
@@ -90,14 +90,11 @@ export default {
 </script>
 
 <style>
-
-.stars {
-    margin: 10px;
-    
+#dastars{
+    margin: 10px 20px 20px;
+    justify-content: center;
 }
 .review-text {
-    background-color: goldenrod;
-
-    
+    border: double 3px #;
 }
 </style>

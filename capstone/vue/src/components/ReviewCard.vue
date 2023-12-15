@@ -1,34 +1,11 @@
 <template>
-  <div class="review-card">
-    <div>
-      <div>
-        <star-rating  class="stars"
-        :rating="review.beerRating"
-        :increment=".5"
-        :read-only="true"
-
-        active-color="#daa520" border-color="#a52a2a"
-                        :padding="1"
-                        :glow="3" glow-color="#FFC0CB" 
-                        :animate="true" :border-width="2"
-                        :show-rating="false" />
-      </div>
-      <div class="rev-text">
-        <p>{{ review.beerReview }}</p>
-      </div>
-
+  <div class="rev-card">
+    <div id="content">
+      <star-rating class="stars" :rating="review.beerRating" :increment=".5" :read-only="true" active-color="#daa520"
+        border-color="#a52a2a" :padding="10" :glow="3" glow-color="#FFC0CB" :animate="true" :border-width="2"
+        :show-rating="false" />
+      <p class="par">{{ review.beerReview }}</p>
     </div>
-    <!-- <form @submit="submitReview">
-      <div>
-        <label for="reviewText">Review:</label>
-        <textarea id="reviewText" v-model="beerReview"></textarea>
-      </div>
-      <div>
-        <label for="rating">Rating:</label>
-
-      </div>
-      <button type="submit">Submit Review</button>
-    </form> -->
   </div>
 </template>
 
@@ -39,7 +16,7 @@ export default {
   props: ['review'],
   components: {
     StarRating
-   
+
   },
   data() {
     return {
@@ -51,32 +28,43 @@ export default {
 </script>
 
 <style>
-/* make it look sexy X styles */
-.review-card {
-    display: grid;
-    width: 20vw;
-    justify-content: center;
-    align-items: center;
-    min-height: 50vh;
-    border-color: #a52a2a;
-    background-image: url('../assests\images/placeholders/postit.png');
-    background-size: cover;
-    background-position: center;
-    height: 50vh;
-    
-    margin: auto;
-    margin-bottom: 30px;
-    
+#content {
+  margin: auto;
+  justify-self: center;
+}
+.rev-card {
+    display: flex;
+    width: 45vw;
+    height: 200px;
+    background-color: #e79115;
+    border: double 3px black;
+    border-width: 3px;
+    border-radius: 30px;
+    border-block-width: 10px;
+    margin: 10px;
+  
   }
-  .rev-text {
-    margin-top: 40px;
-    font-size: 1.5rem;
-    color:black;
-    
 
-  }
-  .stars{
-    justify-content: center;
-    margin-bottom: 20px;
-  }
+/* .review-card {
+  width: 20vw;
+  border-color: #a52a2a;
+  background-image: url('../assests/images/');
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  margin: auto;
+
+} */
+
+.rev-text {
+  font-size: 1.5rem;
+  color: black;
+}
+.par {
+  margin: 10px 20px 10px 20px;
+}
+.stars {
+  justify-content: center;
+  margin-bottom: 10px;
+}
 </style>

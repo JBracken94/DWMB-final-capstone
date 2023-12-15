@@ -82,14 +82,12 @@ export default {
   
 <style>
 .update-beer-form {
-  color: goldenrod;
-  display: grid;
+  color: #e79115;
   width: 40vh;
   background-color: brown;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
   font-size: 20px;
-  margin-right: 20%;
+  padding: 35px;
+  margin: auto;
 }
 </style>
