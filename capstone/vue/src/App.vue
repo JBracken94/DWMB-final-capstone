@@ -73,9 +73,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  background-color: rgb(34, 31, 31); 
-  background-size: 100vh;
-  height: 200vh;
   margin: auto;
   position: center;
  
@@ -103,6 +100,9 @@ nav {
 body, html, #app {
   margin: 0;
   padding: 0;
+  background-color: rgb(34, 31, 31); 
+  background-size: 100%;
+  height: 100%;
 }
 
 .status-message {

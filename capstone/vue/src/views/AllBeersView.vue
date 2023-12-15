@@ -1,5 +1,5 @@
 <template>
-  <h1 class="bca">Beer Card Search</h1>
+  <h1 class="bca">Beers</h1>
   <!-- BUTTONS ON CARDS TO ADD SAVED -->
   <!-- ADD BEER button for ROLE_BREWER (Maybe lives in brewery details) -->
   <!-- Search/Filter Fields -->

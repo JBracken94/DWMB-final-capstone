@@ -1,5 +1,5 @@
 <template>
-  <h2 class="bcs">Find a Brewery</h2>
+  <h2 class="bcs">Breweries</h2>
   <!-- BUTTONS ON CARDS TO ADD SAVED -->
   <!-- ADD BREWERY BUTTON/FORM for ROLE_BREWER -->
   <!-- Brewery Search Bar/Filter fields -->

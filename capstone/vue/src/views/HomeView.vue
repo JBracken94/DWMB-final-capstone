@@ -38,10 +38,10 @@
   <footer class="meet-the-bois">
     <p class="meet">Meet the Brew Bois!</p>
     <p class="links">
-      <a href="https://www.linkedin.com/in/xhelal-mahmuti/">Xhelal Mahmuti</a>
-      <a href="https://www.linkedin.com/in/jeffreybracken/">Jeff Bracken</a>
-      <a href="https://www.linkedin.com/in/stevenpickeringscp/">Steven Pickering</a>
-      <a href="https://www.linkedin.com/in/spencer-meredith/">Spencer Meredith</a> </p>
+      <a target="_blank" href="https://www.linkedin.com/in/xhelal-mahmuti/">Xhelal Mahmuti</a>
+      <a target="_blank" href="https://www.linkedin.com/in/jeffreybracken/">Jeff Bracken</a>
+      <a target="_blank" href="https://www.linkedin.com/in/stevenpickeringscp/">Steven Pickering</a>
+      <a target="_blank" href="https://www.linkedin.com/in/spencer-meredith/">Spencer Meredith</a> </p>
 
     </footer>
 </template>
@@ -143,11 +143,14 @@ h1 {
   right: 0;
   z-index: 0;
   background: #e79115;
+  background-size: auto;
   height: 100px;
   width: 42vw;
+  margin-left: 200px;
+  margin-right: 200px;
   margin: auto;
 
-  border-radius: 5px;;
+  border-radius: 5px;
 }
 p {
   text-align: center;
@@ -176,8 +179,4 @@ img {
   margin: auto;
 }
 
-.meet-the-bois {
-  font-size: 50px;
-  color: brown;
-  font-family: cursive;
-}</style>
+</style>
