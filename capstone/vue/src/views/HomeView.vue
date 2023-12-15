@@ -3,21 +3,27 @@
     <h1 class="header">Dude, Where's My Brewery?</h1>
 
     <p>Welcome to the home for Brewers and Beer Lovers</p>
-    <div>
+    <div class="new-brew-form">
       <button class="create-brew-button" @click="toggleCreateBreweryForm">{{ this.$store.state.showCreateBreweryForm ? 'Hide Add New Brewery' : 'Add New Brewery' }}</button>
       <create-brewery-form v-show="this.$store.state.showCreateBreweryForm" />
     </div>
     <div>
-      <img src="../assests/images/placeholders/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash-2-1536x639.webp" />
-      <img src="../assests/images/placeholders/twobeers.jpg" />
+      <router-link :to="{name: 'breweries'}" ><img src="../assests/images/placeholders/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash-2-1536x639.webp" alt=""> </router-link>
+      
+      <router-link :to="{name: 'beers'}"> 
+        <img src="../assests/images/placeholders/twobeers.jpg" />
+      </router-link>
       <!-- <beer-card v-bind:beer="this.$store.state.beer" /> -->
-
     </div>
     <div>
 
       <!-- <brewery-card v-bind:brewery="this.$store.state.brewery"/> -->
-      <img src="../assests/images/placeholders/twobeers.jpg" />
-      <img src="../assests/images/placeholders/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash-2-1536x639.webp" />
+      <router-link :to="{name: 'beers'}"> 
+        <img src="../assests/images/placeholders/beers.jpg" />
+      </router-link>
+      <router-link :to="{name: 'breweries'}"> 
+        <img src="../assests/images/placeholders/bar.jpg" />
+      </router-link>
 
     </div>
     <!-- Button for Brewer Dashboard v-show="user.role = ROLE_BREWER localstorage reference" -->
@@ -29,10 +35,15 @@
   </div>
 
 
-  <footer class="meet-the-bois">Meet the Brew Bois!
-    <p>Xhelal Mahmuti | Jeff Bracken | Steven Pickering | Spencer Meredith</p>
+  <footer class="meet-the-bois">
+    <p class="meet">Meet the Brew Bois!</p>
+    <p class="links">
+      <a href="https://www.linkedin.com/in/xhelal-mahmuti/">Xhelal Mahmuti</a>
+      <a href="https://www.linkedin.com/in/jeffreybracken/">Jeff Bracken</a>
+      <a href="https://www.linkedin.com/in/stevenpickeringscp/">Steven Pickering</a>
+      <a href="https://www.linkedin.com/in/spencer-meredith/">Spencer Meredith</a> </p>
 
-  </footer>
+    </footer>
 </template>
 
 <script>
@@ -41,25 +52,6 @@ import BeerService from '../services/BeerService';
 import BreweryService from '../services/BreweryService';
 import BeerCard from '../components/BeerCard.vue';
 import BreweryCard from '../components/BreweryCard.vue';
-
-// let user = JSON.parse(window.localStorage.getItem('user')); // reads logged in user info from local storage (parse as JSON)
-// let userId = user.id; // reads user id
-// let roles = user.authorities; // gets authorities or roles array
-// function checkRole(expected) { // check user role against passed role value
-//   let allowed = false;
-//   roles.forEach(auth => {
-//     if (auth.name === expected) {
-//       allowed = true;
-//     }
-//   })
-//   return allowed;
-// }
-// console.log(checkRole('ROLE_ADMIN'));
-
-// console
-// console.log(roles);
-// console.log(user);
-// console.log(userId);
 
 export default {
   components: { CreateBreweryForm, BeerCard, BreweryCard },
@@ -122,10 +114,20 @@ export default {
 .home {
   margin-left: 150px;
 }
+.links>a{
+  text-decoration: underline;
+  color:black;
+  font-size: 28px;
+  margin-right: 50px;
+}
 .header {
   padding-top: 20px;
 }
-
+.meet{
+  color: black;
+  font-size: 25px;
+  margin: auto;
+}
 h1 {
   text-align: center;
   font-size: 90px;
@@ -133,19 +135,32 @@ h1 {
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 }
+.meet-the-bois {
+  display: inline;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  background: #e79115;
+  height: 100px;
+  width: 42vw;
+  margin: auto;
 
+  border-radius: 5px;;
+}
 p {
   text-align: center;
-  color: goldenrod;
+  color: #e79115;
   font-size: 40px;
   
 }
 
 img {
-  margin-left: 30px;
   justify-content: center;
   align-items: stretch;
   height: 300px;
+  margin: 50px;
 }
 
 .create-brew-button {

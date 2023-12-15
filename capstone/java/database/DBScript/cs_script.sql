@@ -166,10 +166,10 @@ VALUES ('Holiday Ale', 3, 'Seasonal Ale', 7.0, 'holidayale.jpeg', 'Holiday Ale c
 
 --STARTING REVIEWS
 INSERT INTO beer_review (beer_id, reviewer_id, beer_rating, beer_review, date_posted)
-VALUES (1,4,4.5,'solid beer',NOW());
+VALUES (1,4,4.5,'Its aroma carries malty flavors of corn and biscuit. It has a faintly sweet smell and not much hoppiness on the nose. The first taste reveals a bright and mildly sweet blonde that’s heavy on the malt and faint on the hops.',NOW());
 
 INSERT INTO beer_review (beer_id, reviewer_id, beer_rating, beer_review, date_posted)
-VALUES (1,4,3.2,'I don''t know what I''m talking about',NOW());
+VALUES (1,4,3.2,'I feel like the aroma reveals this beer is brewed with millet, the taste hints at its corn, and perhaps the gluten free oats can take credit for the body that I appreciate. ',NOW());
 
 INSERT INTO beer_review (beer_id, reviewer_id, beer_rating, beer_review, date_posted)
 VALUES (1,4,5.0,'Great blonde ale! Vanilla shines through on the initial taste. Creamy with a hint of sweetness. Now this is just filler text so that Xhelal can style the review card without some weird garbage happening.',NOW());

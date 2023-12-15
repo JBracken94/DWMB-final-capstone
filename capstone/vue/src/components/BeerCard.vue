@@ -72,11 +72,11 @@
     background-color: #e79115;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
+    min-height: 35vh;
     border-color: brown;
     border-radius: 30px;
     border-block-width: 10px;
-    margin: auto;
+    margin: 10px;
   
   }
   .card-img-top {

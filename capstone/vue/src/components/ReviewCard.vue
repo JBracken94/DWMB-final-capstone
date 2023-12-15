@@ -2,8 +2,7 @@
   <div class="review-card">
     <div>
       <div>
-        <h3 class="rev-rating">{{ review.beerRating }}</h3>
-        <star-rating 
+        <star-rating  class="stars"
         :rating="review.beerRating"
         :increment=".5"
         :read-only="true"
@@ -55,13 +54,12 @@ export default {
 /* make it look sexy X styles */
 .review-card {
     display: grid;
-    width: 18rem;
+    width: 20vw;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
-    border-color: #a52a2a;    border-radius: 30px;
-    background-image: url('../assests\images/placeholders/review1.jpg');
-    background-color:black;
+    border-color: #a52a2a;
+    background-image: url('../assests\images/placeholders/postit.png');
     background-size: cover;
     background-position: center;
     height: 50vh;
@@ -71,16 +69,14 @@ export default {
     
   }
   .rev-text {
-    margin-top: 10px;
+    margin-top: 40px;
     font-size: 1.5rem;
     color:black;
     
 
   }
-  .rev-rating{
-    font-size: 3rem;
-    color:red;
-    
-   
+  .stars{
+    justify-content: center;
+    margin-bottom: 20px;
   }
 </style>

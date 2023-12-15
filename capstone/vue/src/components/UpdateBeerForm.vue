@@ -17,7 +17,7 @@
 
     <div class="mb-3">
       <label for="abv" class="form-label">ABV</label>
-      <input v-model="updatedBeer.abv" type="text" class="form-control" id="abv" placeholder="Update % ABV, example 5.5" required>
+      <input v-model="updatedBeer.abv" type="number" step=".1" class="form-control" id="abv" placeholder="Update % ABV, example 5.5" required>
     </div>
 
     <button type="submit" class="btn btn-primary" @click="toggleUpdateBeerForm">Submit Changes</button>
