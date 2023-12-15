@@ -44,7 +44,7 @@ export default {
   background-position: center;
   height: 200px;
   font-size: 80px;
-  color: goldenrod;
+  color: #e79115;
   padding-top: 3rem;
 }
 

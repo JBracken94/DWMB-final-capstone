@@ -89,7 +89,7 @@ label {
 }
 .create-account {
   
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   background-color: brown;
   justify-content: center;
@@ -99,7 +99,7 @@ label {
    margin: center;
 }
 #register {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   width: 40vh;
   background-color: brown;
@@ -107,7 +107,7 @@ label {
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-   margin-left: 670px;
+  margin: auto;
    
 }
 </style>

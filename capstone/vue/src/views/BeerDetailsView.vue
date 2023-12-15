@@ -139,11 +139,11 @@ export default {
 }
 
 .beer-name {
-  color: gold;
+  color: #e79115;
 }
 
 .beer-type {
-  color: goldenrod;
+  color: #e79115;
 }
 
 .form-label {
@@ -155,7 +155,7 @@ export default {
 }
 
 .update-beer-btn {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   width: 40vh;
   background-color: brown;
@@ -163,11 +163,11 @@ export default {
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
-   margin-left: 670px; 
+  margin: auto;
 }
 
 .update-form {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -176,12 +176,23 @@ export default {
   background-color: brown;
   border-radius: 10px;
   font-size: 20px;
-  margin-left: 670px;
+  margin: auto;
   
+}
+.delete-beer-btn {
+  color: #e79115;
+  display: grid;
+  width: 40vh;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  margin: auto;
 }
 
 .add-review-btn {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   width: 40vh;
   background-color: brown;
@@ -189,11 +200,11 @@ export default {
   align-items: center;
   border-radius: 10px;
   font-size: 20px;
- margin-left: 670px;;
+  margin: auto;
 }
 
 .review-form {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -202,7 +213,7 @@ export default {
   background-color: brown;
   border-radius: 10px;
   font-size: 20px;
-  margin-left: 670px;
+  margin: auto;
 }
 
 .review-update {

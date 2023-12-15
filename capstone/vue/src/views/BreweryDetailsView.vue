@@ -105,7 +105,7 @@ export default {
   justify-items: center;
 }
 .brew-name {
-  color: goldenrod;
+  color: #e79115;
   margin: auto;
 }
 .brew-details {
@@ -114,7 +114,7 @@ export default {
   margin: auto;
 }
 .update-brew {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   width: 20vw;
   background-color: brown;
@@ -126,7 +126,7 @@ export default {
   
 }
 .create-burr {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   width: 20vw;
   background-color: brown;
@@ -137,7 +137,7 @@ export default {
   margin-left: 200px;
 }
 .cancel-beer {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   width: 20vw;
   background-color: brown;
@@ -147,7 +147,7 @@ export default {
   font-size: 20px;
 }
 .update-brewery {
-  color: goldenrod;
+  color: #e79115;
   display: grid;
   width: 20vw;
   background-color: brown;

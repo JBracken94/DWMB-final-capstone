@@ -40,7 +40,7 @@ export default {
 <style>
 .my-list {
   padding-top: 20px;
-  color: goldenrod;
+  color: #e79115;
   font-size: 80px;
 }
 .my-saved-beers {

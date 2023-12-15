@@ -50,7 +50,7 @@ export default {
 }
 
 h1 {
-  color: goldenrod;
+  color: #e79115;
   font-size: 100px;
   
 }

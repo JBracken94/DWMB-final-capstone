@@ -5,7 +5,7 @@
       <nav>
         <ul class="nav-list">
           <li><router-link v-bind:to="{ name: 'home' }">
-          <img src="src\assests\images\logo\logo.png" :to="{ name: 'home' }" class="logo">
+          <img src="../public/bflogo.jpg" :to="{ name: 'home' }" class="logo">
           </router-link>  </li>
           <li><router-link v-bind:to="{ name: 'beers' }" v-if="$store.state.token">Beers</router-link> </li>
           <li><router-link v-bind:to="{ name: 'breweries' }" v-if="$store.state.token">Breweries</router-link> </li>
@@ -62,11 +62,15 @@ export default {
   background-color: rgb(34, 31, 31); 
   background-size: 100vh;
   height: 200vh;
-  margin-left: 500px;
+  margin: auto;
   position: center;
  
 }
-
+.logo {
+  width: 150px;
+  height: 200px;
+  margin: auto;
+}
 aside {
   width: 200px;
   height: 100%;
@@ -78,7 +82,7 @@ nav {
 .nav-list {
   list-style: none;
   height: 100vh;
-  
+  padding: 10px;
 }
 
 /* this is remove that whitespace gap and it reflects to all the components */
@@ -92,7 +96,7 @@ body, html, #app {
   position: fixed;
   justify-content: center;
   width: 50vw;
-  left: 20;
+  left: 0;
   right: 0;
   background-color: #bababa;
   display: block;
@@ -101,7 +105,6 @@ body, html, #app {
   font-size: 1rem;
   text-align: center;
   padding: 10px;
-  margin-bottom: 10px;
   cursor: pointer;
   z-index: 1;
 }
