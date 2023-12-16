@@ -192,12 +192,14 @@ public class JdbcBeerDao implements BeerDao {
         User user = jdbcUserDao.getUserByUsername(principal.getName());
         String favBeerSql = "DELETE FROM favorite_beer WHERE beer_id = ?;"; // deletes from favorite_beer
         String beerSql = "DELETE FROM beer WHERE beer_id = ?;"; // deletes from beer
+        String beerReviewSql = "DELETE FROM beer_review WHERE beer_id = ?;";
         String userValidSql = "SELECT founder_id FROM brewery WHERE brewery_id = ?;";
         try {
             Beer beerToDelete = getBeerById(beerId);
             int founderId = jdbcTemplate.queryForObject(userValidSql, int.class, beerToDelete.getBreweryId());
             if (user.getId() == founderId) {
                 jdbcTemplate.update(favBeerSql, beerId);
+                jdbcTemplate.update(beerReviewSql, beerId);
                 jdbcTemplate.update(beerSql, beerId);
             } else {
                 throw new DaoException("You do not have required permissions to delete this beer. Please contact the brewery founder.");
