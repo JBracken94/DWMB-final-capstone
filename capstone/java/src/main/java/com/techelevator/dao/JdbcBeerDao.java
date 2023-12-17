@@ -191,8 +191,9 @@ public class JdbcBeerDao implements BeerDao {
     public void deleteBeer(int beerId, Principal principal) {
         User user = jdbcUserDao.getUserByUsername(principal.getName());
         String favBeerSql = "DELETE FROM favorite_beer WHERE beer_id = ?;"; // deletes from favorite_beer
+        String beerReviewSql = "DELETE FROM beer_review WHERE beer_id = ?;"; // deletes from beer_review
+        // Data integrity violation prevented, now delete from beer
         String beerSql = "DELETE FROM beer WHERE beer_id = ?;"; // deletes from beer
-        String beerReviewSql = "DELETE FROM beer_review WHERE beer_id = ?;";
         String userValidSql = "SELECT founder_id FROM brewery WHERE brewery_id = ?;";
         try {
             Beer beerToDelete = getBeerById(beerId);
