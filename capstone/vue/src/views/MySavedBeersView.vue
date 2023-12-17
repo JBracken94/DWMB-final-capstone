@@ -1,9 +1,13 @@
 <template>
-  <h1 class="my-list">My Favorite Beers</h1>
+  <div id="savedcont">
+    <h1 class="my-list">My Favorite Beers</h1>
+
+
+    <beer-list v-bind:beers="this.$store.state.savedBeers" class="my-saved-beers"/>
+  </div>
   <!-- BUTTONS ON CARDS TO DELETE SAVED -->
   <!-- List of My Saved Breweries -->
   <!-- What should show if no saved beers? -->
-  <beer-list v-bind:beers="this.$store.state.savedBeers" class="my-saved-beers"/>
   <!-- List of My Saved Beers -->
 </template>
 
@@ -38,6 +42,12 @@ export default {
 </script>
 
 <style>
+div#savedcont {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: =1fr 1fr;
+  margin-left: 200px;
+}
 .my-list {
   font-size: 60px;
   text-shadow: 2px 2px 1px #e79115;
