@@ -45,10 +45,11 @@ export default {
 div#savedcont {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: =1fr 1fr;
+  grid-template-rows: 200px 1fr;
   margin-left: 200px;
 }
 .my-list {
+  margin: auto;
   font-size: 60px;
   text-shadow: 2px 2px 1px #e79115;
   color: black;

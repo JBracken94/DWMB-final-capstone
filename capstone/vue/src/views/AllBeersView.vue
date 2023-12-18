@@ -55,6 +55,7 @@ export default {
 }
 
 h1 {
+  margin: auto;
   color: #e79115;
   font-size: 100px;
   
