@@ -1,5 +1,3 @@
-# Final Capstone
-​
-This directory contains all of the starter projects for the final capstone.
-​
-Each project contains instructions that provides information about the starting code and explains how to get started with the final capstone project.
+# Dude, Where's My Brewery?
+## NLR 16 Purple Team 3 Final Capstone
+## Brought to you by Jeff Bracken, Xhelal Mahmuti, Steven Pickering, Spencer Meredith
