@@ -130,6 +130,7 @@ div#info {
 
 div#container {
   margin: auto;
+  margin-left: 200px;
   display: grid;
   width: 80vw;
   height: 80vh;
